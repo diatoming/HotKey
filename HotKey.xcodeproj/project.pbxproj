@@ -13,6 +13,11 @@
 		D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C02A91A361B20004413E2 /* Images.xcassets */; };
 		D05C02AD1A361B20004413E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D05C02AB1A361B20004413E2 /* Main.storyboard */; };
 		D05C02B91A361B20004413E2 /* HotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02B81A361B20004413E2 /* HotKeyTests.m */; };
+		D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */; };
+		D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C51A361B53004413E2 /* DDHotKeyTextField.m */; };
+		D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */; };
+		D05C02CD1A361D63004413E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CC1A361D63004413E2 /* Cocoa.framework */; };
+		D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CE1A361D6D004413E2 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,14 @@
 		D05C02B21A361B20004413E2 /* HotKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02B71A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05C02B81A361B20004413E2 /* HotKeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotKeyTests.m; sourceTree = "<group>"; };
+		D05C02C21A361B53004413E2 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = DDHotKey/DDHotKeyCenter.h; sourceTree = "<group>"; };
+		D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = DDHotKey/DDHotKeyCenter.m; sourceTree = "<group>"; };
+		D05C02C41A361B53004413E2 /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyTextField.h; path = DDHotKey/DDHotKeyTextField.h; sourceTree = "<group>"; };
+		D05C02C51A361B53004413E2 /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = DDHotKey/DDHotKeyTextField.m; sourceTree = "<group>"; };
+		D05C02C61A361B53004413E2 /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = DDHotKey/DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		D05C02CC1A361D63004413E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D05C02CE1A361D6D004413E2 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */,
+				D05C02CD1A361D63004413E2 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +76,10 @@
 		D05C02931A361B20004413E2 = {
 			isa = PBXGroup;
 			children = (
+				D05C02CB1A361B61004413E2 /* DDHotKey */,
 				D05C029E1A361B20004413E2 /* HotKey */,
 				D05C02B51A361B20004413E2 /* HotKeyTests */,
+				D05C02D01A361DF3004413E2 /* Frameworks */,
 				D05C029D1A361B20004413E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +131,28 @@
 				D05C02B71A361B20004413E2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D05C02CB1A361B61004413E2 /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				D05C02C21A361B53004413E2 /* DDHotKeyCenter.h */,
+				D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */,
+				D05C02C41A361B53004413E2 /* DDHotKeyTextField.h */,
+				D05C02C51A361B53004413E2 /* DDHotKeyTextField.m */,
+				D05C02C61A361B53004413E2 /* DDHotKeyUtilities.h */,
+				D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */,
+			);
+			name = DDHotKey;
+			sourceTree = "<group>";
+		};
+		D05C02D01A361DF3004413E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D05C02CC1A361D63004413E2 /* Cocoa.framework */,
+				D05C02CE1A361D6D004413E2 /* Carbon.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,8 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D05C02A81A361B20004413E2 /* ViewController.m in Sources */,
 				D05C02A51A361B20004413E2 /* main.m in Sources */,
+				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
+				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
+				D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */,
+				D05C02A81A361B20004413E2 /* ViewController.m in Sources */,
 				D05C02A31A361B20004413E2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
