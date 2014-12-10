@@ -18,6 +18,7 @@
 		D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */; };
 		D05C02CD1A361D63004413E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CC1A361D63004413E2 /* Cocoa.framework */; };
 		D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CE1A361D6D004413E2 /* Carbon.framework */; };
+		D05C02D21A36435B004413E2 /* SimpleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02D11A36435B004413E2 /* SimpleItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		D05C02CC1A361D63004413E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D05C02CE1A361D6D004413E2 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		D05C02D11A36435B004413E2 /* SimpleItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleItemView.m; path = "../../../../../Volumes/Yosemite X/Users/peter/Documents/backup/develop/MacSoundBar1/MacSoundBar/SimpleItemView.m"; sourceTree = "<group>"; };
+		D05C02D31A364370004413E2 /* SimpleItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleItemView.h; path = "../../../../../Volumes/Yosemite X/Users/peter/Documents/backup/develop/MacSoundBar1/MacSoundBar/SimpleItemView.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 		D05C029E1A361B20004413E2 /* HotKey */ = {
 			isa = PBXGroup;
 			children = (
+				D05C02D31A364370004413E2 /* SimpleItemView.h */,
+				D05C02D11A36435B004413E2 /* SimpleItemView.m */,
 				D05C02A11A361B20004413E2 /* AppDelegate.h */,
 				D05C02A21A361B20004413E2 /* AppDelegate.m */,
 				D05C02A61A361B20004413E2 /* ViewController.h */,
@@ -254,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05C02D21A36435B004413E2 /* SimpleItemView.m in Sources */,
 				D05C02A51A361B20004413E2 /* main.m in Sources */,
 				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
 				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
