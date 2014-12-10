@@ -25,7 +25,7 @@
 //    [self.statusItem setDelegate:self];
     [self.statusItem setMenu:self.statusMenu];
     [self.statusItem setImage:[NSImage imageNamed:@"HotKey"]];
-//    [self.statusItem setAlternateImage:[NSImage imageNamed:@"HotKey"]];
+    [self.statusItem setAlternateImage:[NSImage imageNamed:@"HotKey-Alternate"]];
     [self.statusItem setHighlightMode:YES];
 
     NSString *source = @"tell application \"Finder\" to set myname to POSIX path of (target of window 1 as alias)";

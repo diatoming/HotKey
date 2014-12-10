@@ -209,6 +209,7 @@
 				TargetAttributes = {
 					D05C029B1A361B20004413E2 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = CVCAS47FPX;
 					};
 					D05C02B11A361B20004413E2 = {
 						CreatedOnToolsVersion = 6.2;
@@ -379,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -390,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -452,6 +455,7 @@
 				D05C02BE1A361B20004413E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D05C02BF1A361B20004413E2 /* Build configuration list for PBXNativeTarget "HotKeyTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +464,7 @@
 				D05C02C11A361B20004413E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
