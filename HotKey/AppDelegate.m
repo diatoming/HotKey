@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "DDHotKeyCenter.h"
+#import "DDHotKeyUtilities.h"
 #import "SimpleItemView.h"
+
 #import <Carbon/Carbon.h>
 
 @interface AppDelegate ()
@@ -51,6 +53,9 @@
     // Insert code here to tear down your application
 }
 
+- (void)actionItem:(id)sender {
+}
+
 - (void)refreshMenu {
 
     [self.statusMenu removeAllItems];
@@ -62,9 +67,11 @@
     [self.statusMenu addItem:aboutItem];
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
     
-    NSMenuItem *infoItem = [[NSMenuItem alloc] initWithTitle:@"No Apps added yet!" action:nil keyEquivalent:@""];
-    [infoItem setEnabled:NO];
-    [self.statusMenu addItem:infoItem];
+    NSString *str = DDStringFromKeyCode(kVK_Return, 0);
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Terminal" action:@selector(actionItem:) keyEquivalent:str];
+    [item setKeyEquivalentModifierMask:NSCommandKeyMask|NSShiftKeyMask];
+    [self.statusMenu addItem:item];
+    
     
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
     
