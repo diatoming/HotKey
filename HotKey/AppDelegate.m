@@ -28,21 +28,8 @@
     [self.statusItem setAlternateImage:[NSImage imageNamed:@"HotKey-Alternate"]];
     [self.statusItem setHighlightMode:YES];
 
-    NSString *source = @"tell application \"Finder\" to set myname to POSIX path of (target of window 1 as alias)";
-    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:source];
-    DDHotKeyTask task = ^(NSEvent *hkEvent) {
-        NSDictionary *err;
-        NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:&err];
-        NSString *path = [scriptResult stringValue];
-        NSLog(@"%@", err?err.description:path);
-        NSTask *task = [[NSTask alloc] init];
-        task.launchPath = @"/usr/bin/open";
-        task.arguments  = @[@"-a", @"Terminal", path?path:@""];
-        [task launch];
-    };
-    
     DDHotKeyCenter *c = [DDHotKeyCenter sharedHotKeyCenter];
-    if (![c registerHotKeyWithKeyCode:kVK_Return modifierFlags:NSCommandKeyMask | NSShiftKeyMask task:task]) {
+    if (![c registerHotKeyWithKeyCode:kVK_Return modifierFlags:NSCommandKeyMask | NSShiftKeyMask target:self action:@selector(actionItem:) object:nil]) {
         NSLog(@"Unable to register hotkey");
     }
 
@@ -54,6 +41,16 @@
 }
 
 - (void)actionItem:(id)sender {
+    NSString *source = @"tell application \"Finder\" to set myname to POSIX path of (target of window 1 as alias)";
+    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:source];
+    NSDictionary *err;
+    NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:&err];
+    NSString *path = [scriptResult stringValue];
+    NSLog(@"%@", err?err.description:path);
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/usr/bin/open";
+    task.arguments  = @[@"-a", @"Terminal", path?path:@""];
+    [task launch];
 }
 
 - (void)refreshMenu {

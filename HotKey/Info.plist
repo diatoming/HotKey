@@ -30,6 +30,8 @@
 	<string>Copyright © 2014 Peter Vorwieger. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>LSBackgroundOnly</key>
+	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
