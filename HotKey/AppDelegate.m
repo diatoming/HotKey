@@ -23,8 +23,6 @@
     
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:-1];
     self.statusMenu = [[NSMenu alloc] init];
-//    [self.statusItem setupView];
-//    [self.statusItem setDelegate:self];
     [self.statusItem setMenu:self.statusMenu];
     [self.statusItem setImage:[NSImage imageNamed:@"HotKey"]];
     [self.statusItem setAlternateImage:[NSImage imageNamed:@"HotKey-Alternate"]];
@@ -33,8 +31,10 @@
     NSString *source = @"tell application \"Finder\" to set myname to POSIX path of (target of window 1 as alias)";
     NSAppleScript *script = [[NSAppleScript alloc] initWithSource:source];
     DDHotKeyTask task = ^(NSEvent *hkEvent) {
-        NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:NULL];
+        NSDictionary *err;
+        NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:&err];
         NSString *path = [scriptResult stringValue];
+        NSLog(@"%@", err?err.description:path);
         NSTask *task = [[NSTask alloc] init];
         task.launchPath = @"/usr/bin/open";
         task.arguments  = @[@"-a", @"Terminal", path?path:@""];
@@ -43,7 +43,7 @@
     
     DDHotKeyCenter *c = [DDHotKeyCenter sharedHotKeyCenter];
     if (![c registerHotKeyWithKeyCode:kVK_Return modifierFlags:NSCommandKeyMask | NSShiftKeyMask task:task]) {
-        //[self addOutput:@"Unable to register hotkey for example 1"];
+        NSLog(@"Unable to register hotkey");
     }
 
     [self refreshMenu];

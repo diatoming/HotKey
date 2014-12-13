@@ -54,6 +54,7 @@
 		D05C02CE1A361D6D004413E2 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		D05C02D11A36435B004413E2 /* SimpleItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleItemView.m; path = "../../../../../Volumes/Yosemite X/Users/peter/Documents/backup/develop/MacSoundBar1/MacSoundBar/SimpleItemView.m"; sourceTree = "<group>"; };
 		D05C02D31A364370004413E2 /* SimpleItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleItemView.h; path = "../../../../../Volumes/Yosemite X/Users/peter/Documents/backup/develop/MacSoundBar1/MacSoundBar/SimpleItemView.h"; sourceTree = "<group>"; };
+		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 		D05C029E1A361B20004413E2 /* HotKey */ = {
 			isa = PBXGroup;
 			children = (
+				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D05C02D31A364370004413E2 /* SimpleItemView.h */,
 				D05C02D11A36435B004413E2 /* SimpleItemView.m */,
 				D05C02A11A361B20004413E2 /* AppDelegate.h */,
@@ -210,6 +212,11 @@
 					D05C029B1A361B20004413E2 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = CVCAS47FPX;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					D05C02B11A361B20004413E2 = {
 						CreatedOnToolsVersion = 6.2;
@@ -380,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotKey/HotKey.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HotKey/Info.plist;
@@ -392,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotKey/HotKey.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HotKey/Info.plist;
