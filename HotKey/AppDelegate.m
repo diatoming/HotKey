@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
-#import "SimpleItemView.h"
 
 #import <Carbon/Carbon.h>
 
@@ -58,10 +57,8 @@
     [self.statusMenu removeAllItems];
     
     NSMenuItem *aboutItem = [[NSMenuItem alloc] initWithTitle:@"About HotKey" action:@selector(openAbout:) keyEquivalent:@""];
-    [aboutItem setView:[[SimpleItemView alloc] initWithSizeForLabel:aboutItem.title]];
-    [aboutItem setEnabled:YES];
-    [aboutItem setTarget:self];
     [self.statusMenu addItem:aboutItem];
+
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
     
     NSString *str = DDStringFromKeyCode(kVK_Return, 0);
@@ -69,37 +66,19 @@
     [item setKeyEquivalentModifierMask:NSCommandKeyMask|NSShiftKeyMask];
     [self.statusMenu addItem:item];
     
-    
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
     
-//    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Add App..." action:@selector(openFile) keyEquivalent:@""];
-//    [item setView:[[SimpleItemView alloc] initWithSizeForLabel:item.title]];
-//    [item setEnabled:YES];
-//    [item setTarget:self];
-//    [self.statusMenu addItem:item];
-    
-    //    item = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(openPreferences:) keyEquivalent:@""];
-    //    [item setView:[[SimpleItemView alloc] initWithSizeForLabel:item.title]];
-    //    [item setEnabled:YES];
-    //    [item setTarget:self];
-    //    [self.statusMenu addItem:item];
-    
-    [self.statusMenu addItem:[NSMenuItem separatorItem]];
-    
-    NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"Quit HotKey" action:@selector(terminate) keyEquivalent:@""];
-    [quitItem setView:[[SimpleItemView alloc] initWithSizeForLabel:quitItem.title]];
-    [quitItem setEnabled:YES];
-    [quitItem setTarget:self];
+    NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"Quit HotKey" action:@selector(terminate:) keyEquivalent:@""];
     [self.statusMenu addItem:quitItem];
 }
 
 - (void)openAbout:(id)sender {
-//    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-//    [self.aboutWindow makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
+    [NSApp orderFrontStandardAboutPanel:sender];
 }
 
-- (void)terminate {
-    [[NSApplication sharedApplication] terminate:self];
+- (void)terminate:(id)sender {
+    [NSApp terminate:self];
 }
 
 
