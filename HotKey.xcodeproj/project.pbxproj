@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D05C02A31A361B20004413E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A21A361B20004413E2 /* AppDelegate.m */; };
 		D05C02A51A361B20004413E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A41A361B20004413E2 /* main.m */; };
 		D05C02A81A361B20004413E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A71A361B20004413E2 /* ViewController.m */; };
 		D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C02A91A361B20004413E2 /* Images.xcassets */; };
-		D05C02AD1A361B20004413E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D05C02AB1A361B20004413E2 /* Main.storyboard */; };
 		D05C02B91A361B20004413E2 /* HotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02B81A361B20004413E2 /* HotKeyTests.m */; };
 		D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */; };
 		D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C51A361B53004413E2 /* DDHotKeyTextField.m */; };
 		D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */; };
 		D05C02CD1A361D63004413E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CC1A361D63004413E2 /* Cocoa.framework */; };
 		D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CE1A361D6D004413E2 /* Carbon.framework */; };
+		D06409231A40AE6300583962 /* HotKeyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = D064091F1A40ACFC00583962 /* HotKeyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
+		D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E36A791A45F90600FFA4EE /* Preferences.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +31,30 @@
 			remoteGlobalIDString = D05C029B1A361B20004413E2;
 			remoteInfo = HotKey;
 		};
+		D064091E1A40ACFC00583962 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D03365781A3F79DF0059FE1B;
+			remoteInfo = HotKeyHelper;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D06409221A40AE3F00583962 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				D06409231A40AE6300583962 /* HotKeyHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D05C029C1A361B20004413E2 /* HotKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02A01A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05C02A11A361B20004413E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,7 +63,6 @@
 		D05C02A61A361B20004413E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D05C02A71A361B20004413E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D05C02A91A361B20004413E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D05C02AC1A361B20004413E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D05C02B21A361B20004413E2 /* HotKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02B71A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05C02B81A361B20004413E2 /* HotKeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotKeyTests.m; sourceTree = "<group>"; };
@@ -51,7 +74,10 @@
 		D05C02C71A361B53004413E2 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = DDHotKey/DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		D05C02CC1A361D63004413E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D05C02CE1A361D6D004413E2 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HotKeyHelper.xcodeproj; path = HotKeyHelper/HotKeyHelper.xcodeproj; sourceTree = "<group>"; };
+		D06409241A40AEBE00583962 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
+		D0E36A791A45F90600FFA4EE /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */,
 				D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */,
 				D05C02CD1A361D63004413E2 /* Cocoa.framework in Frameworks */,
 			);
@@ -77,6 +104,7 @@
 		D05C02931A361B20004413E2 = {
 			isa = PBXGroup;
 			children = (
+				D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */,
 				D05C02CB1A361B61004413E2 /* DDHotKey */,
 				D05C029E1A361B20004413E2 /* HotKey */,
 				D05C02B51A361B20004413E2 /* HotKeyTests */,
@@ -102,8 +130,9 @@
 				D05C02A21A361B20004413E2 /* AppDelegate.m */,
 				D05C02A61A361B20004413E2 /* ViewController.h */,
 				D05C02A71A361B20004413E2 /* ViewController.m */,
+				D0E36A791A45F90600FFA4EE /* Preferences.xib */,
+				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
-				D05C02AB1A361B20004413E2 /* Main.storyboard */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
 			);
 			path = HotKey;
@@ -151,10 +180,19 @@
 		D05C02D01A361DF3004413E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D06409241A40AEBE00583962 /* ServiceManagement.framework */,
 				D05C02CC1A361D63004413E2 /* Cocoa.framework */,
 				D05C02CE1A361D6D004413E2 /* Carbon.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D064091A1A40ACFC00583962 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D064091F1A40ACFC00583962 /* HotKeyHelper.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +205,7 @@
 				D05C02981A361B20004413E2 /* Sources */,
 				D05C02991A361B20004413E2 /* Frameworks */,
 				D05C029A1A361B20004413E2 /* Resources */,
+				D06409221A40AE3F00583962 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -230,6 +269,12 @@
 			mainGroup = D05C02931A361B20004413E2;
 			productRefGroup = D05C029D1A361B20004413E2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D064091A1A40ACFC00583962 /* Products */;
+					ProjectRef = D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D05C029B1A361B20004413E2 /* HotKey */,
@@ -238,13 +283,24 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		D064091F1A40ACFC00583962 /* HotKeyHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = HotKeyHelper.app;
+			remoteRef = D064091E1A40ACFC00583962 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		D05C029A1A361B20004413E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */,
 				D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */,
-				D05C02AD1A361B20004413E2 /* Main.storyboard in Resources */,
+				D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,12 +346,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D05C02AB1A361B20004413E2 /* Main.storyboard */ = {
+		D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D05C02AC1A361B20004413E2 /* Base */,
+				D0318DCD1A46DF9C00BAEE57 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -335,10 +392,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -371,9 +428,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
@@ -387,6 +444,7 @@
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -397,9 +455,11 @@
 				CODE_SIGN_ENTITLEMENTS = HotKey/HotKey.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
