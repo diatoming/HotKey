@@ -10,6 +10,9 @@
 
 @interface ViewController : NSViewController
 
+@property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
+
+-(IBAction)toggleLaunchAtLogin:(id)sender;
 
 @end
 

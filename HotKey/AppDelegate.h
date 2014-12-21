@@ -13,5 +13,7 @@
 @property (strong) NSMenu *statusMenu;
 @property (strong) NSStatusItem *statusItem;
 
+@property (strong) NSWindowController *windowController;
+
 @end
 

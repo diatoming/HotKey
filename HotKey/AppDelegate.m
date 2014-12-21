@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
 
@@ -33,6 +34,9 @@
     }
 
     [self refreshMenu];
+    
+    self.windowController = [[NSWindowController alloc] initWithWindowNibName:@"Preferences"];
+    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -67,14 +71,24 @@
     [self.statusMenu addItem:item];
     
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
+
+    NSMenuItem *preferenceItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(openPreferences:) keyEquivalent:@""];
+    [self.statusMenu addItem:preferenceItem];
     
+    [self.statusMenu addItem:[NSMenuItem separatorItem]];
+
     NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"Quit HotKey" action:@selector(terminate:) keyEquivalent:@""];
     [self.statusMenu addItem:quitItem];
 }
 
 - (void)openAbout:(id)sender {
     [NSApp activateIgnoringOtherApps:YES];
-    [NSApp orderFrontStandardAboutPanel:sender];
+    [NSApp orderFrontStandardAboutPanel:self];
+}
+
+- (void)openPreferences:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
+    [self.windowController showWindow:sender];
 }
 
 - (void)terminate:(id)sender {
