@@ -20,6 +20,7 @@
 		D05C02CF1A361D6D004413E2 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C02CE1A361D6D004413E2 /* Carbon.framework */; };
 		D06409231A40AE6300583962 /* HotKeyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = D064091F1A40ACFC00583962 /* HotKeyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
+		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
 		D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E36A791A45F90600FFA4EE /* Preferences.xib */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HotKeyHelper.xcodeproj; path = HotKeyHelper/HotKeyHelper.xcodeproj; sourceTree = "<group>"; };
 		D06409241A40AEBE00583962 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
+		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
 		D0E36A791A45F90600FFA4EE /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D05C02A11A361B20004413E2 /* AppDelegate.h */,
 				D05C02A21A361B20004413E2 /* AppDelegate.m */,
+				D070EAAE1A500E0200C3074A /* script.txt */,
 				D05C02A61A361B20004413E2 /* ViewController.h */,
 				D05C02A71A361B20004413E2 /* ViewController.m */,
 				D0E36A791A45F90600FFA4EE /* Preferences.xib */,
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */,
+				D070EAAF1A500E0200C3074A /* script.txt in Resources */,
 				D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */,
 				D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */,
 			);
@@ -392,10 +396,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -428,9 +432,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -444,7 +448,7 @@
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -459,7 +463,7 @@
 				INFOPLIST_FILE = HotKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

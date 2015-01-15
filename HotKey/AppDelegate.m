@@ -44,12 +44,22 @@
 }
 
 - (void)actionItem:(id)sender {
-    NSString *source = @"tell application \"Finder\" to set myname to POSIX path of (target of window 1 as alias)";
-    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:source];
+    NSURL *scriptURL = [[NSBundle mainBundle] URLForResource: @"script" withExtension:@"txt"];
     NSDictionary *err;
+    NSAppleScript *script = [[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:&err];
+    if (err) { NSLog(@"script-error: %@", err); }
     NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:&err];
+    NSLog(@"result: %@", err?err.description:scriptResult);
     NSString *path = [scriptResult stringValue];
-    NSLog(@"%@", err?err.description:path);
+    BOOL isDir;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+    NSLog(@"path:   #%@#", path);
+    if (exists && !isDir) {
+        NSString *path1 = [[path stringByDeletingLastPathComponent] stringByStandardizingPath];
+        NSString *path2 = [path stringByDeletingLastPathComponent];
+        NSLog(@"path1:  #%@#", path1);
+        NSLog(@"path2:  #%@#", path2);
+    }
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/open";
     task.arguments  = @[@"-a", @"Terminal", path?path:@""];
