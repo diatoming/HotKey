@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreferencesWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> 
 
 @property (strong) NSMenu *statusMenu;
 @property (strong) NSStatusItem *statusItem;
 
-@property (strong) NSWindowController *windowController;
+@property (strong,nonatomic) PreferencesWindowController *preferencesWindowController;
 
 @end
 

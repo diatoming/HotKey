@@ -1,17 +1,22 @@
 //
-//  ViewController.m
+//  PreferencesWindowController.m
 //  HotKey
 //
-//  Created by Peter Vorwieger on 08.12.14.
-//  Copyright (c) 2014 Peter Vorwieger. All rights reserved.
+//  Created by Peter Vorwieger on 18.01.15.
+//  Copyright (c) 2015 Peter Vorwieger. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PreferencesWindowController.h"
 #import <ServiceManagement/ServiceManagement.h>
 
-@implementation ViewController
+@interface PreferencesWindowController ()
 
--(void)viewDidAppear {
+@end
+
+@implementation PreferencesWindowController
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
     BOOL enabled = [self appIsPresentInLoginItems];
     [self.launchAtLoginButton setState:enabled?NSOnState:NSOffState];
 }
@@ -50,5 +55,6 @@
     }
     return NO;
 }
+
 
 @end
