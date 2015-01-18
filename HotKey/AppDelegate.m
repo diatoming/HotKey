@@ -89,7 +89,7 @@
     [NSApp orderFrontStandardAboutPanel:self];
 }
 
-- (NSWindowController *)preferencesWindowController {
+- (PreferencesWindowController *)preferencesWindowController {
     if (!_preferencesWindowController) {
         _preferencesWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
     }
@@ -97,6 +97,7 @@
 }
 
 - (IBAction)showPreferences:(id)sender {
+    [NSApp activateIgnoringOtherApps:YES];
     [[self preferencesWindowController] showWindow:nil];
 }
 
