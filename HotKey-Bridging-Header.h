@@ -4,4 +4,3 @@
 #import <Carbon/Carbon.h>
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
-#import "PreferencesWindowController.h"
