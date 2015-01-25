@@ -7,15 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
 
 #import <Carbon/Carbon.h>
-
-@interface AppDelegate ()
-
-@end
 
 @implementation AppDelegate
 
@@ -34,8 +29,6 @@
     }
 
     [self refreshMenu];
-    
-    self.windowController = [[NSWindowController alloc] initWithWindowNibName:@"Preferences"];
     
 }
 
@@ -82,7 +75,7 @@
     
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
 
-    NSMenuItem *preferenceItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(openPreferences:) keyEquivalent:@""];
+    NSMenuItem *preferenceItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(showPreferences:) keyEquivalent:@""];
     [self.statusMenu addItem:preferenceItem];
     
     [self.statusMenu addItem:[NSMenuItem separatorItem]];
@@ -96,14 +89,20 @@
     [NSApp orderFrontStandardAboutPanel:self];
 }
 
-- (void)openPreferences:(id)sender {
+- (PreferencesWindowController *)preferencesWindowController {
+    if (!_preferencesWindowController) {
+        _preferencesWindowController = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
+    }
+    return _preferencesWindowController;
+}
+
+- (IBAction)showPreferences:(id)sender {
     [NSApp activateIgnoringOtherApps:YES];
-    [self.windowController showWindow:sender];
+    [[self preferencesWindowController] showWindow:nil];
 }
 
 - (void)terminate:(id)sender {
     [NSApp terminate:self];
 }
-
 
 @end
