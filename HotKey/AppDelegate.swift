@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusMenu:NSMenu
     var statusItem:NSStatusItem
-    var windowController:NSWindowController
+    var preferencesWindowController:PreferencesWindowController?
     
     override init() {
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
@@ -24,8 +24,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = NSImage(named: "HotKey")
         statusItem.alternateImage = NSImage(named: "HotKey-Alternate")
         statusItem.highlightMode = true
-        
-        windowController = NSWindowController(windowNibName:"Preferences")
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -97,8 +95,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func openPreferences(sender : AnyObject) {
+        if (preferencesWindowController == nil) {
+            preferencesWindowController = PreferencesWindowController(windowNibName:"PreferencesWindowController")
+        }
         NSApp.activateIgnoringOtherApps(true)
-        windowController.showWindow(self)
+        preferencesWindowController!.showWindow(self)
     }
 
     func terminate(sender : AnyObject) {

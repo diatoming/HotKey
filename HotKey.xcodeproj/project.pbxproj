@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
-		D05C02A81A361B20004413E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A71A361B20004413E2 /* ViewController.m */; };
+		D05677B61A6BD77C004A386C /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05677B41A6BD77C004A386C /* PreferencesWindowController.m */; };
+		D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */; };
 		D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C02A91A361B20004413E2 /* Images.xcassets */; };
 		D05C02B91A361B20004413E2 /* HotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02B81A361B20004413E2 /* HotKeyTests.m */; };
 		D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */; };
@@ -20,7 +21,6 @@
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
-		D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E36A791A45F90600FFA4EE /* Preferences.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,11 @@
 
 /* Begin PBXFileReference section */
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D05677B31A6BD77C004A386C /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		D05677B41A6BD77C004A386C /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		D05C029C1A361B20004413E2 /* HotKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02A01A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D05C02A61A361B20004413E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D05C02A71A361B20004413E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D05C02A91A361B20004413E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D05C02B21A361B20004413E2 /* HotKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02B71A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0E36A791A45F90600FFA4EE /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +128,10 @@
 			children = (
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
+				D05677B31A6BD77C004A386C /* PreferencesWindowController.h */,
+				D05677B41A6BD77C004A386C /* PreferencesWindowController.m */,
+				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
-				D05C02A61A361B20004413E2 /* ViewController.h */,
-				D05C02A71A361B20004413E2 /* ViewController.m */,
-				D0E36A791A45F90600FFA4EE /* Preferences.xib */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
@@ -301,7 +301,7 @@
 				D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */,
 				D070EAAF1A500E0200C3074A /* script.txt in Resources */,
 				D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */,
-				D0E36A7A1A45F90600FFA4EE /* Preferences.xib in Resources */,
+				D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +321,9 @@
 			files = (
 				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
 				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
+				D05677B61A6BD77C004A386C /* PreferencesWindowController.m in Sources */,
 				D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
-				D05C02A81A361B20004413E2 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
