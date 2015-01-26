@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
-		D05677B61A6BD77C004A386C /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D05677B41A6BD77C004A386C /* PreferencesWindowController.m */; };
 		D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */; };
-		D05C02A31A361B20004413E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A21A361B20004413E2 /* AppDelegate.m */; };
-		D05C02A51A361B20004413E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02A41A361B20004413E2 /* main.m */; };
 		D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C02A91A361B20004413E2 /* Images.xcassets */; };
 		D05C02B91A361B20004413E2 /* HotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02B81A361B20004413E2 /* HotKeyTests.m */; };
 		D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */; };
@@ -22,6 +19,8 @@
 		D06409231A40AE6300583962 /* HotKeyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = D064091F1A40ACFC00583962 /* HotKeyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
+		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
+		D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,14 +55,9 @@
 
 /* Begin PBXFileReference section */
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D05677B31A6BD77C004A386C /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
-		D05677B41A6BD77C004A386C /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		D05C029C1A361B20004413E2 /* HotKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02A01A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D05C02A11A361B20004413E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D05C02A21A361B20004413E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D05C02A41A361B20004413E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D05C02A91A361B20004413E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D05C02B21A361B20004413E2 /* HotKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02B71A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +74,9 @@
 		D06409241A40AEBE00583962 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
 		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
+		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */,
+				D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */,
 				D05C02CB1A361B61004413E2 /* DDHotKey */,
 				D05C029E1A361B20004413E2 /* HotKey */,
 				D05C02B51A361B20004413E2 /* HotKeyTests */,
@@ -128,10 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
-				D05C02A11A361B20004413E2 /* AppDelegate.h */,
-				D05C02A21A361B20004413E2 /* AppDelegate.m */,
-				D05677B31A6BD77C004A386C /* PreferencesWindowController.h */,
-				D05677B41A6BD77C004A386C /* PreferencesWindowController.m */,
+				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
+				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
@@ -145,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				D05C02A01A361B20004413E2 /* Info.plist */,
-				D05C02A41A361B20004413E2 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -322,12 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D05C02A51A361B20004413E2 /* main.m in Sources */,
+				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
 				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
 				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
-				D05677B61A6BD77C004A386C /* PreferencesWindowController.m in Sources */,
 				D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */,
-				D05C02A31A361B20004413E2 /* AppDelegate.m in Sources */,
+				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HotKey/HotKey.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -449,6 +444,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "HotKey-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -456,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HotKey/HotKey.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -464,6 +462,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "HotKey-Bridging-Header.h";
 			};
 			name = Release;
 		};
