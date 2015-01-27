@@ -29,50 +29,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let c = DDHotKeyCenter.sharedHotKeyCenter();
         let modifier =  NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue
-        c.registerHotKeyWithKeyCode(UInt16(kVK_Return), modifierFlags:modifier, target:self, action:"actionItem:", object:nil)
+        c.registerHotKeyWithKeyCode(UInt16(kVK_Return), modifierFlags: modifier, task: {event in
+            self.startApp("Terminal")
+        })
         self.refreshMenu()
     }
     
-    func actionItem(sender : AnyObject) {
-        
+    func startApp(appName: String) {
         let scriptURL = NSBundle.mainBundle().URLForResource("script", withExtension: "txt")
         var err : NSDictionary?
         let script = NSAppleScript(contentsOfURL: scriptURL!, error:&err)
         if (err != nil) {
             NSLog("script compile error: %@", err!)
-        }
-        
-        let scriptResult = script?.executeAndReturnError(&err)
-        if (err != nil) {
-            NSLog("script execute error: %@", err!)
-        } else {
-            NSLog("script result: %@", scriptResult!)
-        }
-        
-        let task = NSTask()
-        task.launchPath = "/usr/bin/open";
-        task.arguments  = ["-a", "Terminal"]
-        
-        let path = scriptResult?.stringValue
-        if path != nil {
-            var isDir : ObjCBool = false
-            if NSFileManager.defaultManager().fileExistsAtPath(path!, isDirectory:&isDir) {
-                if isDir {
-                    NSLog("file exists and is a directory")
-                    task.arguments.append(path!)
-                } else {
-                   task.arguments.append(path!.stringByDeletingLastPathComponent)
-                    NSLog("file exists and is not a directory")
+        } else if let scriptResult = script?.executeAndReturnError(&err) {
+            let task = NSTask()
+            task.launchPath = "/usr/bin/open";
+            task.arguments = ["-a", appName]
+            if let path = scriptResult.stringValue {
+                var isDir : ObjCBool = false
+                if NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory:&isDir) {
+                    if isDir {
+                        task.arguments.append(path)
+                    } else {
+                        task.arguments.append(path.stringByDeletingLastPathComponent)
+                    }
                 }
-            } else {
-                NSLog("file does not exist")
             }
+            task.launch()
         }
-
-        task.launch()
-
     }
-
+    
+    func actionItem(sender : AnyObject) {
+        if let menuItem = sender as? NSMenuItem  {
+            startApp(menuItem.title)
+        }
+    }
+    
     func refreshMenu() {
         statusMenu.removeAllItems()
         statusMenu.addItem(NSMenuItem(title:"About HotKey", action:"openAbout:", keyEquivalent:""))
@@ -80,7 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let key = DDStringFromKeyCode(UInt16(kVK_Return), 0)
         let item = NSMenuItem(title:"Terminal", action:"actionItem:", keyEquivalent:key)
-        item.keyEquivalentModifierMask = Int((NSEventModifierFlags.CommandKeyMask & NSEventModifierFlags.ShiftKeyMask).rawValue)
+        item.keyEquivalentModifierMask = Int(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
         statusMenu.addItem(item)
             
         statusMenu.addItem(NSMenuItem.separatorItem())
