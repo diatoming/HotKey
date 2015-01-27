@@ -76,6 +76,7 @@
 		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
 		D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +128,7 @@
 			children = (
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
+				D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */,
 				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
