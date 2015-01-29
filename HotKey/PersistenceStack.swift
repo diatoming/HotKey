@@ -11,15 +11,15 @@ import Cocoa
 class PersistenceStack: NSObject {
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "de.peter-vorwieger.onk" in the user's Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "de.peter-vorwieger.HotKey" in the user's Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
         let appSupportURL = urls[urls.count - 1] as NSURL
-        return appSupportURL.URLByAppendingPathComponent("de.peter-vorwieger.onk")
+        return appSupportURL.URLByAppendingPathComponent("de.peter-vorwieger.HotKey")
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("onk", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("HotKey", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
@@ -46,7 +46,7 @@ class PersistenceStack: NSObject {
         var coordinator: NSPersistentStoreCoordinator?
         if !shouldFail && (error == nil) {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-            let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("onk.storedata")
+            let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("HotKey.storedata")
             if coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
                 coordinator = nil
             }

@@ -20,6 +20,9 @@
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
+		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
+		D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */; };
+		D0E7BF721A7838D400807AE9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF711A7838D400807AE9 /* Item.swift */; };
 		D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,8 @@
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
+		D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotKey.xcdatamodel; sourceTree = "<group>"; };
+		D0E7BF711A7838D400807AE9 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +138,8 @@
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
+				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
+				D0E7BF711A7838D400807AE9 /* Item.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
 			);
@@ -320,10 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
+				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
 				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
 				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
+				D0E7BF721A7838D400807AE9 /* Item.swift in Sources */,
 				D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
+				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +545,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */,
+			);
+			currentVersion = D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */;
+			path = HotKey.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D05C02941A361B20004413E2 /* Project object */;
 }
