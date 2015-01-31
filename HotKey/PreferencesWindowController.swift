@@ -14,6 +14,8 @@ class PreferencesWindowController: NSWindowController {
     let launchDaemon = "de.peter-vorwieger.HotKeyHelper"
     
     @IBOutlet weak var launchAtLoginButton: NSButton!
+    @IBOutlet var myTableView: NSTableView!
+    @IBOutlet var myArrayController: NSArrayController!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -41,6 +43,5 @@ class PreferencesWindowController: NSWindowController {
         }
         return false;
     }
-
 
 }

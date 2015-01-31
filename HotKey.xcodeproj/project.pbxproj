@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
+		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
+		D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */; };
 		D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */; };
+		D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588F071A7BFA8600D90002 /* Configuration.swift */; };
+		D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588F0A1A7BFDAB00D90002 /* HotKeyConfiguration.swift */; };
+		D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588F0C1A7BFEBA00D90002 /* Starter.swift */; };
 		D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C02A91A361B20004413E2 /* Images.xcassets */; };
 		D05C02B91A361B20004413E2 /* HotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02B81A361B20004413E2 /* HotKeyTests.m */; };
 		D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D05C02C31A361B53004413E2 /* DDHotKeyCenter.m */; };
@@ -20,6 +25,9 @@
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
+		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
+		D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */; };
+		D0E7BF721A7838D400807AE9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF711A7838D400807AE9 /* Item.swift */; };
 		D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +63,12 @@
 
 /* Begin PBXFileReference section */
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationDelegate.swift; path = ../ConfigurationDelegate.swift; sourceTree = "<group>"; };
+		D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConfiguration.swift; sourceTree = "<group>"; };
 		D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		D0588F071A7BFA8600D90002 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		D0588F0A1A7BFDAB00D90002 /* HotKeyConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyConfiguration.swift; sourceTree = "<group>"; };
+		D0588F0C1A7BFEBA00D90002 /* Starter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starter.swift; sourceTree = "<group>"; };
 		D05C029C1A361B20004413E2 /* HotKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C02A01A361B20004413E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D05C02A91A361B20004413E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -76,6 +89,9 @@
 		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
+		D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotKey.xcdatamodel; sourceTree = "<group>"; };
+		D0E7BF711A7838D400807AE9 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,10 +143,18 @@
 			children = (
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
+				D0588F0C1A7BFEBA00D90002 /* Starter.swift */,
+				D0588F071A7BFA8600D90002 /* Configuration.swift */,
+				D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */,
+				D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */,
+				D0588F0A1A7BFDAB00D90002 /* HotKeyConfiguration.swift */,
+				D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */,
 				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
+				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
+				D0E7BF711A7838D400807AE9 /* Item.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
 			);
@@ -318,10 +342,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
+				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
+				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,
 				D05C02C81A361B53004413E2 /* DDHotKeyCenter.m in Sources */,
+				D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */,
 				D05C02C91A361B53004413E2 /* DDHotKeyTextField.m in Sources */,
+				D0E7BF721A7838D400807AE9 /* Item.swift in Sources */,
 				D05C02CA1A361B53004413E2 /* DDHotKeyUtilities.m in Sources */,
+				D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */,
+				D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
+				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
+				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +565,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */,
+			);
+			currentVersion = D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */;
+			path = HotKey.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D05C02941A361B20004413E2 /* Project object */;
 }
