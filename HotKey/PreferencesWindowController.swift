@@ -9,18 +9,24 @@
 import Cocoa
 import ServiceManagement
 
-class PreferencesWindowController: NSWindowController {
+class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     let launchDaemon = "de.peter-vorwieger.HotKeyHelper"
     
-    @IBOutlet weak var launchAtLoginButton: NSButton!
-    @IBOutlet var myTableView: NSTableView!
+    var managedObjectContext: NSManagedObjectContext!
+
+    @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: NSArrayController!
 
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+    }
+    
+    func windowWillClose(notification: NSNotification) {
+        var err:NSError?
+        managedObjectContext.save(&err)
     }
 
     @IBAction func buttonTapped(sender: AnyObject) {
