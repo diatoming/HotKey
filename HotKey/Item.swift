@@ -12,6 +12,7 @@ import CoreData
 class Item: NSManagedObject {
 
     @NSManaged var name: String
-    @NSManaged var modifier: Int32
-    
+    @NSManaged var keyCode: Int32
+    @NSManaged var modifierFlags: Int32
+
 }

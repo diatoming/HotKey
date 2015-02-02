@@ -23,9 +23,9 @@ class HotKeyConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        let modifier =  UInt(item.modifier)
-        let key = UInt16(kVK_Return)
-        hotKeyCenter.registerHotKeyWithKeyCode(key, modifierFlags: modifier, task: {event in
+        let modifierFlags =  UInt(item.modifierFlags)
+        let key = UInt16(item.keyCode)
+        hotKeyCenter.registerHotKeyWithKeyCode(key, modifierFlags: modifierFlags, task: {event in
             self.starter.startApp(item.name)
         })
     }
