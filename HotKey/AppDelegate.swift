@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         configuration.changed()
+        self.openPreferences(self)
     }
     
     func actionItem(sender : AnyObject) {
@@ -54,6 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func openPreferences(sender : AnyObject) {
         if (preferencesWindowController == nil) {
             preferencesWindowController = PreferencesWindowController(windowNibName:"PreferencesWindowController")
+            preferencesWindowController!.managedObjectContext = persistenceStack.managedObjectContext
         }
         NSApp.activateIgnoringOtherApps(true)
         preferencesWindowController!.showWindow(self)

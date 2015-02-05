@@ -15,6 +15,9 @@ class Configuration: NSObject {
 
     init(_ managedObjectContext:NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
+        super.init()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changed",
+                name:NSManagedObjectContextDidSaveNotification, object:nil)
     }
     
     func changed() {
@@ -37,14 +40,5 @@ class Configuration: NSObject {
         var err:NSError?
         return managedObjectContext.executeFetchRequest(fetchRequest, error: &err) as [Item]
     }
-
-    
-    //        let context = persistenceStack!.managedObjectContext!
-    //        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as Item
-    //        item.name = "ONKI"
-    //        item.modifier = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
-    //
-    //        var err:NSError?
-    //        context.save(&err)
 
 }

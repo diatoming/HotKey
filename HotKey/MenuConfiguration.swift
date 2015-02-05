@@ -23,9 +23,9 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        let key = DDStringFromKeyCode(UInt16(kVK_Return), 0)
+        let key = DDStringFromKeyCode(UInt16(item.keyCode), 0)
         let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key)
-        menuItem.keyEquivalentModifierMask = Int(item.modifier)
+        menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
         statusMenu.addItem(menuItem)
     }
     
