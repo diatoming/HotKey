@@ -4,3 +4,6 @@
 #import <Carbon/Carbon.h>
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
+
+#import <Cocoa/Cocoa.h>
+#import <MASShortcut/Shortcut.h>
