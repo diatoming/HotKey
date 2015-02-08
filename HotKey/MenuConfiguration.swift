@@ -23,10 +23,11 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        let key = item.hotKey?.keyCodeStringForKeyEquivalent
-        let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key!)
-        menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
-        statusMenu.addItem(menuItem)
+        if let key = item.hotKey?.keyCodeStringForKeyEquivalent {
+            let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key)
+            menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
+            statusMenu.addItem(menuItem)
+        }
     }
     
     func didInsert() {

@@ -23,8 +23,10 @@ class HotKeyConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        monitor.registerShortcut(item.hotKey) {
-            self.starter.startApp(item.name)
+        if let key = item.hotKey {
+            monitor.registerShortcut(item.hotKey) {
+                self.starter.startApp(item.name)
+            }
         }
     }
     

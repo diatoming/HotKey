@@ -33,16 +33,6 @@
                             <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-mB-Y4E">
-                        <rect key="frame" x="14" y="47" width="66" height="32"/>
-                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4IN-JX-l0V">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="add:" target="U3m-tk-joT" id="lA1-N6-5a2"/>
-                        </connections>
-                    </button>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz3-o0-gn3">
                         <rect key="frame" x="20" y="80" width="440" height="170"/>
                         <clipView key="contentView" misplaced="YES" id="yCw-nK-4JE">
@@ -111,6 +101,7 @@
                                     </tableColumns>
                                     <connections>
                                         <binding destination="U3m-tk-joT" name="content" keyPath="arrangedObjects" id="Sqf-z6-yfz"/>
+                                        <binding destination="U3m-tk-joT" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Sqf-z6-yfz" id="R6M-Ty-L7S"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -129,6 +120,16 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-mB-Y4E">
+                        <rect key="frame" x="14" y="47" width="66" height="32"/>
+                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4IN-JX-l0V">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSelectDialog:" target="-2" id="Nnz-R8-9cf"/>
+                        </connections>
+                    </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-JK-ytn">
                         <rect key="frame" x="80" y="47" width="91" height="32"/>
                         <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="N4S-Pf-Aes">
@@ -137,21 +138,22 @@
                         </buttonCell>
                         <connections>
                             <action selector="remove:" target="U3m-tk-joT" id="uFh-Qu-kHJ"/>
+                            <binding destination="U3m-tk-joT" name="enabled" keyPath="selection.@count" id="QnA-v2-18A"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="5bm-m9-Qwv"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="20" symbolic="YES" id="QpE-h0-RaG"/>
-                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="RFh-MU-GWw"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="SAe-gC-yZV"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="trailing" constant="12" symbolic="YES" id="a8m-pr-bzO"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="aWM-HC-ZhB"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="fpF-M1-dPG"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="j41-fV-ZYc"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="5" id="kQh-ic-5Lg"/>
-                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="sDS-c8-N4U"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="tFd-Cn-NcH"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="trailing" constant="12" symbolic="YES" id="8aD-D2-uyz"/>
+                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="FSV-7c-UCX"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="Ip5-5s-1Xi"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="Lyw-tx-ro1"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="YAf-rn-ub5"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="a4b-CH-ff6"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="cdr-UE-W8o"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="5" id="iTZ-vN-xIQ"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="20" symbolic="YES" id="lGL-Cy-eEU"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="qzZ-ld-ttb"/>
+                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="ur4-Rp-yuM"/>
                 </constraints>
             </view>
             <connections>

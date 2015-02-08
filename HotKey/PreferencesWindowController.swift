@@ -28,7 +28,26 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         var err:NSError?
         managedObjectContext.save(&err)
     }
-
+    
+    @IBAction func openSelectDialog(sender: AnyObject) {
+        var openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.beginWithCompletionHandler { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                println("######### result \(openPanel.URL)")
+                if let name = openPanel.URL?.lastPathComponent {
+                    let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+                    inManagedObjectContext:self.managedObjectContext) as Item
+                    item.name = name
+                    self.myArrayController.addObject(item)
+                }
+            }
+        }
+    }
+    
     @IBAction func buttonTapped(sender: AnyObject) {
         if (SMLoginItemSetEnabled(launchDaemon, sender.state == NSOnState ? 1 : 0) != 1) {
             NSLog("Couldn't add/remove Helper App to launch at login item list.")
