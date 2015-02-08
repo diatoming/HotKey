@@ -10,24 +10,22 @@ import Cocoa
 
 class HotKeyConfiguration: NSObject, ConfigurationDelegate {
 
-    var hotKeyCenter:DDHotKeyCenter
+    var monitor:MASShortcutMonitor
     var starter:Starter
     
     init(_ starter:Starter) {
-        hotKeyCenter = DDHotKeyCenter.sharedHotKeyCenter();
+        monitor = MASShortcutMonitor.sharedMonitor()
         self.starter = starter
     }
     
     func willInsert() {
-        hotKeyCenter.unregisterAllHotKeys()
+        monitor.unregisterAllShortcuts()
     }
     
     func doInsert(item:Item) {
-        let modifierFlags =  UInt(item.modifierFlags)
-        let key = UInt16(item.keyCode)
-        hotKeyCenter.registerHotKeyWithKeyCode(key, modifierFlags: modifierFlags, task: {event in
+        monitor.registerShortcut(item.hotKey) {
             self.starter.startApp(item.name)
-        })
+        }
     }
     
     func didInsert() {
