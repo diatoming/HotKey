@@ -35,11 +35,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = ["app"]
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 if let url = openPanel.URL {
-                    let name = url.lastPathComponent
-                    Item.insertNew(name!, url:url, managedObjectContext: self.managedObjectContext)
+                    Item.insertNew(url, managedObjectContext: self.managedObjectContext)
                 }
             }
         }

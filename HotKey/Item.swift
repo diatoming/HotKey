@@ -26,10 +26,11 @@ class Item: NSManagedObject {
         }
     }
     
-    class func insertNew(name:String, url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item {
+    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item {
+        let name = url.lastPathComponent?.stringByDeletingPathExtension
         let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
             inManagedObjectContext:managedObjectContext) as Item
-        item.name = name
+        item.name = name!
         item.url = url.path!
         return item
     }

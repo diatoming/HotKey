@@ -11,8 +11,6 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    @IBOutlet weak var window: NSWindow!
-    
     var preferencesWindowController:PreferencesWindowController?
     var persistenceStack:PersistenceStack
     var starter:Starter
@@ -27,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let hotKeyConfiguration = HotKeyConfiguration(starter)
         configuration.delegates.append(hotKeyConfiguration)
 
-        let menu = MenuConfiguration()
+        let menu = MenuConfiguration(starter)
         configuration.delegates.append(menu)
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
         statusItem.menu = menu.statusMenu
@@ -36,23 +34,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.highlightMode = true
     }
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
         self.openPreferences(self)
     }
     
-    func actionItem(sender : AnyObject) {
-        if let menuItem = sender as? NSMenuItem  {
-            starter.startApp(menuItem.title)
-        }
-    }
-    
-    func openAbout(sender : AnyObject) {
+    func openAbout(sender:AnyObject) {
         NSApp.activateIgnoringOtherApps(true)
         NSApp.orderFrontStandardAboutPanel(self)
     }
     
-    func openPreferences(sender : AnyObject) {
+    func openPreferences(sender:AnyObject) {
         if (preferencesWindowController == nil) {
             preferencesWindowController = PreferencesWindowController(windowNibName:"PreferencesWindowController")
             preferencesWindowController!.managedObjectContext = persistenceStack.managedObjectContext
@@ -61,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferencesWindowController!.showWindow(self)
     }
 
-    func terminate(sender : AnyObject) {
+    func terminate(sender:AnyObject) {
         NSApp.terminate(self)
     }
 
