@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1ED04D8AE9D9D8466F498925 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 497091CC5B264B115D8AE25E /* libPods.a */; };
+		D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0296A821A87D98700BBF677 /* IconTransformer.swift */; };
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
 		D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		43ADAEE621B3E86A513FE73C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		497091CC5B264B115D8AE25E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0296A821A87D98700BBF677 /* IconTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTransformer.swift; sourceTree = "<group>"; };
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationDelegate.swift; path = ../ConfigurationDelegate.swift; sourceTree = "<group>"; };
 		D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConfiguration.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
 				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
 				D0E7BF711A7838D400807AE9 /* Item.swift */,
+				D0296A821A87D98700BBF677 /* IconTransformer.swift */,
 				D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
@@ -372,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
 				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
 				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,

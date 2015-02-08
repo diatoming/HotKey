@@ -37,12 +37,9 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         openPanel.canChooseFiles = true
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                println("######### result \(openPanel.URL)")
-                if let name = openPanel.URL?.lastPathComponent {
-                    let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
-                    inManagedObjectContext:self.managedObjectContext) as Item
-                    item.name = name
-                    self.myArrayController.addObject(item)
+                if let url = openPanel.URL {
+                    let name = url.lastPathComponent
+                    Item.insertNew(name!, url:url, managedObjectContext: self.managedObjectContext)
                 }
             }
         }

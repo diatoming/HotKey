@@ -58,24 +58,36 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="MdB-do-n2S">
-                                                    <rect key="frame" x="1" y="1" width="309" height="17"/>
+                                                <tableCellView id="qec-df-LCu">
+                                                    <rect key="frame" x="1" y="1" width="312" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51B-ov-RmZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ceA-dC-96L">
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRJ-TY-xY9">
+                                                            <rect key="frame" x="3" y="0.0" width="17" height="17"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="JDQ-v9-6Wx"/>
+                                                            <connections>
+                                                                <binding destination="qec-df-LCu" name="value" keyPath="objectValue.url" id="4Rd-ET-wsR">
+                                                                    <dictionary key="options">
+                                                                        <string key="NSValueTransformerName">HotKey.IconTransformer</string>
+                                                                    </dictionary>
+                                                                </binding>
+                                                            </connections>
+                                                        </imageView>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOJ-Ci-BmF">
+                                                            <rect key="frame" x="25" y="0.0" width="105" height="17"/>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="KS7-i3-hRS">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                <connections>
-                                                                    <binding destination="MdB-do-n2S" name="value" keyPath="objectValue.name" id="39c-DS-LUW"/>
-                                                                </connections>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="qec-df-LCu" name="value" keyPath="objectValue.name" id="lw9-s2-hnb"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <connections>
-                                                        <outlet property="textField" destination="51B-ov-RmZ" id="mpz-bl-98n"/>
+                                                        <outlet property="imageView" destination="jRJ-TY-xY9" id="KlF-Ld-AmF"/>
+                                                        <outlet property="textField" destination="LOJ-Ci-BmF" id="aB4-nI-3jS"/>
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
@@ -159,7 +171,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="127" y="110"/>
+            <point key="canvasLocation" x="173" y="140"/>
         </window>
         <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" id="U3m-tk-joT">
             <connections>
@@ -167,4 +179,7 @@
             </connections>
         </arrayController>
     </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
 </document>
