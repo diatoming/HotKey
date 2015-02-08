@@ -11,9 +11,11 @@ import Cocoa
 class MenuConfiguration: NSObject, ConfigurationDelegate {
 
     var statusMenu:NSMenu
+    var starter:Starter
     
-    override init() {
+    init(_ starter:Starter) {
         statusMenu = NSMenu()
+        self.starter = starter
     }
     
     func willInsert() {
@@ -23,9 +25,11 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        let key = item.hotKey?.keyCodeStringForKeyEquivalent
-        let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key!)
+        let key = item.hotKey?.keyCodeStringForKeyEquivalent ?? ""
+        let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key)
+        menuItem.target = self
         menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
+        menuItem.image = IconTransformer().transformedValue(item.url) as? NSImage
         statusMenu.addItem(menuItem)
     }
     
@@ -36,4 +40,10 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
         statusMenu.addItem(NSMenuItem(title:"Quit HotKey", action:"terminate:", keyEquivalent:""))
     }
     
+    func actionItem(sender:AnyObject) {
+        if let menuItem = sender as? NSMenuItem {
+            starter.startApp(menuItem.title)
+        }
+    }
+
 }

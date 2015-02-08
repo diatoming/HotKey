@@ -11,6 +11,7 @@ import CoreData
 class Item: NSManagedObject {
 
     @NSManaged var name: String
+    @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     
@@ -23,6 +24,15 @@ class Item: NSManagedObject {
             keyCode = Int32(newValue != nil ? newValue!.keyCode : 0)
             modifierFlags = Int32(newValue != nil ? newValue!.modifierFlags : 0)
         }
+    }
+    
+    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item {
+        let name = url.lastPathComponent?.stringByDeletingPathExtension
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+            inManagedObjectContext:managedObjectContext) as Item
+        item.name = name!
+        item.url = url.path!
+        return item
     }
 
 }
