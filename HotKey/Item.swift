@@ -14,6 +14,7 @@ class Item: NSManagedObject {
     @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
+    @NSManaged var order: Int32
     
     var hotKey:MASShortcut? {
         get {

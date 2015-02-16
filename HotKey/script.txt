@@ -1,9 +1,11 @@
 tell application "Finder"
-    if selection is not {}
-        set myname to POSIX path of (selection as alias)
-    else if window is null
-        set myname to POSIX path of (target of window 1 as alias)
-    else
+    try
+        if selection is not {}
+            set myname to POSIX path of (selection as alias)
+        else
+            set myname to POSIX path of (target of window 1 as alias)
+        end if
+    on error
         set myname to POSIX path of (home as alias)
-    end if
+    end try
 end tell
