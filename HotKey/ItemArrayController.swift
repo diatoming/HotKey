@@ -48,19 +48,10 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
             for (index, item) in enumerate(items) {
                 item.order = Int32(index)
             }
+            self.managedObjectContext?.save(nil)
             return true;
         }
         return false;
     }
     
-    func rowsAboveRow(row:Int, inIndexSet indexSet:NSIndexSet) -> Int {
-        var currentIndex = indexSet.firstIndex
-        var i = 0
-        while currentIndex != NSNotFound {
-            if currentIndex < row { i++ }
-            currentIndex = indexSet.indexGreaterThanIndex(currentIndex)
-        }
-        return i
-    }
-
 }
