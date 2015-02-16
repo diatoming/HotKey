@@ -43,9 +43,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <tableViewGridLines key="gridStyleMask" vertical="YES"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="312" minWidth="40" maxWidth="1000" id="xVO-ST-q66">
+                                        <tableColumn width="280" minWidth="40" maxWidth="1000" id="xVO-ST-q66">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -59,7 +60,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="qec-df-LCu">
-                                                    <rect key="frame" x="1" y="1" width="312" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="280" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRJ-TY-xY9">
@@ -114,6 +115,9 @@
                                     <connections>
                                         <binding destination="U3m-tk-joT" name="content" keyPath="arrangedObjects" id="Sqf-z6-yfz"/>
                                         <binding destination="U3m-tk-joT" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Sqf-z6-yfz" id="R6M-Ty-L7S"/>
+                                        <binding destination="U3m-tk-joT" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="R6M-Ty-L7S" id="ZzH-x7-7GG"/>
+                                        <outlet property="dataSource" destination="U3m-tk-joT" id="faF-hV-qvf"/>
+                                        <outlet property="delegate" destination="U3m-tk-joT" id="Wbg-fq-r3L"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -167,13 +171,22 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="173" y="140"/>
+            <point key="canvasLocation" x="118" y="-180"/>
         </window>
-        <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" id="U3m-tk-joT">
+        <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="U3m-tk-joT" customClass="ItemArrayController" customModule="HotKey" customModuleProvider="target">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="4rX-lH-gxW"/>
+                <outlet property="tableView" destination="Lv6-PI-t0Y" id="qwl-ZP-1Gs"/>
             </connections>
         </arrayController>
+        <button verticalHuggingPriority="750" id="Mwf-gb-Yt6">
+            <rect key="frame" x="0.0" y="0.0" width="82" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eAX-iN-mz6">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+        </button>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
