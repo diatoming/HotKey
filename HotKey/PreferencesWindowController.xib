@@ -33,15 +33,15 @@
                             <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
                         </connections>
                     </button>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz3-o0-gn3">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz3-o0-gn3">
                         <rect key="frame" x="20" y="80" width="440" height="170"/>
                         <clipView key="contentView" id="yCw-nK-4JE">
                             <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <size key="intercellSpacing" width="10" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
@@ -59,12 +59,12 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="qec-df-LCu">
-                                                    <rect key="frame" x="1" y="1" width="280" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="280" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRJ-TY-xY9">
-                                                            <rect key="frame" x="3" y="0.0" width="17" height="17"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="JDQ-v9-6Wx"/>
+                                                            <rect key="frame" x="2" y="2" width="32" height="32"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="JDQ-v9-6Wx"/>
                                                             <connections>
                                                                 <binding destination="qec-df-LCu" name="value" keyPath="objectValue.url" id="4Rd-ET-wsR">
                                                                     <dictionary key="options">
@@ -74,7 +74,7 @@
                                                             </connections>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOJ-Ci-BmF">
-                                                            <rect key="frame" x="25" y="0.0" width="105" height="17"/>
+                                                            <rect key="frame" x="40" y="9" width="105" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="KS7-i3-hRS">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
