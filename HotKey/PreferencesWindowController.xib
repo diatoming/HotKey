@@ -132,11 +132,12 @@
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-mB-Y4E">
-                        <rect key="frame" x="20" y="50" width="22" height="22"/>
+                        <rect key="frame" x="20" y="50" width="23" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="sVg-0y-4qL"/>
+                            <constraint firstAttribute="width" constant="23" id="1sZ-Vx-kIG"/>
+                            <constraint firstAttribute="height" constant="21" id="Ncn-mP-Owy"/>
                         </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="left" borderStyle="border" inset="2" id="4IN-JX-l0V">
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="4IN-JX-l0V">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -145,11 +146,11 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-JK-ytn">
-                        <rect key="frame" x="41" y="50" width="22" height="22"/>
+                        <rect key="frame" x="42" y="50" width="23" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="heN-mO-zJW"/>
+                            <constraint firstAttribute="width" constant="23" id="ZRU-u3-zPe"/>
                         </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="N4S-Pf-Aes">
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="N4S-Pf-Aes">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -160,19 +161,18 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="top" id="19E-1c-fgx"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="1fS-ze-6T3"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="41" id="1xt-YJ-aJS"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="2dl-Ov-aen"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="C2Z-05-Bxe"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="ERV-yR-oOc"/>
-                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="Tn8-bt-x4t"/>
-                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="cUC-V6-IPs"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="drC-TT-xqB"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="16" id="ecu-HA-KFz"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="trailing" constant="-1" id="gdD-le-LGY"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="kwS-YJ-EbI"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" id="zjY-Mw-GeK"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="JeW-OO-Dlj"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="Jhr-JA-XEe"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="LgV-Fz-Gu3"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="baseline" secondItem="fM4-JK-ytn" secondAttribute="baseline" id="PC0-PZ-qyg"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="42" id="PLr-rY-wmb"/>
+                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="XdZ-6Y-yxt"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="cFz-nn-3G9"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="fM4-JK-ytn" secondAttribute="top" id="hRZ-96-dwo"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="17" id="nWX-mA-UVD"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="sY1-JW-nSp"/>
+                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="vFh-ap-v7p"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="wrq-D3-L1b"/>
                 </constraints>
             </view>
             <connections>
