@@ -39,7 +39,7 @@
                             <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,14 +126,17 @@
                             <rect key="frame" x="1" y="119" width="223" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ftk-bz-qbe">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ftk-bz-qbe">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-mB-Y4E">
-                        <rect key="frame" x="14" y="47" width="66" height="32"/>
-                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4IN-JX-l0V">
+                        <rect key="frame" x="20" y="50" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="sVg-0y-4qL"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="left" borderStyle="border" inset="2" id="4IN-JX-l0V">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -142,8 +145,11 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-JK-ytn">
-                        <rect key="frame" x="80" y="47" width="91" height="32"/>
-                        <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="N4S-Pf-Aes">
+                        <rect key="frame" x="41" y="50" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="heN-mO-zJW"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="N4S-Pf-Aes">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -154,17 +160,19 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="trailing" constant="12" symbolic="YES" id="8aD-D2-uyz"/>
-                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="FSV-7c-UCX"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="Ip5-5s-1Xi"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="Lyw-tx-ro1"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="YAf-rn-ub5"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="a4b-CH-ff6"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="cdr-UE-W8o"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="5" id="iTZ-vN-xIQ"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="20" symbolic="YES" id="lGL-Cy-eEU"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="qzZ-ld-ttb"/>
-                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="ur4-Rp-yuM"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="top" id="19E-1c-fgx"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="1fS-ze-6T3"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="41" id="1xt-YJ-aJS"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="2dl-Ov-aen"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="C2Z-05-Bxe"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="ERV-yR-oOc"/>
+                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="Tn8-bt-x4t"/>
+                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="cUC-V6-IPs"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="drC-TT-xqB"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="16" id="ecu-HA-KFz"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="trailing" constant="-1" id="gdD-le-LGY"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="kwS-YJ-EbI"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" id="zjY-Mw-GeK"/>
                 </constraints>
             </view>
             <connections>
@@ -189,5 +197,7 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>
