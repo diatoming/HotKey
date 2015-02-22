@@ -22,13 +22,24 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
         super.awakeFromNib()
         self.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
     }
-    
+
+    func addItem(url:NSURL) {
+        let item = Item.insertNew(url, managedObjectContext:self.managedObjectContext!)
+        item.order = Int32(self.arrangedObjects.count)
+        self.rearrangeOrder()
+    }
+
+    override func remove(sender: AnyObject?) {
+        super.remove(sender)
+        self.rearrangeOrder()
+    }
+
     func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
         let data = NSKeyedArchiver.archivedDataWithRootObject(rowIndexes)
         pboard.setData(data, forType:movedRowType)
         return true
     }
-    
+
     func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
         if info.draggingSource() as? NSTableView == tableView {
             tableView.setDropRow(row, dropOperation: NSTableViewDropOperation.Above)
@@ -48,19 +59,17 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
             for (index, item) in enumerate(items) {
                 item.order = Int32(index)
             }
+            self.managedObjectContext?.save(nil)
             return true;
         }
         return false;
     }
     
-    func rowsAboveRow(row:Int, inIndexSet indexSet:NSIndexSet) -> Int {
-        var currentIndex = indexSet.firstIndex
-        var i = 0
-        while currentIndex != NSNotFound {
-            if currentIndex < row { i++ }
-            currentIndex = indexSet.indexGreaterThanIndex(currentIndex)
+    func rearrangeOrder() {
+        for (index, item) in enumerate(arrangedObjects as [Item]) {
+            item.order = Int32(index)
         }
-        return i
+        self.managedObjectContext?.save(nil)
     }
 
 }

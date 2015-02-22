@@ -24,6 +24,7 @@ class Item: NSManagedObject {
         set {
             keyCode = Int32(newValue != nil ? newValue!.keyCode : 0)
             modifierFlags = Int32(newValue != nil ? newValue!.modifierFlags : 0)
+            self.managedObjectContext?.save(nil)
         }
     }
     
