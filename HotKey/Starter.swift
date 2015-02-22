@@ -10,7 +10,7 @@ import Cocoa
 
 class Starter: NSObject {
 
-    func startApp(appName: String) {
+    func startApp(item:Item) {
         let scriptURL = NSBundle.mainBundle().URLForResource("script", withExtension: "txt")
         var err : NSDictionary?
         let script = NSAppleScript(contentsOfURL: scriptURL!, error:&err)
@@ -19,7 +19,7 @@ class Starter: NSObject {
         } else if let scriptResult = script?.executeAndReturnError(&err) {
             let task = NSTask()
             task.launchPath = "/usr/bin/open";
-            task.arguments = ["-a", appName]
+            task.arguments = ["-a", item.name]
             if let path = scriptResult.stringValue {
                 var isDir : ObjCBool = false
                 if NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory:&isDir) {
