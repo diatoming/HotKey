@@ -8,21 +8,21 @@
 
 import Cocoa
 
-class MyMenuItem:NSMenuItem {
+class MyMenuItem: NSMenuItem {
     
-    var actionClosure:() -> ();
+    var actionClosure:() -> ()
     
-    init(title:String, actionClosure:() -> (), keyEquivalent:String) {
+    init(title: String, actionClosure: () -> (), keyEquivalent: String) {
         self.actionClosure = actionClosure
-        super.init(title: title, action:"action:", keyEquivalent: keyEquivalent)
+        super.init(title: title, action: "action:", keyEquivalent: keyEquivalent)
         self.target = self
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func action(sender:NSMenuItem) {
+    func action(sender: NSMenuItem) {
         self.actionClosure()
     }
     

@@ -17,20 +17,16 @@ class Starter: NSObject {
         if (err != nil) {
             NSLog("script compile error: %@", err!)
         } else if let scriptResult = script?.executeAndReturnError(&err) {
-            let task = NSTask()
-            task.launchPath = "/usr/bin/open";
-            task.arguments = ["-a", item.name]
+            let workspace = NSWorkspace.sharedWorkspace()
             if let path = scriptResult.stringValue {
-                var isDir : ObjCBool = false
-                if NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory:&isDir) {
-                    if isDir {
-                        task.arguments.append(path)
-                    } else {
-                        task.arguments.append(path.stringByDeletingLastPathComponent)
+                if !workspace.openFile(path, withApplication: item.url) {
+                    if !workspace.openFile(path.stringByDeletingLastPathComponent, withApplication: item.url) {
+                        workspace.launchApplication(item.url)
                     }
                 }
+            } else {
+                workspace.launchApplication(item.url)
             }
-            task.launch()
         }
     }
 
