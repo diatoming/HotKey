@@ -16,25 +16,15 @@
         <window title="HotKey" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="preferences" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="790" y="481" width="480" height="270"/>
+            <rect key="contentRect" x="790" y="481" width="480" height="303"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="480" height="270"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="303"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="hue-af-klN">
-                        <rect key="frame" x="18" y="18" width="444" height="18"/>
-                        <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gca-VF-r9G">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
-                        </connections>
-                    </button>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz3-o0-gn3">
-                        <rect key="frame" x="20" y="80" width="440" height="170"/>
+                        <rect key="frame" x="20" y="126" width="440" height="157"/>
                         <clipView key="contentView" id="yCw-nK-4JE">
                             <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +35,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="280" minWidth="40" maxWidth="1000" id="xVO-ST-q66">
+                                        <tableColumn width="298" minWidth="40" maxWidth="1000" id="xVO-ST-q66">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -132,10 +122,10 @@
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-mB-Y4E">
-                        <rect key="frame" x="20" y="50" width="23" height="23"/>
+                        <rect key="frame" x="20" y="46" width="23" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="23" id="1sZ-Vx-kIG"/>
-                            <constraint firstAttribute="height" constant="21" id="Ncn-mP-Owy"/>
+                            <constraint firstAttribute="height" constant="21" id="NuX-Ab-COn"/>
+                            <constraint firstAttribute="width" constant="23" id="moM-i4-f53"/>
                         </constraints>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="4IN-JX-l0V">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -146,9 +136,9 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-JK-ytn">
-                        <rect key="frame" x="42" y="50" width="23" height="23"/>
+                        <rect key="frame" x="42" y="46" width="23" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="23" id="ZRU-u3-zPe"/>
+                            <constraint firstAttribute="width" constant="23" id="Jbs-04-Awk"/>
                         </constraints>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="N4S-Pf-Aes">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -159,26 +149,48 @@
                             <binding destination="U3m-tk-joT" name="enabled" keyPath="selection.@count" id="QnA-v2-18A"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmB-nq-KRo">
+                        <rect key="frame" x="18" y="76" width="444" height="42"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="78R-aA-7KL">
+                            <font key="font" metaFont="smallSystem"/>
+                            <string key="title">Apps can be started by selecting from the ⌘-Menu or by pressing the configured HotKey. The App will open a selected file or folder from the foremost finder window, if possible.</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="hue-af-klN">
+                        <rect key="frame" x="18" y="18" width="444" height="18"/>
+                        <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gca-VF-r9G">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="JeW-OO-Dlj"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="Jhr-JA-XEe"/>
-                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="LgV-Fz-Gu3"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="baseline" secondItem="fM4-JK-ytn" secondAttribute="baseline" id="PC0-PZ-qyg"/>
-                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="42" id="PLr-rY-wmb"/>
-                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="XdZ-6Y-yxt"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="cFz-nn-3G9"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="fM4-JK-ytn" secondAttribute="top" id="hRZ-96-dwo"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="17" id="nWX-mA-UVD"/>
-                    <constraint firstItem="hue-af-klN" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="sY1-JW-nSp"/>
-                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="vFh-ap-v7p"/>
-                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="wrq-D3-L1b"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="fM4-JK-ytn" secondAttribute="top" id="7ve-lO-twd"/>
+                    <constraint firstItem="qmB-nq-KRo" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="Je4-UM-o3A"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="qmB-nq-KRo" secondAttribute="bottom" constant="8" symbolic="YES" id="PIJ-j1-vqZ"/>
+                    <constraint firstItem="qmB-nq-KRo" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="TPY-bJ-Zi8"/>
+                    <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="UV5-nG-Cps"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="XfG-Cp-B2j"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="aI3-xA-v7Y"/>
+                    <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="13" id="aoA-2P-zzc"/>
+                    <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="42" id="eyS-4J-TZa"/>
+                    <constraint firstItem="qmB-nq-KRo" firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" id="leS-6Z-bwH"/>
+                    <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="nLk-ko-w5E"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="qmB-nq-KRo" secondAttribute="leading" id="qMH-Yg-8xz"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="qoH-PF-D3t"/>
+                    <constraint firstItem="rz3-o0-gn3" firstAttribute="trailing" secondItem="qmB-nq-KRo" secondAttribute="trailing" id="rRy-pH-e5V"/>
+                    <constraint firstItem="0rM-mB-Y4E" firstAttribute="baseline" secondItem="fM4-JK-ytn" secondAttribute="baseline" id="rhm-fg-OdP"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="118" y="-368"/>
+            <point key="canvasLocation" x="106" y="-669.5"/>
         </window>
         <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="U3m-tk-joT" customClass="ItemArrayController" customModule="HotKey" customModuleProvider="target">
             <connections>
