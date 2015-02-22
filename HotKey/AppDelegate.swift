@@ -18,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var configuration:Configuration
     
     override init() {
+        var defaultValues:[NSObject:AnyObject] = [:]
+        defaultValues["firstStart"] = true
+        NSUserDefaults.standardUserDefaults().registerDefaults(defaultValues)
+        
         persistenceStack = PersistenceStack()
         configuration = Configuration(persistenceStack.managedObjectContext!)
 
@@ -36,7 +40,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
-        self.openPreferences(self)
+        if NSUserDefaults.standardUserDefaults().valueForKey("firstStart") as Bool {
+            self.openPreferences(self)
+        }
     }
     
     func openAbout(sender:AnyObject) {

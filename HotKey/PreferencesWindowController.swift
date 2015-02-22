@@ -24,6 +24,10 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
     }
     
+    func windowWillClose(notification: NSNotification) {
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstStart")
+    }
+    
     @IBAction func openSelectDialog(sender: AnyObject) {
         var openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
