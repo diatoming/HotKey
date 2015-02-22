@@ -26,8 +26,9 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     
     func doInsert(item:Item) {
         let key = item.hotKey?.keyCodeStringForKeyEquivalent ?? ""
-        let menuItem = NSMenuItem(title:item.name, action:"actionItem:", keyEquivalent:key)
-        menuItem.target = self
+        let menuItem = MyMenuItem(title:item.name, actionClosure:{
+            self.starter.startApp(item)
+        }, keyEquivalent:key)
         menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
         menuItem.image = IconTransformer().transformedValue(item.url) as? NSImage
         statusMenu.addItem(menuItem)
@@ -38,12 +39,6 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
         statusMenu.addItem(NSMenuItem(title:"Preferences...", action:"openPreferences:", keyEquivalent:""))
         statusMenu.addItem(NSMenuItem.separatorItem())
         statusMenu.addItem(NSMenuItem(title:"Quit HotKey", action:"terminate:", keyEquivalent:""))
-    }
-    
-    func actionItem(sender:AnyObject) {
-        if let menuItem = sender as? NSMenuItem {
-            starter.startApp(menuItem.title)
-        }
     }
 
 }
