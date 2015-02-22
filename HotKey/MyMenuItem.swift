@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class BlocksMenuItem:NSMenuItem {
+class MyMenuItem:NSMenuItem {
     
-    var block:() -> ();
+    var actionClosure:() -> ();
     
-    init(title:String, block:() -> (), keyEquivalent:String) {
-        self.block = block
+    init(title:String, actionClosure:() -> (), keyEquivalent:String) {
+        self.actionClosure = actionClosure
         super.init(title: title, action:"action:", keyEquivalent: keyEquivalent)
         self.target = self
     }
@@ -23,7 +23,7 @@ class BlocksMenuItem:NSMenuItem {
     }
     
     func action(sender:NSMenuItem) {
-        self.block()
+        self.actionClosure()
     }
     
 }

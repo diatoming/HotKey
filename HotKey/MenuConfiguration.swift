@@ -26,7 +26,7 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     
     func doInsert(item:Item) {
         let key = item.hotKey?.keyCodeStringForKeyEquivalent ?? ""
-        let menuItem = BlocksMenuItem(title:item.name, block:{
+        let menuItem = MyMenuItem(title:item.name, actionClosure:{
             self.starter.startApp(item)
         }, keyEquivalent:key)
         menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)

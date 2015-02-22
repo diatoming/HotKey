@@ -23,7 +23,7 @@
 		D06409231A40AE6300583962 /* HotKeyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = D064091F1A40ACFC00583962 /* HotKeyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* script.txt in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* script.txt */; };
-		D0719C091A99F50C00BA6C25 /* BlocksMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* BlocksMenuItem.swift */; };
+		D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
 		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
@@ -86,7 +86,7 @@
 		D06409241A40AEBE00583962 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
 		D070EAAE1A500E0200C3074A /* script.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = script.txt; sourceTree = "<group>"; };
-		D0719C081A99F50C00BA6C25 /* BlocksMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlocksMenuItem.swift; sourceTree = "<group>"; };
+		D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuItem.swift; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D0D001691A8A760C008DB64B /* ItemArrayController.swift */,
-				D0719C081A99F50C00BA6C25 /* BlocksMenuItem.swift */,
+				D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
 				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
 				D0E7BF711A7838D400807AE9 /* Item.swift */,
@@ -383,7 +383,7 @@
 			files = (
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
-				D0719C091A99F50C00BA6C25 /* BlocksMenuItem.swift in Sources */,
+				D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */,
 				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
 				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,
 				D0E8C00E1A84065E00F0C12C /* HotKeyCell.swift in Sources */,
