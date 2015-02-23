@@ -28,13 +28,24 @@ class Item: NSManagedObject {
         }
     }
     
-    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item {
-        let name = url.lastPathComponent?.stringByDeletingPathExtension
-        let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
-            inManagedObjectContext:managedObjectContext) as Item
-        item.name = name!
-        item.url = url.path!
-        return item
+    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
+        if itemExists(url, managedObjectContext:managedObjectContext) {
+            return nil
+        } else {
+            let name = url.lastPathComponent?.stringByDeletingPathExtension
+            let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+                inManagedObjectContext:managedObjectContext) as Item
+            item.name = name!
+            item.url = url.path!
+            return item
+        }
     }
 
+    class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
+        let fetchRequest = NSFetchRequest(entityName: "Item")
+        fetchRequest.predicate = NSPredicate(format:"url == %@", url.path!)
+        let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as [Item]
+        return !items.isEmpty
+    }
+    
 }

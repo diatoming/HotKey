@@ -24,9 +24,10 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
     }
 
     func addItem(url:NSURL) {
-        let item = Item.insertNew(url, managedObjectContext:self.managedObjectContext!)
-        item.order = Int32(self.arrangedObjects.count)
-        self.rearrangeOrder()
+        if let item = Item.insertNew(url, managedObjectContext:self.managedObjectContext!) {
+            item.order = Int32(self.arrangedObjects.count)
+            self.rearrangeOrder()
+        }
     }
 
     override func remove(sender: AnyObject?) {

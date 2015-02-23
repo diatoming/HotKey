@@ -41,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
         if NSUserDefaults.standardUserDefaults().valueForKey("firstStart") as Bool {
+            self.createExampleAppItem()
             self.openPreferences(self)
         }
     }
@@ -61,6 +62,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func terminate(sender:AnyObject) {
         NSApp.terminate(self)
+    }
+    
+    func createExampleAppItem() {
+        let terminalApp = "/Applications/Utilities/Terminal.app"
+        let moc = persistenceStack.managedObjectContext!
+        let item = Item.insertNew(NSURL(string:terminalApp)!, managedObjectContext: moc)
+        item?.keyCode = Int32(kVK_Return)
+        item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
     }
 
 }
