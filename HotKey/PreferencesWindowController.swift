@@ -18,11 +18,13 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var popover: NSView!
-
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+        
+//        popover.hidden = false
     }
     
     func windowWillClose(notification: NSNotification) {

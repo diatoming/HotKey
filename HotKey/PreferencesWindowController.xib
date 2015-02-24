@@ -169,19 +169,53 @@
                             <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
                         </connections>
                     </button>
+                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-d7-hEB">
+                        <rect key="frame" x="20" y="165" width="440" height="75"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyw-8i-qyc">
+                                <rect key="frame" x="20" y="27" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="4Vr-sq-Qkm"/>
+                                    <constraint firstAttribute="height" constant="48" id="5gG-PZ-yop"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="arrow" id="WYf-Tg-jPr"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PNA-BU-yoO">
+                                <rect key="frame" x="73" y="19" width="275" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="271" id="cVf-2x-vlV"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This App was added for You " id="GP4-K0-8tn">
+                                    <font key="font" size="24" name="MarkerFelt-Thin"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xyw-8i-qyc" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" id="IBo-3K-fzM"/>
+                            <constraint firstAttribute="trailing" secondItem="PNA-BU-yoO" secondAttribute="trailing" constant="94" id="SIZ-Wh-mH0"/>
+                            <constraint firstItem="PNA-BU-yoO" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" constant="24" id="a3U-Ej-rEO"/>
+                            <constraint firstItem="PNA-BU-yoO" firstAttribute="leading" secondItem="xyw-8i-qyc" secondAttribute="trailing" constant="7" id="dQ5-NG-Svt"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="0hf-O3-Fqc"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="top" secondItem="rz3-o0-gn3" secondAttribute="bottom" constant="8" symbolic="YES" id="1rK-lO-Cdm"/>
+                    <constraint firstItem="Otf-d7-hEB" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="63" id="2Jo-Kh-Dyv"/>
                     <constraint firstItem="rz3-o0-gn3" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="5XA-BF-YRX"/>
                     <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="20" symbolic="YES" id="5yC-O9-9u6"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="7hJ-0T-7Hn"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" id="BRl-b8-R6Z"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="GGL-O1-Bvh"/>
+                    <constraint firstItem="Otf-d7-hEB" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="MHO-vV-jiq"/>
                     <constraint firstItem="fM4-JK-ytn" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="top" id="PrL-tN-7iR"/>
+                    <constraint firstItem="qmB-nq-KRo" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="bottom" constant="47" id="QNa-MO-DXa"/>
                     <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="RoC-V3-Ftr"/>
                     <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="13" id="ULi-GO-5ls"/>
                     <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="ZP6-FT-ykr"/>
+                    <constraint firstItem="Otf-d7-hEB" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="hlY-IK-MUU"/>
                     <constraint firstItem="fM4-JK-ytn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="42" id="m3V-pm-IXH"/>
                     <constraint firstItem="0rM-mB-Y4E" firstAttribute="top" secondItem="qmB-nq-KRo" secondAttribute="bottom" constant="8" symbolic="YES" id="tiN-ke-nMt"/>
                     <constraint firstItem="fM4-JK-ytn" firstAttribute="baseline" secondItem="0rM-mB-Y4E" secondAttribute="baseline" id="u4C-vq-XeO"/>
@@ -199,37 +233,6 @@
                 <outlet property="tableView" destination="Lv6-PI-t0Y" id="qwl-ZP-1Gs"/>
             </connections>
         </arrayController>
-        <customView hidden="YES" id="Otf-d7-hEB">
-            <rect key="frame" x="0.0" y="0.0" width="440" height="75"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyw-8i-qyc">
-                    <rect key="frame" x="20" y="27" width="48" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="48" id="4Vr-sq-Qkm"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="arrow" id="WYf-Tg-jPr"/>
-                </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PNA-BU-yoO">
-                    <rect key="frame" x="73" y="19" width="275" height="32"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This App was added for You " id="GP4-K0-8tn">
-                        <font key="font" size="24" name="MarkerFelt-Thin"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <constraints>
-                <constraint firstItem="PNA-BU-yoO" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" constant="24" id="NPa-SF-357"/>
-                <constraint firstAttribute="bottom" secondItem="PNA-BU-yoO" secondAttribute="bottom" constant="19" id="Q6u-xr-eQJ"/>
-                <constraint firstAttribute="bottom" secondItem="xyw-8i-qyc" secondAttribute="bottom" constant="27" id="ZnP-Om-qBJ"/>
-                <constraint firstItem="xyw-8i-qyc" firstAttribute="leading" secondItem="Otf-d7-hEB" secondAttribute="leading" constant="20" symbolic="YES" id="ako-3X-AdH"/>
-                <constraint firstItem="PNA-BU-yoO" firstAttribute="leading" secondItem="xyw-8i-qyc" secondAttribute="trailing" constant="7" id="dQ5-NG-Svt"/>
-                <constraint firstAttribute="trailing" secondItem="PNA-BU-yoO" secondAttribute="trailing" constant="94" id="lna-b2-SgH"/>
-                <constraint firstItem="xyw-8i-qyc" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" id="tw6-PC-giT"/>
-            </constraints>
-            <point key="canvasLocation" x="-33" y="-486.5"/>
-        </customView>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
