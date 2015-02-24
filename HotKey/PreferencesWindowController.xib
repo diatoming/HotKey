@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="launchAtLoginButton" destination="hue-af-klN" id="lyb-bK-1HZ"/>
                 <outlet property="myArrayController" destination="U3m-tk-joT" id="Vdv-ID-753"/>
+                <outlet property="popover" destination="Otf-d7-hEB" id="fSf-5P-Thb"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -227,6 +228,7 @@
                 <constraint firstAttribute="trailing" secondItem="PNA-BU-yoO" secondAttribute="trailing" constant="94" id="lna-b2-SgH"/>
                 <constraint firstItem="xyw-8i-qyc" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" id="tw6-PC-giT"/>
             </constraints>
+            <point key="canvasLocation" x="-33" y="-486.5"/>
         </customView>
     </objects>
     <resources>

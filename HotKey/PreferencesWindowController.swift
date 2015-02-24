@@ -17,6 +17,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
+    @IBOutlet var popover: NSView!
 
     override func windowDidLoad() {
         super.windowDidLoad()
