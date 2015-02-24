@@ -18,9 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var configuration:Configuration
     
     override init() {
-        var defaultValues:[NSObject:AnyObject] = [:]
-        defaultValues["firstStart"] = true
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultValues)
+        UserDefaults.initialize()
         
         persistenceStack = PersistenceStack()
         configuration = Configuration(persistenceStack.managedObjectContext!)
@@ -40,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
-        if NSUserDefaults.standardUserDefaults().valueForKey("firstStart") as Bool {
+        if UserDefaults.isFirstStart() {
             self.createExampleAppItem()
             self.openPreferences(self)
         }
@@ -71,6 +69,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         item?.keyCode = Int32(kVK_Return)
         item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
     }
+    
+    
 
 }
 

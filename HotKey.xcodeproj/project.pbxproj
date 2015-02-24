@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1ED04D8AE9D9D8466F498925 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 497091CC5B264B115D8AE25E /* libPods.a */; };
+		D007B13C1A9CF685004FDA7D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007B13B1A9CF685004FDA7D /* UserDefaults.swift */; };
 		D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0296A821A87D98700BBF677 /* IconTransformer.swift */; };
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		43ADAEE621B3E86A513FE73C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		497091CC5B264B115D8AE25E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D007B13B1A9CF685004FDA7D /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D0296A821A87D98700BBF677 /* IconTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTransformer.swift; sourceTree = "<group>"; };
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationDelegate.swift; path = ../ConfigurationDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
+				D007B13B1A9CF685004FDA7D /* UserDefaults.swift */,
 				D0588F0C1A7BFEBA00D90002 /* Starter.swift */,
 				D070EAAE1A500E0200C3074A /* script.txt */,
 				D0588F071A7BFA8600D90002 /* Configuration.swift */,
@@ -392,6 +395,7 @@
 				D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */,
 				D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */,
 				D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */,
+				D007B13C1A9CF685004FDA7D /* UserDefaults.swift in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
 				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
 				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,

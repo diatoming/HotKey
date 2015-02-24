@@ -26,7 +26,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(notification: NSNotification) {
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstStart")
+        UserDefaults.setFirstStart(false)
     }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
