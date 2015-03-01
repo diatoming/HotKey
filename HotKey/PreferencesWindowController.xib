@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="HotKey">
             <connections>
                 <outlet property="launchAtLoginButton" destination="hue-af-klN" id="lyb-bK-1HZ"/>
+                <outlet property="mainView" destination="se5-gp-TjO" id="pOb-75-1mU"/>
                 <outlet property="myArrayController" destination="U3m-tk-joT" id="Vdv-ID-753"/>
                 <outlet property="popover" destination="Otf-d7-hEB" id="fSf-5P-Thb"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -16,8 +17,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="HotKey" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="preferences" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="790" y="481" width="480" height="303"/>
+            <rect key="contentRect" x="829" y="460" width="480" height="303"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="480" height="270"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -164,12 +164,12 @@
                         <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gca-VF-r9G">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="startAtLoginAction:" target="-2" id="XzO-VR-j8A"/>
+                            </connections>
                         </buttonCell>
-                        <connections>
-                            <action selector="buttonTapped:" target="-2" id="Gas-6G-bSb"/>
-                        </connections>
                     </button>
-                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-d7-hEB">
+                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-d7-hEB" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
                         <rect key="frame" x="20" y="165" width="440" height="75"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyw-8i-qyc">
@@ -225,7 +225,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-33" y="-754.5"/>
+            <point key="canvasLocation" x="5" y="-740.5"/>
         </window>
         <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="U3m-tk-joT" customClass="ItemArrayController" customModule="HotKey" customModuleProvider="target">
             <connections>

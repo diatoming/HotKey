@@ -17,16 +17,33 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
-    @IBOutlet var popover: NSView!
+    @IBOutlet var mainView: NSView!
+    @IBOutlet var popover: PopoverView!
+    
+    func showPopup() {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+        let hideTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            self.popover.showPopup()
+        }
+        dispatch_after(hideTime, dispatch_get_main_queue()) {
+            self.popover.hidePopup()
+        }
+    }
+    
+    
     
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
         
-//        popover.hidden = false
+        mainView.layer = CALayer()
+        mainView.wantsLayer = true
+        
+        self.showPopup()
     }
-    
+
     func windowWillClose(notification: NSNotification) {
         UserDefaults.setFirstStart(false)
     }
@@ -47,7 +64,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         }
     }
     
-    @IBAction func buttonTapped(sender: AnyObject) {
+    @IBAction func startAtLoginAction(sender: AnyObject) {
         if (SMLoginItemSetEnabled(launchDaemon, sender.state == NSOnState ? 1 : 0) != 1) {
             NSLog("Couldn't add/remove Helper App to launch at login item list.")
         }
