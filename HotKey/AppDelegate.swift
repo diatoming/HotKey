@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
-        if UserDefaults.isFirstStart() {
+        if UserDefaults.firstStart {
             self.createExampleAppItem()
             self.openPreferences(self)
         }
@@ -69,8 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         item?.keyCode = Int32(kVK_Return)
         item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
     }
-    
-    
 
 }
 

@@ -20,6 +20,25 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
     
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        let enabled = self.appIsPresentInLoginItems()
+        launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+        
+        mainView.layer = CALayer()
+        mainView.wantsLayer = true
+    }
+    
+    func windowDidBecomeMain(notification: NSNotification) {
+        if UserDefaults.firstStart {
+            self.showPopup()
+        }
+    }
+    
+    func windowWillClose(notification: NSNotification) {
+        UserDefaults.firstStart = false
+    }
+    
     func showPopup() {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
         let hideTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC)))
@@ -29,24 +48,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         dispatch_after(hideTime, dispatch_get_main_queue()) {
             self.popover.hidePopup()
         }
-    }
-    
-    
-    
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        let enabled = self.appIsPresentInLoginItems()
-        launchAtLoginButton.state = enabled ? NSOnState : NSOffState
-        
-        mainView.layer = CALayer()
-        mainView.wantsLayer = true
-        
-        self.showPopup()
-    }
-
-    func windowWillClose(notification: NSNotification) {
-        UserDefaults.setFirstStart(false)
-    }
+    }    
     
     @IBAction func openSelectDialog(sender: AnyObject) {
         var openPanel = NSOpenPanel()

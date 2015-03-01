@@ -14,13 +14,13 @@ class UserDefaults {
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultValues)
     }
     
-    class func isFirstStart() -> Bool {
-        return NSUserDefaults.standardUserDefaults().valueForKey("firstStart") as Bool
+    class var firstStart:Bool {
+        get {
+            return NSUserDefaults.standardUserDefaults().boolForKey("firstStart")
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "firstStart")
+        }
     }
-
-    class func setFirstStart(firstStart:Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(firstStart, forKey: "firstStart")
-    }
-
     
 }
