@@ -38,8 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
-        if UserDefaults.firstStart {
+        if UserDefaults.createExampleOnStart {
             self.createExampleAppItem()
+            UserDefaults.createExampleOnStart = false
+            UserDefaults.showPopupOnPrefs = true
+        }
+        if UserDefaults.openPrefsOnStart {
             self.openPreferences(self)
         }
     }

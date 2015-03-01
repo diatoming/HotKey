@@ -29,26 +29,32 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         mainView.wantsLayer = true
     }
     
-    func windowDidBecomeMain(notification: NSNotification) {
-        if UserDefaults.firstStart {
+    func windowDidBecomeKey(notification: NSNotification) {
+        UserDefaults.openPrefsOnStart = true
+        if UserDefaults.showPopupOnPrefs {
             self.showPopup()
         }
     }
     
-    func windowWillClose(notification: NSNotification) {
-        UserDefaults.firstStart = false
+    func windowShouldClose(sender: AnyObject) -> Bool {
+        UserDefaults.openPrefsOnStart = false
+        return true
     }
     
     func showPopup() {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
-        let hideTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC)))
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+        let hideTime = dispatch_time(DISPATCH_TIME_NOW, Int64(15.0 * Double(NSEC_PER_SEC)))
         dispatch_after(popTime, dispatch_get_main_queue()) {
             self.popover.showPopup()
         }
         dispatch_after(hideTime, dispatch_get_main_queue()) {
             self.popover.hidePopup()
         }
-    }    
+    }
+    
+    @IBAction func hidePopup(sender: AnyObject) {
+        self.popover.hidePopup()
+    }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
         var openPanel = NSOpenPanel()
