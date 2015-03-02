@@ -17,11 +17,26 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
-
+    @IBOutlet var mainView: NSView!
+    @IBOutlet var popover: PopoverView!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+    }
+    
+    func windowDidBecomeKey(notification: NSNotification) {
+        UserDefaults.openPrefsOnStart = true
+        if UserDefaults.showPopupOnPrefs {
+            self.popover.showPopup()
+            UserDefaults.showPopupOnPrefs = false
+        }
+    }
+    
+    func windowShouldClose(sender: AnyObject) -> Bool {
+        UserDefaults.openPrefsOnStart = false
+        return true
     }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
@@ -40,7 +55,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         }
     }
     
-    @IBAction func buttonTapped(sender: AnyObject) {
+    @IBAction func startAtLoginAction(sender: AnyObject) {
         if (SMLoginItemSetEnabled(launchDaemon, sender.state == NSOnState ? 1 : 0) != 1) {
             NSLog("Couldn't add/remove Helper App to launch at login item list.")
         }

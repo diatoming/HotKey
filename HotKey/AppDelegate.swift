@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var configuration:Configuration
     
     override init() {
+        UserDefaults.initialize()
+        
         persistenceStack = PersistenceStack()
         configuration = Configuration(persistenceStack.managedObjectContext!)
 
@@ -36,7 +38,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
-        self.openPreferences(self)
+        if UserDefaults.createExampleOnStart {
+            self.createExampleAppItem()
+            UserDefaults.createExampleOnStart = false
+            UserDefaults.showPopupOnPrefs = true
+        }
+        if UserDefaults.openPrefsOnStart {
+            self.openPreferences(self)
+        }
     }
     
     func openAbout(sender:AnyObject) {
@@ -55,6 +64,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func terminate(sender:AnyObject) {
         NSApp.terminate(self)
+    }
+    
+    func createExampleAppItem() {
+        let terminalApp = "/Applications/Utilities/Terminal.app"
+        let moc = persistenceStack.managedObjectContext!
+        let item = Item.insertNew(NSURL(string:terminalApp)!, managedObjectContext: moc)
+        item?.keyCode = Int32(kVK_Return)
+        item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
     }
 
 }
