@@ -24,36 +24,19 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
-        
-        mainView.layer = CALayer()
-        mainView.wantsLayer = true
     }
     
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
         if UserDefaults.showPopupOnPrefs {
-            self.showPopup()
+            self.popover.showPopup()
+            UserDefaults.showPopupOnPrefs = false
         }
     }
     
     func windowShouldClose(sender: AnyObject) -> Bool {
         UserDefaults.openPrefsOnStart = false
         return true
-    }
-    
-    func showPopup() {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-        let hideTime = dispatch_time(DISPATCH_TIME_NOW, Int64(15.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            self.popover.showPopup()
-        }
-        dispatch_after(hideTime, dispatch_get_main_queue()) {
-            self.popover.hidePopup()
-        }
-    }
-    
-    @IBAction func hidePopup(sender: AnyObject) {
-        self.popover.hidePopup()
     }
     
     @IBAction func openSelectDialog(sender: AnyObject) {

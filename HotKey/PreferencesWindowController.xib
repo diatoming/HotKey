@@ -169,7 +169,7 @@
                             </connections>
                         </buttonCell>
                     </button>
-                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-d7-hEB" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
+                    <customView hidden="YES" canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otf-d7-hEB" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
                         <rect key="frame" x="20" y="165" width="440" height="75"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyw-8i-qyc">
@@ -197,6 +197,8 @@
                             <constraint firstAttribute="trailing" secondItem="PNA-BU-yoO" secondAttribute="trailing" constant="94" id="SIZ-Wh-mH0"/>
                             <constraint firstItem="PNA-BU-yoO" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="top" constant="24" id="a3U-Ej-rEO"/>
                             <constraint firstItem="PNA-BU-yoO" firstAttribute="leading" secondItem="xyw-8i-qyc" secondAttribute="trailing" constant="7" id="dQ5-NG-Svt"/>
+                            <constraint firstAttribute="height" constant="75" id="rdU-Gd-f3M"/>
+                            <constraint firstAttribute="width" constant="440" id="wSM-KK-Fuj"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -209,9 +211,7 @@
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="leading" secondItem="0rM-mB-Y4E" secondAttribute="leading" id="7hJ-0T-7Hn"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" id="BRl-b8-R6Z"/>
                     <constraint firstItem="qmB-nq-KRo" firstAttribute="leading" secondItem="rz3-o0-gn3" secondAttribute="leading" id="GGL-O1-Bvh"/>
-                    <constraint firstItem="Otf-d7-hEB" firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" id="MHO-vV-jiq"/>
                     <constraint firstItem="fM4-JK-ytn" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="top" id="PrL-tN-7iR"/>
-                    <constraint firstItem="qmB-nq-KRo" firstAttribute="top" secondItem="Otf-d7-hEB" secondAttribute="bottom" constant="47" id="QNa-MO-DXa"/>
                     <constraint firstAttribute="bottom" secondItem="hue-af-klN" secondAttribute="bottom" constant="20" symbolic="YES" id="RoC-V3-Ftr"/>
                     <constraint firstItem="hue-af-klN" firstAttribute="top" secondItem="0rM-mB-Y4E" secondAttribute="bottom" constant="13" id="ULi-GO-5ls"/>
                     <constraint firstItem="0rM-mB-Y4E" firstAttribute="leading" secondItem="hue-af-klN" secondAttribute="leading" id="ZP6-FT-ykr"/>

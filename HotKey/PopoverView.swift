@@ -32,33 +32,25 @@ class PopoverView: NSView {
     }
     
     func showPopup() {
-        if UserDefaults.showPopupOnPrefs {
-            self.hidden = false
-            self.setAnchorPoint()
-            self.layer?.pop_removeAllAnimations()
-            let opacity = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
-            opacity.toValue = 1.0
-            self.layer?.pop_addAnimation(opacity, forKey:"opacity")
-            let scale = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-            scale.toValue = NSValue(CGSize: CGSize(width: 1.0, height: 1.0))
-            scale.velocity = NSValue(CGSize: CGSize(width: 4.0, height: 4.0))
-            scale.springBounciness = 20.0
-            self.layer?.pop_addAnimation(scale, forKey:"scale")
-        }
-    }
+        println("showPopup")
+        self.hidden = false
+        self.setAnchorPoint()
+        self.layer?.pop_removeAllAnimations()
 
-    func hidePopup() {
-        if UserDefaults.showPopupOnPrefs {
-            UserDefaults.showPopupOnPrefs = false
-            self.setAnchorPoint()
-            self.layer?.pop_removeAllAnimations()
-            let opacity = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
-            opacity.toValue = 0.0
-            self.layer?.pop_addAnimation(opacity, forKey:"opacity")
-            let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
-            scale.toValue = NSValue(CGSize: CGSize(width: 0.5, height: 0.5))
-            self.layer?.pop_addAnimation(scale, forKey:"scale")
-        }
+        let show = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+        show.toValue = 1.0
+        self.layer?.pop_addAnimation(show, forKey:"show")
+        
+        let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+        scaleAnim.toValue = NSValue(CGSize: CGSize(width: 1.0, height: 1.0))
+        scaleAnim.velocity = NSValue(CGSize: CGSize(width: 4.0, height: 4.0))
+        scaleAnim.springBounciness = 20.0
+        self.layer?.pop_addAnimation(scaleAnim, forKey:"scaleAnim")
+        
+        let hideAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+        hideAnim.beginTime = CACurrentMediaTime() + 10.0
+        hideAnim.toValue = 0.0
+        self.layer?.pop_addAnimation(hideAnim, forKey:"hideAnim")
     }
     
 }
