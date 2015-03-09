@@ -528,7 +528,7 @@
 		8646B651A8E1C48C8983EA4F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = 0EA08C5A6873408F86FF224C /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -695,6 +695,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AF5E9DB61F7CEC232374B91 /* Pods-pop-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-pop/Pods-pop-prefix.pch";
@@ -711,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AF5E9DB61F7CEC232374B91 /* Pods-pop-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -728,6 +730,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66FEB218CCDB5EB07876D142 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -744,6 +747,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CEA0F8F9A0745ACA8DB79D1 /* Pods-MASShortcut-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MASShortcut/Pods-MASShortcut-prefix.pch";
@@ -760,6 +764,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 417CE015FA0ABB8B8052A3F6 /* Pods.release.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -777,6 +782,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CEA0F8F9A0745ACA8DB79D1 /* Pods-MASShortcut-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
