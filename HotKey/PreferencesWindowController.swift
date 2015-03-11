@@ -11,7 +11,7 @@ import ServiceManagement
 
 class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
-    let launchDaemon = "de.peter-vorwieger.HotKeyHelper"
+    let launchDaemon = "de.codenuts.HotKeyHelper"
     
     var managedObjectContext: NSManagedObjectContext!
 
