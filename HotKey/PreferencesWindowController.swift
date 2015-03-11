@@ -26,6 +26,10 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
     }
     
+    @IBAction func install(sender: AnyObject) {
+        ScriptInstaller.installScript()
+    }
+    
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
         if UserDefaults.showPopupOnPrefs {
