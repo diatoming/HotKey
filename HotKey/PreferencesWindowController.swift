@@ -19,17 +19,23 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
-    
+
+    func installScriptIfNecessary() {
+        if !ScriptInstaller.checkScript() {
+            let alert = NSAlert()
+            alert.messageText = "Installing Script"
+            alert.informativeText = "For full functionality of the App a Automation script is necessary. The script will be installed automatically for you."
+            alert.runModal()
+            ScriptInstaller.installScript()
+        }
+    }
+
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
     }
-    
-    @IBAction func install(sender: AnyObject) {
-        ScriptInstaller.installScript()
-    }
-    
+
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
         if UserDefaults.showPopupOnPrefs {
@@ -37,12 +43,12 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
             UserDefaults.showPopupOnPrefs = false
         }
     }
-    
+
     func windowShouldClose(sender: AnyObject) -> Bool {
         UserDefaults.openPrefsOnStart = false
         return true
     }
-    
+
     @IBAction func openSelectDialog(sender: AnyObject) {
         var err : NSError?
         let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,

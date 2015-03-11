@@ -201,16 +201,6 @@
                             <constraint firstAttribute="width" constant="440" id="wSM-KK-Fuj"/>
                         </constraints>
                     </customView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rP4-qz-fPy">
-                        <rect key="frame" x="384" y="40" width="77" height="32"/>
-                        <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vfh-E2-jEY">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="install:" target="-2" id="Fpu-Gu-H2K"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rz3-o0-gn3" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="0hf-O3-Fqc"/>

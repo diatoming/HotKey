@@ -1,3 +1,4 @@
+-- please do not modify
 tell application "Finder"
     try
         if selection is not {} then
