@@ -40,7 +40,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
+        var err : NSError?
+        let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
+            inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true, error: &err)
         var openPanel = NSOpenPanel()
+        openPanel.directoryURL = appsDirectoryURL
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
