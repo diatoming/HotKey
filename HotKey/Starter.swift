@@ -14,10 +14,7 @@ class Starter {
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         var err : NSError?
-        let scriptsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
-                inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: &err)
-        let scriptURL = scriptsDirectoryURL!.URLByAppendingPathComponent("default.scpt")
-        if let script = NSUserAppleScriptTask(URL: scriptURL, error:&err) {
+        if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
             if (err != nil) {
                 NSLog("script compile error: %@", err!)
                 workspace.launchApplication(item.url)
@@ -30,11 +27,9 @@ class Starter {
                         if let path = result.stringValue {
                             println("path \(path)")
                             if !workspace.openFile(path, withApplication: item.url) {
-                                println("bingo 1")
+                                println("path2 \(path.stringByDeletingLastPathComponent)")
                                 if !workspace.openFile(path.stringByDeletingLastPathComponent, withApplication: item.url) {
-                                    println("bingo 2")
                                     workspace.launchApplication(item.url)
-                                    println("bingo 3")
                                 }
                             }
                         } else {

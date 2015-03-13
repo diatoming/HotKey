@@ -20,22 +20,21 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
 
-    func installScriptIfNecessary() {
-        if !ScriptInstaller.checkScript() {
-            let alert = NSAlert()
-            alert.messageText = "Installing Script"
-            alert.informativeText = "For full functionality of the App a Automation script is necessary. The script will be installed automatically for you."
-            alert.runModal()
-            ScriptInstaller.installScript()
-        }
-    }
-
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
     }
 
+    override func showWindow(sender: AnyObject?) {
+        if !ScriptInstaller.checkScript() {
+            ScriptInstaller.installScript(self.window!) {
+                // do someting fancy here
+            }
+        }
+        super.showWindow(sender)
+    }
+    
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
         if UserDefaults.showPopupOnPrefs {

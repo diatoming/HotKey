@@ -1,4 +1,9 @@
--- please do not modify
+-------------------------------------
+-- Default Applescript for App HotKey
+-- Please do not modify this file!
+-- Copyright (C) 2015 Peter Vorwieger
+-------------------------------------
+
 tell application "Finder"
     try
         if selection is not {} then

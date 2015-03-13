@@ -8,71 +8,75 @@
 
 import Foundation
 
-class ScriptInstaller: NSObject {
+class ScriptInstaller {
     
-    class var scriptsDirectoryURL:NSURL {
+    class var scriptURL:NSURL {
         get {
             var err : NSError?
             let fileManager = NSFileManager.defaultManager()
-            return fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
+            let scriptDir = fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
                 inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: &err)!
+            return scriptDir.URLByAppendingPathComponent("HotKey.applescript")
+        }
+    }
+    
+    class var sourceScriptURL:NSURL {
+        get {
+            return NSBundle.mainBundle().URLForResource("HotKey", withExtension: "applescript")!
         }
     }
 
     class func checkScript() -> Bool {
         let fileManager = NSFileManager.defaultManager()
-        let sourceURL = NSBundle.mainBundle().URLForResource("default", withExtension:"scpt")
-        let destURL = self.scriptsDirectoryURL.URLByAppendingPathComponent("default.scpt")
-        return fileManager.contentsEqualAtPath(sourceURL!.path!, andPath: destURL.path!)
+        return fileManager.contentsEqualAtPath(sourceScriptURL.path!, andPath: scriptURL.path!)
     }
     
-    class func installScript() {
-        var err : NSError?
-        var openPanel = NSOpenPanel()
-        openPanel.directoryURL = self.scriptsDirectoryURL
-        openPanel.canChooseDirectories = true
-        openPanel.canChooseFiles = false
-        openPanel.prompt = "Select Script Folder"
-        openPanel.message = "Please select the User > Library > Application Scripts > de.codenuts.HotKey folder"
-        openPanel.beginWithCompletionHandler { result in
+    class func installScript(window:NSWindow, completionHandler:() -> Void) {
+        var savePanel = NSSavePanel()
+        savePanel.directoryURL = self.scriptURL.URLByDeletingLastPathComponent
+        savePanel.nameFieldStringValue = self.scriptURL.lastPathComponent!
+        savePanel.showsTagField = false
+        savePanel.message = "Install Script for HotKey. Please do not change the prefilled fields."
+        savePanel.prompt = "Install"
+        savePanel.beginSheetModalForWindow(window) { result in
             if result == NSFileHandlingPanelOKButton {
-                let selectedURL = openPanel.URL!
-                if selectedURL == self.scriptsDirectoryURL {
-                    let destinationURL = selectedURL.URLByAppendingPathComponent("default.scpt")
-                    let fileManager = NSFileManager.defaultManager()
-                    let sourceURL = NSBundle.mainBundle().URLForResource("default", withExtension:"scpt")
-                    if fileManager.copyItemAtURL(sourceURL!, toURL:destinationURL, error:&err) {
-                        let alert = NSAlert()
-                        alert.messageText = "Script Installed"
-                        alert.informativeText = "The Automation script was installed succcessfully."
-                        alert.runModal()
-                        // get the Application Scripts path out of the next open or save panel that appears
-                        NSUserDefaults.standardUserDefaults().removeObjectForKey("NSNavLastRootDirectory")
-                    } else {
-                        NSLog("%s error = %@", __FUNCTION__, err!);
-                        if (err!.code == NSFileWriteFileExistsError) {
-                            // the script was already installed Application Scripts folder
-                            if !fileManager.removeItemAtURL(destinationURL, error:&err) {
-                                NSLog("%s error = %@", __FUNCTION__, err!);
-                            } else {
-                                if fileManager.copyItemAtURL(sourceURL!, toURL:destinationURL, error:&err) {
-                                    let alert = NSAlert()
-                                    alert.messageText = "Script Updated"
-                                    alert.informativeText = "The Automation script was updated."
-                                    alert.runModal()
-                                }
-                            }
-                        } else {
-                            // the item couldn't be copied, try again
-                            self.installScript()
-                        }
-                    }
+                if savePanel.URL! == self.scriptURL {
+                    self.copyScript()
                 } else {
-                    // try again because the user changed the folder path
-                    self.installScript()
+                    // try again because the user changed the file anme or folder path
+                    self.installScript(window, completionHandler)
                 }
             }
+            completionHandler()
         }
+    }
+    
+    class func copyScript() {
+        var err : NSError?
+        let fileManager = NSFileManager.defaultManager()
+        fileManager.removeItemAtURL(self.scriptURL, error: nil)
+        if fileManager.copyItemAtURL(self.sourceScriptURL, toURL:self.scriptURL, error:&err) {
+            self.successAlert("Congratulation!", text:"The HotKey Script was installed succcessfully.")
+            // get the Application Scripts path out of the next open or save panel that appears
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("NSNavLastRootDirectory")
+        } else {
+            NSLog("%s error = %@", __FUNCTION__, err!);
+            // the item couldn't be copied
+            self.errorAlert(err!)
+        }
+    }
+    
+    class func successAlert(title:String, text:String) {
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = text
+        alert.runModal()
+    }
+    
+    class func errorAlert(error:NSError) {
+        let alert = NSAlert(error: error)
+        alert.messageText = "Script not installed."
+        alert.runModal()
     }
     
 }
