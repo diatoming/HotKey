@@ -25,12 +25,18 @@ class Starter {
                         workspace.launchApplication(item.url)
                     } else {
                         if let path = result.stringValue {
-                            println("path \(path)")
-                            if !workspace.openFile(path, withApplication: item.url) {
-                                println("path2 \(path.stringByDeletingLastPathComponent)")
-                                if !workspace.openFile(path.stringByDeletingLastPathComponent, withApplication: item.url) {
-                                    workspace.launchApplication(item.url)
+                            if let url = UserDefaults.bookmarkedURL {
+                                url.startAccessingSecurityScopedResource()
+                                if !workspace.openFile(path, withApplication: item.url) {
+                                    println("second try... \(path.stringByDeletingLastPathComponent)")
+                                    if !workspace.openFile(path.stringByDeletingLastPathComponent, withApplication: item.url) {
+                                        println("third try...")
+                                        workspace.launchApplication(item.url)
+                                    }
                                 }
+                                url.stopAccessingSecurityScopedResource()
+                            } else {
+                                workspace.launchApplication(item.url)
                             }
                         } else {
                             NSLog("script did not return path")
