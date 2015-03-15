@@ -65,7 +65,8 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         panel.directoryURL = NSURL(fileURLWithPath: "/")
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
-        panel.beginWithCompletionHandler { result in
+        panel.prompt = "Choose"
+        panel.beginSheetModalForWindow(self.window!) { result in
             if result == NSFileHandlingPanelOKButton {
                 UserDefaults.bookmarkedURL = panel.URL!
             }
@@ -76,16 +77,17 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         var err : NSError?
         let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
             inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true, error: &err)
-        var openPanel = NSOpenPanel()
-        openPanel.directoryURL = appsDirectoryURL
-        openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = false
-        openPanel.canCreateDirectories = false
-        openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = ["app"]
-        openPanel.beginWithCompletionHandler { (result) -> Void in
+        var panel = NSOpenPanel()
+        panel.directoryURL = appsDirectoryURL
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        panel.canCreateDirectories = false
+        panel.canChooseFiles = true
+        //panel.allowedFileTypes = ["app"]
+        panel.prompt = "Choose"
+        panel.beginSheetModalForWindow(self.window!) { result in
             if result == NSFileHandlingPanelOKButton {
-                if let url = openPanel.URL {
+                if let url = panel.URL {
                     self.myArrayController.addItem(url)
                 }
             }
