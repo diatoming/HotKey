@@ -19,14 +19,12 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
-    
     @IBOutlet var leftView: NSView!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
-        
         
         leftView.wantsLayer = true
         leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
@@ -52,6 +50,10 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         return true
     }
     
+    @IBAction func gotoWebsite(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://codenuts.de")!)
+    }
+
     @IBAction func installScript(sender: AnyObject?) {
         ScriptInstaller.installScript(self.window!) {
             // do someting fancy here

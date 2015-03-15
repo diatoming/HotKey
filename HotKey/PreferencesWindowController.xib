@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="HotKey">
             <connections>
+                <outlet property="copyrightButton" destination="3oJ-oP-4dj" id="PBE-85-SE4"/>
                 <outlet property="launchAtLoginButton" destination="hue-af-klN" id="lyb-bK-1HZ"/>
                 <outlet property="leftView" destination="774-Z3-VQk" id="7BL-Nk-PPX"/>
                 <outlet property="mainView" destination="se5-gp-TjO" id="pOb-75-1mU"/>
@@ -70,14 +71,16 @@
                                     <action selector="bookmark:" target="-2" id="I2V-KC-5J0"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x73-qV-rfN">
-                                <rect key="frame" x="18" y="172" width="144" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2015 codenuts.de" allowsEditingTextAttributes="YES" id="3fj-8K-HHT">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-oP-4dj" customClass="PointingHandButton" customModule="HotKey" customModuleProvider="target">
+                                <rect key="frame" x="21" y="177" width="140" height="14"/>
+                                <buttonCell key="cell" type="bevel" title="© 2015 codenuts.de" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" state="on" imageScaling="proportionallyDown" inset="2" id="LCr-yr-GDO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                    <connections>
+                                        <action selector="gotoWebsite:" target="-2" id="KkR-I0-zrK"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hue-af-klN" secondAttribute="trailing" constant="46" id="43G-P7-g4s"/>
