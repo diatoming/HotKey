@@ -32,7 +32,6 @@ class PopoverView: NSView {
     }
     
     func showPopup() {
-        println("showPopup")
         self.hidden = false
         self.setAnchorPoint()
         self.layer?.pop_removeAllAnimations()

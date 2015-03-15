@@ -7,39 +7,52 @@
 //
 
 class UserDefaults {
-    
+
+    class var defaults:NSUserDefaults {
+        get { return NSUserDefaults.standardUserDefaults() }
+    }
+
     class func initialize() {
         var defaultValues:[NSObject:AnyObject] = [:]
         defaultValues["createExampleOnStart"] = true
         defaultValues["openPrefsOnStart"] = true
         defaultValues["showPopupOnPrefs"] = true
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultValues)
+        defaults.registerDefaults(defaultValues)
     }
     
     class var createExampleOnStart:Bool {
-        get {
-            return NSUserDefaults.standardUserDefaults().boolForKey("createExampleOnStart")
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "createExampleOnStart")
-        }
+        get {return defaults.boolForKey("createExampleOnStart")}
+        set {defaults.setBool(newValue, forKey:"createExampleOnStart")}
     }
 
     class var openPrefsOnStart:Bool {
-        get {
-            return NSUserDefaults.standardUserDefaults().boolForKey("openPrefsOnStart")
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "openPrefsOnStart")
-        }
+        get {return defaults.boolForKey("openPrefsOnStart")}
+        set {defaults.setBool(newValue, forKey:"openPrefsOnStart")}
     }
     
     class var showPopupOnPrefs:Bool {
+        get {return defaults.boolForKey("showPopupOnPrefs")}
+        set {defaults.setBool(newValue, forKey:"showPopupOnPrefs")}
+    }
+    
+    class var bookmarkedURL:NSURL? {
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey("showPopupOnPrefs")
+            if let data = defaults.objectForKey("bookmark") as? NSData {
+                var isStale: ObjCBool = false
+                return NSURL(byResolvingBookmarkData: data, options: .WithSecurityScope,
+                    relativeToURL: nil, bookmarkDataIsStale: &isStale, error: nil)
+            } else {
+                return nil
+            }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "showPopupOnPrefs")
+            if newValue != nil {
+                let data = newValue!.bookmarkDataWithOptions(.WithSecurityScope,
+                    includingResourceValuesForKeys: nil, relativeToURL: nil, error: nil)
+                defaults.setObject(data, forKey: "bookmark")
+            } else {
+                defaults.removeObjectForKey("bookmark")
+            }
         }
     }
 

@@ -11,7 +11,7 @@ import ServiceManagement
 
 class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
-    let launchDaemon = "de.peter-vorwieger.HotKeyHelper"
+    let launchDaemon = "de.codenuts.HotKeyHelper"
     
     var managedObjectContext: NSManagedObjectContext!
 
@@ -25,6 +25,15 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
     }
+
+    override func showWindow(sender: AnyObject?) {
+        if !ScriptInstaller.checkScript() {
+            ScriptInstaller.installScript(self.window!) {
+                // do someting fancy here
+            }
+        }
+        super.showWindow(sender)
+    }
     
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
@@ -33,14 +42,29 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
             UserDefaults.showPopupOnPrefs = false
         }
     }
-    
+
     func windowShouldClose(sender: AnyObject) -> Bool {
         UserDefaults.openPrefsOnStart = false
         return true
     }
+
+    @IBAction func bookmark(sender: NSButton) {
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.beginWithCompletionHandler { result in
+            if result == NSFileHandlingPanelOKButton {
+                UserDefaults.bookmarkedURL = panel.URL!
+            }
+        }
+    }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
+        var err : NSError?
+        let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
+            inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true, error: &err)
         var openPanel = NSOpenPanel()
+        openPanel.directoryURL = appsDirectoryURL
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false

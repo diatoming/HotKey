@@ -20,7 +20,7 @@
     BOOL alreadyRunning = NO;
     NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
     for (NSRunningApplication *app in running) {
-        if ([[app bundleIdentifier] isEqualToString:@"de.peter-vorwieger.HotKey"]) {
+        if ([[app bundleIdentifier] isEqualToString:@"de.codenuts.HotKey"]) {
             alreadyRunning = YES;
         }
     }

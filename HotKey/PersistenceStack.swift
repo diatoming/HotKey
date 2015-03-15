@@ -11,10 +11,10 @@ import Cocoa
 class PersistenceStack: NSObject {
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "de.peter-vorwieger.HotKey" in the user's Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "de.codenuts.HotKey" in the user's Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
         let appSupportURL = urls[urls.count - 1] as NSURL
-        return appSupportURL.URLByAppendingPathComponent("de.peter-vorwieger.HotKey")
+        return appSupportURL.URLByAppendingPathComponent("de.codenuts.HotKey")
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

@@ -10,7 +10,7 @@ import Cocoa
 
 class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableViewDelegate {
 
-    let movedRowType = "de.peter-vorwieger.ItemArrayController"
+    let movedRowType = "de.codenuts.ItemArrayController"
     
     @IBOutlet weak var tableView:NSTableView! {
         didSet {
