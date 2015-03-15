@@ -20,17 +20,21 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
     
+    @IBOutlet var leftView: NSView!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+        
+        
+        leftView.wantsLayer = true
+        leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
     }
 
     override func showWindow(sender: AnyObject?) {
         if !ScriptInstaller.checkScript() {
-            ScriptInstaller.installScript(self.window!) {
-                // do someting fancy here
-            }
+            self.installScript(sender)
         }
         super.showWindow(sender)
     }
@@ -47,9 +51,16 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         UserDefaults.openPrefsOnStart = false
         return true
     }
-
-    @IBAction func bookmark(sender: NSButton) {
+    
+    @IBAction func installScript(sender: AnyObject?) {
+        ScriptInstaller.installScript(self.window!) {
+            // do someting fancy here
+        }
+    }
+    
+    @IBAction func bookmark(sender: AnyObject?) {
         let panel = NSOpenPanel()
+        panel.directoryURL = NSURL(fileURLWithPath: "/")
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.beginWithCompletionHandler { result in
