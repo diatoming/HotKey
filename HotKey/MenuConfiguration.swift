@@ -30,7 +30,7 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
             self.starter.startApp(item)
         }, keyEquivalent:key)
         menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
-        menuItem.image = IconTransformer().transformedValue(item.url) as? NSImage
+        menuItem.image = item.icon
         statusMenu.addItem(menuItem)
     }
     

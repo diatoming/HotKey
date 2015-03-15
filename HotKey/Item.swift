@@ -16,6 +16,11 @@ class Item: NSManagedObject {
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
     
+    
+    var icon:NSImage? {
+        get {return IconTransformer().transformedValue(self.url) as? NSImage}
+    }
+    
     var hotKey:MASShortcut? {
         get {
             let shortcut = MASShortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
