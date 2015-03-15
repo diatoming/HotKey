@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="HotKey">
             <connections>
-                <outlet property="copyrightButton" destination="3oJ-oP-4dj" id="PBE-85-SE4"/>
                 <outlet property="launchAtLoginButton" destination="hue-af-klN" id="lyb-bK-1HZ"/>
                 <outlet property="leftView" destination="774-Z3-VQk" id="7BL-Nk-PPX"/>
                 <outlet property="mainView" destination="se5-gp-TjO" id="pOb-75-1mU"/>
