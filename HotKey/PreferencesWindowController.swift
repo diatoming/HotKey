@@ -19,7 +19,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
-
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
@@ -48,6 +48,17 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         return true
     }
 
+    @IBAction func bookmark(sender: NSButton) {
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.beginWithCompletionHandler { result in
+            if result == NSFileHandlingPanelOKButton {
+                UserDefaults.bookmarkedURL = panel.URL!
+            }
+        }
+    }
+    
     @IBAction func openSelectDialog(sender: AnyObject) {
         var err : NSError?
         let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
