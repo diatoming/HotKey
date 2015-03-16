@@ -23,6 +23,13 @@ class Item: NSManagedObject {
     func isApplication() -> Bool {
         return self.url.pathExtension == "app"
     }
+    
+    var kind:String {
+        let workspace = NSWorkspace.sharedWorkspace()
+        var err:NSError?
+        let type = workspace.typeOfFile(self.url, error: &err)
+        return workspace.localizedDescriptionForType(type!)!
+    }
 
     var hotKey:MASShortcut? {
         get {
