@@ -28,7 +28,9 @@ class Item: NSManagedObject {
     }
 
     var icon:NSImage? {
-        get {return IconTransformer().transformedValue(self.url) as? NSImage}
+        get {
+            return IconTransformer().transformedValue(self.url) as? NSImage
+        }
     }
 
     func isApplication() -> Bool {
