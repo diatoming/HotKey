@@ -15,12 +15,15 @@ class Item: NSManagedObject {
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
-    
-    
+
     var icon:NSImage? {
         get {return IconTransformer().transformedValue(self.url) as? NSImage}
     }
-    
+
+    func isApplication() -> Bool {
+        return self.url.pathExtension == "app"
+    }
+
     var hotKey:MASShortcut? {
         get {
             let shortcut = MASShortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
@@ -32,7 +35,7 @@ class Item: NSManagedObject {
             self.managedObjectContext?.save(nil)
         }
     }
-    
+
     class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
         if itemExists(url, managedObjectContext:managedObjectContext) {
             return nil
@@ -52,5 +55,5 @@ class Item: NSManagedObject {
         let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as [Item]
         return !items.isEmpty
     }
-    
+
 }

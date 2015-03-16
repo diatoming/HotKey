@@ -12,6 +12,6 @@ tell application "Finder"
             return POSIX path of (target of window 1 as alias)
         end if
         on error
-            return POSIX path of (home as alias)
+            return null
     end try
 end tell

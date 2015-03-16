@@ -80,10 +80,9 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         var panel = NSOpenPanel()
         panel.directoryURL = appsDirectoryURL
         panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
+        panel.canChooseDirectories = true
         panel.canCreateDirectories = false
         panel.canChooseFiles = true
-        //panel.allowedFileTypes = ["app"]
         panel.prompt = "Choose"
         panel.beginSheetModalForWindow(self.window!) { result in
             if result == NSFileHandlingPanelOKButton {
