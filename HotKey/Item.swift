@@ -10,11 +10,22 @@ import CoreData
 
 class Item: NSManagedObject {
 
+    @NSManaged var enabled: Bool
     @NSManaged var name: String
     @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
+    
+    var _enabled:Bool {
+        set {
+            enabled = newValue
+            self.managedObjectContext?.save(nil)
+        }
+        get {
+            return enabled
+        }
+    }
 
     var icon:NSImage? {
         get {return IconTransformer().transformedValue(self.url) as? NSImage}
@@ -43,19 +54,6 @@ class Item: NSManagedObject {
         }
     }
 
-    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
-        if itemExists(url, managedObjectContext:managedObjectContext) {
-            return nil
-        } else {
-            let name = url.lastPathComponent?.stringByDeletingPathExtension
-            let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
-                inManagedObjectContext:managedObjectContext) as Item
-            item.name = name!
-            item.url = url.path!
-            return item
-        }
-    }
-
     class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
         let fetchRequest = NSFetchRequest(entityName: "Item")
         fetchRequest.predicate = NSPredicate(format:"url == %@", url.path!)
@@ -63,4 +61,17 @@ class Item: NSManagedObject {
         return !items.isEmpty
     }
 
+    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
+        if itemExists(url, managedObjectContext:managedObjectContext) {
+            return nil
+        } else {
+            let name = url.lastPathComponent?.stringByDeletingPathExtension
+            let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+                inManagedObjectContext:managedObjectContext) as Item
+            item.enabled = true
+            item.name = name!
+            item.url = url.path!
+            return item
+        }
+    }
 }

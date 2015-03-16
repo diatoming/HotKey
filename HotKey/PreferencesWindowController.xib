@@ -128,6 +128,9 @@
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
+                                                                    <connections>
+                                                                        <binding destination="LkH-zi-hGh" name="value" keyPath="objectValue._enabled" id="IV7-Uk-4XF"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </tableCellView>
