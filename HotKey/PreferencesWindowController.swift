@@ -20,6 +20,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var mainView: NSView!
     @IBOutlet var popover: PopoverView!
     @IBOutlet var leftView: NSView!
+    @IBOutlet weak var tableView: NSTableView!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -28,6 +29,14 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         
         leftView.wantsLayer = true
         leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
+        
+        tableView.doubleAction = "doubleClick:"
+    }
+    
+    func doubleClick(sender: AnyObject?) {
+        let rowNumber = tableView.clickedRow
+        let item = myArrayController.arrangedObjects[rowNumber] as Item
+        Starter().startApp(item)
     }
 
     override func showWindow(sender: AnyObject?) {
