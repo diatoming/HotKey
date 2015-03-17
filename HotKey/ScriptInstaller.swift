@@ -27,8 +27,16 @@ class ScriptInstaller {
     }
 
     class func checkScript() -> Bool {
+        return scriptExists() && scriptUpToDate()
+    }
+    
+    class func scriptUpToDate() -> Bool {
         let fileManager = NSFileManager.defaultManager()
         return fileManager.contentsEqualAtPath(sourceScriptURL.path!, andPath: scriptURL.path!)
+    }
+
+    class func scriptExists() -> Bool {
+        return NSFileManager.defaultManager().fileExistsAtPath(scriptURL.path!)
     }
     
     class func installScript(window:NSWindow, completionHandler:() -> Void) {
@@ -56,7 +64,7 @@ class ScriptInstaller {
         let fileManager = NSFileManager.defaultManager()
         fileManager.removeItemAtURL(self.scriptURL, error: nil)
         if fileManager.copyItemAtURL(self.sourceScriptURL, toURL:self.scriptURL, error:&err) {
-            self.successAlert("Congratulation!", text:"The HotKey Script was installed succcessfully.")
+            // self.successAlert("Congratulation!", text:"The HotKey Script was installed succcessfully.")
             // get the Application Scripts path out of the next open or save panel that appears
             NSUserDefaults.standardUserDefaults().removeObjectForKey("NSNavLastRootDirectory")
         } else {

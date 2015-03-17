@@ -21,16 +21,23 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var popover: PopoverView!
     @IBOutlet var leftView: NSView!
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var installButton: NSButton!
-    @IBOutlet weak var bookmarkButton: NSButton!
-    @IBOutlet weak var pathControl: NSPathControl!
+
     
+    @IBOutlet weak var scriptStatusImage: NSImageView!
+    @IBOutlet weak var scriptStatusText: NSTextField!
+    @IBOutlet weak var scriptStatusButton: NSButton!
+    
+    @IBOutlet weak var resourceStatusText: NSTextField!
+    @IBOutlet weak var resourceStatusImage: NSImageView!
+    @IBOutlet weak var resourceStatusControl: NSPathControl!
+
     var bookmark:NSURL? {
-        get {
-            return UserDefaults.bookmarkedURL
-        }
         set {
             UserDefaults.bookmarkedURL = newValue
+            self.updateView()
+        }
+        get {
+            return UserDefaults.bookmarkedURL
         }
     }
     
@@ -52,10 +59,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     }
 
     override func showWindow(sender: AnyObject?) {
-        if !ScriptInstaller.checkScript() {
-            self.installScript(sender)
-        }
+//        if !ScriptInstaller.checkScript() {
+//            self.installScript(sender)
+//        }
         super.showWindow(sender)
+        self.updateView()
     }
     
     func windowDidBecomeKey(notification: NSNotification) {
@@ -64,13 +72,33 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
             self.popover.showPopup()
             UserDefaults.showPopupOnPrefs = false
         }
-        
-        //pathControl.URL = UserDefaults.bookmarkedURL
-        
-        if ScriptInstaller.checkScript() {
-            installButton.image = nil
+        self.updateView()
+    }
+    
+    func updateView() {
+        if ScriptInstaller.scriptUpToDate() {
+            scriptStatusImage.image = NSImage(named: "NSStatusAvailable")
+            scriptStatusText.stringValue = "Script installed"
+            scriptStatusButton.title = "Install"
+            scriptStatusButton.enabled = false
+        } else if ScriptInstaller.scriptExists() {
+            scriptStatusImage.image = NSImage(named: "NSStatusPartiallyAvailable")
+            scriptStatusText.stringValue = "Script needs update"
+            scriptStatusButton.title = "Update"
+            scriptStatusButton.enabled = true
         } else {
-            installButton.image = NSImage(named: "NSCaution")
+            scriptStatusImage.image = NSImage(named: "NSStatusUnavailable")
+            scriptStatusText.stringValue = "Script not installed"
+            scriptStatusButton.title = "Install"
+            scriptStatusButton.enabled = true
+        }
+
+        if UserDefaults.bookmarkedURL != nil {
+            resourceStatusImage.image = NSImage(named: "NSStatusAvailable")
+            resourceStatusText.stringValue = "Resource Access"
+        } else {
+            resourceStatusImage.image = NSImage(named: "NSStatusUnavailable")
+            resourceStatusText.stringValue = "No Resource"
         }
     }
 
@@ -85,7 +113,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     @IBAction func installScript(sender: AnyObject?) {
         ScriptInstaller.installScript(self.window!) {
-            // do someting fancy here
+            self.updateView()
         }
     }
     

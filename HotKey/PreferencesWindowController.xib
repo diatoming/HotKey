@@ -6,13 +6,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="HotKey">
             <connections>
-                <outlet property="installButton" destination="ZSd-1Q-CHz" id="NQW-e6-s9C"/>
                 <outlet property="launchAtLoginButton" destination="hue-af-klN" id="lyb-bK-1HZ"/>
                 <outlet property="leftView" destination="774-Z3-VQk" id="7BL-Nk-PPX"/>
                 <outlet property="mainView" destination="se5-gp-TjO" id="pOb-75-1mU"/>
                 <outlet property="myArrayController" destination="U3m-tk-joT" id="Vdv-ID-753"/>
-                <outlet property="pathControl" destination="pwB-vy-Azq" id="qC1-5c-lx0"/>
                 <outlet property="popover" destination="Otf-d7-hEB" id="fSf-5P-Thb"/>
+                <outlet property="resourceStatusControl" destination="pwB-vy-Azq" id="d06-9S-iOO"/>
+                <outlet property="resourceStatusImage" destination="ENv-hR-Egl" id="UJv-9d-nrM"/>
+                <outlet property="resourceStatusText" destination="qjA-4h-fYp" id="gLn-kS-irR"/>
+                <outlet property="scriptStatusButton" destination="ZSd-1Q-CHz" id="feW-BV-RAc"/>
+                <outlet property="scriptStatusImage" destination="pb5-1I-Qai" id="SHp-aV-TEg"/>
+                <outlet property="scriptStatusText" destination="HX0-jp-uvQ" id="qQh-Ml-w6r"/>
                 <outlet property="tableView" destination="Lv6-PI-t0Y" id="DNg-qC-FPp"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -33,7 +37,7 @@
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="hue-af-klN">
                                 <rect key="frame" x="19" y="18" width="117" height="18"/>
-                                <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gca-VF-r9G">
+                                <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" state="on" inset="2" id="gca-VF-r9G">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <connections>
@@ -67,12 +71,12 @@
                                 <rect key="frame" x="0.0" y="110" width="180" height="68"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENv-hR-Egl">
-                                        <rect key="frame" x="20" y="40" width="16" height="16"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusPartiallyAvailable" id="i1O-JI-1zX"/>
+                                        <rect key="frame" x="19" y="40" width="16" height="16"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="i1O-JI-1zX"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjA-4h-fYp">
-                                        <rect key="frame" x="37" y="40" width="125" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Access" id="UrU-rz-Mq3">
+                                        <rect key="frame" x="35" y="40" width="126" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource ..." id="UrU-rz-Mq3">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -101,12 +105,12 @@
                                 <rect key="frame" x="0.0" y="176" width="180" height="68"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pb5-1I-Qai">
-                                        <rect key="frame" x="20" y="40" width="16" height="16"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="iph-13-9En"/>
+                                        <rect key="frame" x="19" y="40" width="16" height="16"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="iph-13-9En"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HX0-jp-uvQ">
-                                        <rect key="frame" x="37" y="40" width="125" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Script Installed" id="fOQ-US-wpp">
+                                        <rect key="frame" x="35" y="40" width="126" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Script install..." id="fOQ-US-wpp">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -420,8 +424,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
+        <image name="NSStatusNone" width="16" height="16"/>
         <image name="arrow" width="85" height="84"/>
     </resources>
 </document>
