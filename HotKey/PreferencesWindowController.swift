@@ -21,6 +21,18 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var popover: PopoverView!
     @IBOutlet var leftView: NSView!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var installButton: NSButton!
+    @IBOutlet weak var bookmarkButton: NSButton!
+    @IBOutlet weak var pathControl: NSPathControl!
+    
+    var bookmark:NSURL? {
+        get {
+            return UserDefaults.bookmarkedURL
+        }
+        set {
+            UserDefaults.bookmarkedURL = newValue
+        }
+    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -51,6 +63,14 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         if UserDefaults.showPopupOnPrefs {
             self.popover.showPopup()
             UserDefaults.showPopupOnPrefs = false
+        }
+        
+        //pathControl.URL = UserDefaults.bookmarkedURL
+        
+        if ScriptInstaller.checkScript() {
+            installButton.image = nil
+        } else {
+            installButton.image = NSImage(named: "NSCaution")
         }
     }
 
