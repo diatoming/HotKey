@@ -9,7 +9,7 @@
 import Cocoa
 import ServiceManagement
 
-class PreferencesWindowController: NSWindowController, NSWindowDelegate {
+class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathControlDelegate {
 
     let launchDaemon = "de.codenuts.HotKeyHelper"
     
@@ -50,8 +50,14 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
         
         tableView.doubleAction = "doubleClick:"
+        
+        resourceStatusControl.delegate = self
     }
     
+    func pathControl(pathControl: NSPathControl, willDisplayOpenPanel openPanel: NSOpenPanel) {
+        openPanel.directoryURL = NSURL(string: "/")
+    }
+        
     func doubleClick(sender: AnyObject?) {
         let rowNumber = tableView.clickedRow
         let item = myArrayController.arrangedObjects[rowNumber] as Item
