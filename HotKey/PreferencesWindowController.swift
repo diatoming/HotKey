@@ -18,7 +18,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
-    @IBOutlet var popover: PopoverView!
+    
+    @IBOutlet var popover1: PopoverView!
+    @IBOutlet var popover2: PopoverView!
+    @IBOutlet var popover3: PopoverView!
+    
     @IBOutlet var leftView: NSView!
     @IBOutlet weak var tableView: NSTableView!
 
@@ -74,10 +78,10 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
-        if UserDefaults.showPopupOnPrefs {
-            self.popover.showPopup()
+        //if UserDefaults.showPopupOnPrefs {
+            self.popover1.showPopup()
             UserDefaults.showPopupOnPrefs = false
-        }
+        //}
         self.updateView()
     }
     
@@ -92,11 +96,13 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
             scriptStatusText.stringValue = "Script needs update"
             scriptStatusButton.title = "Update"
             scriptStatusButton.enabled = true
+            self.popover2.showPopup()
         } else {
             scriptStatusImage.image = NSImage(named: "NSStatusUnavailable")
             scriptStatusText.stringValue = "Script not installed"
             scriptStatusButton.title = "Install"
             scriptStatusButton.enabled = true
+            self.popover2.showPopup()
         }
 
         if UserDefaults.bookmarkedURL != nil {
@@ -105,6 +111,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         } else {
             resourceStatusImage.image = NSImage(named: "NSStatusUnavailable")
             resourceStatusText.stringValue = "No Resource"
+            self.popover3.showPopup()
         }
     }
 
