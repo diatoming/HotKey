@@ -430,7 +430,7 @@
                         </constraints>
                     </customView>
                     <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcs-xi-piG" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
-                        <rect key="frame" x="150" y="95" width="366" height="96"/>
+                        <rect key="frame" x="145" y="110" width="450" height="96"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-jz-3nb">
                                 <rect key="frame" x="20" y="28" width="48" height="48"/>
@@ -438,14 +438,14 @@
                                     <constraint firstAttribute="width" constant="48" id="3Sj-ZD-PkA"/>
                                     <constraint firstAttribute="height" constant="48" id="tJg-sg-MIF"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottom" imageScaling="proportionallyDown" image="arrow_left" id="tDW-9c-TNK"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottom" imageScaling="proportionallyDown" image="arrow_left_down" id="tDW-9c-TNK"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="plu-aL-oyx">
-                                <rect key="frame" x="73" y="20" width="275" height="32"/>
+                                <rect key="frame" x="70" y="31" width="361" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="271" id="gtj-Im-gTU"/>
+                                    <constraint firstAttribute="width" constant="357" id="gtj-Im-gTU"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This App was added for You " id="825-CZ-Ahb">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Add Resource Access for opening files" id="825-CZ-Ahb">
                                     <font key="font" size="24" name="MarkerFelt-Thin"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -454,11 +454,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="96" id="753-i7-1mh"/>
-                            <constraint firstAttribute="trailing" secondItem="plu-aL-oyx" secondAttribute="trailing" constant="20" symbolic="YES" id="Dhs-jZ-bWE"/>
+                            <constraint firstAttribute="trailing" secondItem="plu-aL-oyx" secondAttribute="trailing" constant="21" id="Dhs-jZ-bWE"/>
                             <constraint firstItem="Nc4-jz-3nb" firstAttribute="top" secondItem="Lcs-xi-piG" secondAttribute="top" constant="20" symbolic="YES" id="KLs-NZ-yXi"/>
-                            <constraint firstItem="plu-aL-oyx" firstAttribute="leading" secondItem="Nc4-jz-3nb" secondAttribute="trailing" constant="7" id="eCx-I4-gjr"/>
-                            <constraint firstAttribute="bottom" secondItem="plu-aL-oyx" secondAttribute="bottom" constant="20" symbolic="YES" id="hBV-14-NMm"/>
-                            <constraint firstAttribute="width" constant="366" id="qZw-yC-2JI"/>
+                            <constraint firstItem="plu-aL-oyx" firstAttribute="leading" secondItem="Nc4-jz-3nb" secondAttribute="trailing" constant="4" id="eCx-I4-gjr"/>
+                            <constraint firstAttribute="bottom" secondItem="plu-aL-oyx" secondAttribute="bottom" constant="31" id="hBV-14-NMm"/>
+                            <constraint firstAttribute="width" constant="450" id="qZw-yC-2JI"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -471,9 +471,9 @@
                     <constraint firstItem="774-Z3-VQk" firstAttribute="bottom" secondItem="rAI-aF-Lvm" secondAttribute="bottom" id="Y2L-Ix-hO4"/>
                     <constraint firstItem="Rf2-NC-qeA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="150" id="eXY-1T-aZV"/>
                     <constraint firstItem="rAI-aF-Lvm" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="iwF-ai-g1D"/>
-                    <constraint firstItem="Lcs-xi-piG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="150" id="mSt-pS-vRr"/>
+                    <constraint firstItem="Lcs-xi-piG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="145" id="mSt-pS-vRr"/>
                     <constraint firstItem="rah-pQ-nj8" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="57" id="mzd-ka-fxW"/>
-                    <constraint firstItem="Lcs-xi-piG" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="252" id="o6n-2w-aHc"/>
+                    <constraint firstItem="Lcs-xi-piG" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="237" id="o6n-2w-aHc"/>
                     <constraint firstItem="Rf2-NC-qeA" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="185" id="xun-iY-q93"/>
                     <constraint firstItem="774-Z3-VQk" firstAttribute="top" secondItem="rAI-aF-Lvm" secondAttribute="top" id="zxJ-2T-66G"/>
                 </constraints>
@@ -499,5 +499,6 @@
         <image name="NSStatusNone" width="16" height="16"/>
         <image name="arrow" width="85" height="84"/>
         <image name="arrow_left" width="82" height="21"/>
+        <image name="arrow_left_down" width="82" height="36"/>
     </resources>
 </document>

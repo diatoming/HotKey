@@ -53,6 +53,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         leftView.wantsLayer = true
         leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
         
+        mainView.wantsLayer = true
         tableView.doubleAction = "doubleClick:"
         
         resourceStatusControl.delegate = self
