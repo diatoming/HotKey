@@ -25,13 +25,15 @@ class MenuConfiguration: NSObject, ConfigurationDelegate {
     }
     
     func doInsert(item:Item) {
-        let key = item.hotKey?.keyCodeStringForKeyEquivalent ?? ""
-        let menuItem = MyMenuItem(title:item.name, actionClosure:{
-            self.starter.startApp(item)
-        }, keyEquivalent:key)
-        menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
-        menuItem.image = IconTransformer().transformedValue(item.url) as? NSImage
-        statusMenu.addItem(menuItem)
+        if item.enabled {
+            let key = item.hotKey?.keyCodeStringForKeyEquivalent ?? ""
+            let menuItem = MyMenuItem(title:item.name, actionClosure:{
+                self.starter.startApp(item)
+            }, keyEquivalent:key)
+            menuItem.keyEquivalentModifierMask = Int(item.modifierFlags)
+            menuItem.image = item.icon
+            statusMenu.addItem(menuItem)
+        }
     }
     
     func didInsert() {

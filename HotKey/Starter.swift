@@ -13,41 +13,39 @@ class Starter {
 
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
-        var err : NSError?
-        if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
-            if (err != nil) {
-                NSLog("script compile error: %@", err!)
-                workspace.launchApplication(item.url)
-            } else {
-                script.executeWithAppleEvent(eventDescriptor()!, completionHandler: { result, err in
-                    if (err != nil) {
-                        NSLog("script error: %@", err!)
-                        workspace.launchApplication(item.url)
-                    } else {
-                        if let path = result.stringValue {
-                            if let url = UserDefaults.bookmarkedURL {
-                                url.startAccessingSecurityScopedResource()
-                                if !workspace.openFile(path, withApplication: item.url) {
-                                    println("second try... \(path.stringByDeletingLastPathComponent)")
-                                    if !workspace.openFile(path.stringByDeletingLastPathComponent, withApplication: item.url) {
-                                        println("third try...")
-                                        workspace.launchApplication(item.url)
-                                    }
-                                }
-                                url.stopAccessingSecurityScopedResource()
-                            } else {
-                                workspace.launchApplication(item.url)
-                            }
-                        } else {
-                            NSLog("script did not return path")
+        let url = UserDefaults.bookmarkedURL
+        if !item.isApplication() {
+            url?.startAccessingSecurityScopedResource()
+            workspace.openFile(item.url)
+            url?.stopAccessingSecurityScopedResource()
+        } else {
+            callScript { path in
+                if path != nil {
+                    url?.startAccessingSecurityScopedResource()
+                    if !workspace.openFile(path!, withApplication: item.url) {
+                        if !workspace.openFile(path!.stringByDeletingLastPathComponent, withApplication: item.url) {
                             workspace.launchApplication(item.url)
                         }
                     }
-                })
+                    url?.stopAccessingSecurityScopedResource()
+                } else {
+                    workspace.launchApplication(item.url)
+                }
             }
-        } else {
-            NSLog("no script found")
-            workspace.launchApplication(item.url)
+        }
+    }
+    
+    func callScript(completionHandler:(path:String?) -> Void) {
+        var err : NSError?
+        if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
+            if (err == nil) {
+                script.executeWithAppleEvent(eventDescriptor()!) { result, err in
+                    
+                    completionHandler(path: result.stringValue)
+                }
+            } else {
+                NSLog("script compile error: %@", err!)
+            }
         }
     }
     
@@ -55,10 +53,10 @@ class Starter {
         var psn = ProcessSerialNumber(highLongOfPSN: UInt32(0), lowLongOfPSN: UInt32(kCurrentProcess))
         let target = NSAppleEventDescriptor(descriptorType: DescType(typeProcessSerialNumber),
             bytes:&psn, length:sizeof(ProcessSerialNumber))
-        let event = NSAppleEventDescriptor(eventClass:AEEventClass(kCoreEventClass),
+        let eventDescriptor = NSAppleEventDescriptor(eventClass:AEEventClass(kCoreEventClass),
             eventID:AEEventID(kAEOpenApplication), targetDescriptor:target,
             returnID:AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
-        return event
+        return eventDescriptor
     }
 
 }

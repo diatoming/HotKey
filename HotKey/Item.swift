@@ -10,12 +10,40 @@ import CoreData
 
 class Item: NSManagedObject {
 
+    @NSManaged var enabled: Bool
     @NSManaged var name: String
     @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
     
+    var _enabled:Bool {
+        set {
+            enabled = newValue
+            self.managedObjectContext?.save(nil)
+        }
+        get {
+            return enabled
+        }
+    }
+
+    var icon:NSImage? {
+        get {
+            return IconTransformer().transformedValue(self.url) as? NSImage
+        }
+    }
+
+    func isApplication() -> Bool {
+        return self.url.pathExtension == "app"
+    }
+    
+    var kind:String {
+        let workspace = NSWorkspace.sharedWorkspace()
+        var err:NSError?
+        let type = workspace.typeOfFile(self.url, error: &err)
+        return workspace.localizedDescriptionForType(type!)!
+    }
+
     var hotKey:MASShortcut? {
         get {
             let shortcut = MASShortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
@@ -27,19 +55,6 @@ class Item: NSManagedObject {
             self.managedObjectContext?.save(nil)
         }
     }
-    
-    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
-        if itemExists(url, managedObjectContext:managedObjectContext) {
-            return nil
-        } else {
-            let name = url.lastPathComponent?.stringByDeletingPathExtension
-            let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
-                inManagedObjectContext:managedObjectContext) as Item
-            item.name = name!
-            item.url = url.path!
-            return item
-        }
-    }
 
     class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
         let fetchRequest = NSFetchRequest(entityName: "Item")
@@ -47,5 +62,18 @@ class Item: NSManagedObject {
         let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as [Item]
         return !items.isEmpty
     }
-    
+
+    class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
+        if itemExists(url, managedObjectContext:managedObjectContext) {
+            return nil
+        } else {
+            let name = url.lastPathComponent?.stringByDeletingPathExtension
+            let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+                inManagedObjectContext:managedObjectContext) as Item
+            item.enabled = true
+            item.name = name!
+            item.url = url.path!
+            return item
+        }
+    }
 }

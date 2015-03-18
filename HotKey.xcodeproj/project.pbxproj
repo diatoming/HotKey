@@ -14,6 +14,7 @@
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
 		D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */; };
+		D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F9D0F1AB5EA85002076C9 /* PointingHandButton.swift */; };
 		D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */; };
 		D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588F071A7BFA8600D90002 /* Configuration.swift */; };
 		D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588F0A1A7BFDAB00D90002 /* HotKeyConfiguration.swift */; };
@@ -75,6 +76,7 @@
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationDelegate.swift; path = ../ConfigurationDelegate.swift; sourceTree = "<group>"; };
 		D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConfiguration.swift; sourceTree = "<group>"; };
+		D04F9D0F1AB5EA85002076C9 /* PointingHandButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointingHandButton.swift; sourceTree = "<group>"; };
 		D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		D0588F071A7BFA8600D90002 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D0588F0A1A7BFDAB00D90002 /* HotKeyConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyConfiguration.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				D0E7BF711A7838D400807AE9 /* Item.swift */,
 				D0296A821A87D98700BBF677 /* IconTransformer.swift */,
 				D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */,
+				D04F9D0F1AB5EA85002076C9 /* PointingHandButton.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
 			);
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
 				D007B1411A9DA1D9004FDA7D /* PopoverView.swift in Sources */,

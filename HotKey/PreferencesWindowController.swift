@@ -9,7 +9,7 @@
 import Cocoa
 import ServiceManagement
 
-class PreferencesWindowController: NSWindowController, NSWindowDelegate {
+class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathControlDelegate {
 
     let launchDaemon = "de.codenuts.HotKeyHelper"
     
@@ -18,28 +18,100 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
-    @IBOutlet var popover: PopoverView!
+    
+    @IBOutlet var popover1: PopoverView!
+    @IBOutlet var popover2: PopoverView!
+    @IBOutlet var popover3: PopoverView!
+    
+    @IBOutlet var leftView: NSView!
+    @IBOutlet weak var tableView: NSTableView!
+
+    
+    @IBOutlet weak var scriptStatusImage: NSImageView!
+    @IBOutlet weak var scriptStatusText: NSTextField!
+    @IBOutlet weak var scriptStatusButton: NSButton!
+    
+    @IBOutlet weak var resourceStatusText: NSTextField!
+    @IBOutlet weak var resourceStatusImage: NSImageView!
+    @IBOutlet weak var resourceStatusControl: NSPathControl!
+
+    var bookmark:NSURL? {
+        set {
+            UserDefaults.bookmarkedURL = newValue
+            self.updateView()
+        }
+        get {
+            return UserDefaults.bookmarkedURL
+        }
+    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
         let enabled = self.appIsPresentInLoginItems()
         launchAtLoginButton.state = enabled ? NSOnState : NSOffState
+        
+        leftView.wantsLayer = true
+        leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
+        
+        mainView.wantsLayer = true
+        tableView.doubleAction = "doubleClick:"
+        
+        resourceStatusControl.delegate = self
+    }
+    
+    func pathControl(pathControl: NSPathControl, willDisplayOpenPanel openPanel: NSOpenPanel) {
+        openPanel.directoryURL = NSURL(string: "/")
+    }
+        
+    func doubleClick(sender: AnyObject?) {
+        let rowNumber = tableView.clickedRow
+        let item = myArrayController.arrangedObjects[rowNumber] as Item
+        Starter().startApp(item)
     }
 
     override func showWindow(sender: AnyObject?) {
-        if !ScriptInstaller.checkScript() {
-            ScriptInstaller.installScript(self.window!) {
-                // do someting fancy here
-            }
-        }
         super.showWindow(sender)
+        self.updateView()
     }
     
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
         if UserDefaults.showPopupOnPrefs {
-            self.popover.showPopup()
+            self.popover1.showPopup(10)
             UserDefaults.showPopupOnPrefs = false
+        }
+        self.updateView()
+    }
+    
+    func updateView() {
+        if ScriptInstaller.scriptUpToDate() {
+            scriptStatusImage.image = NSImage(named: "NSStatusAvailable")
+            scriptStatusText.stringValue = "Script installed"
+            scriptStatusButton.title = "Install"
+            scriptStatusButton.enabled = false
+            self.popover2.hidePopup()
+        } else if ScriptInstaller.scriptExists() {
+            scriptStatusImage.image = NSImage(named: "NSStatusPartiallyAvailable")
+            scriptStatusText.stringValue = "Script needs update"
+            scriptStatusButton.title = "Update"
+            scriptStatusButton.enabled = true
+            self.popover2.hidePopup()
+        } else {
+            scriptStatusImage.image = NSImage(named: "NSStatusUnavailable")
+            scriptStatusText.stringValue = "Script not installed"
+            scriptStatusButton.title = "Install"
+            scriptStatusButton.enabled = true
+            self.popover2.showPopup(12)
+        }
+
+        if UserDefaults.bookmarkedURL != nil {
+            resourceStatusImage.image = NSImage(named: "NSStatusAvailable")
+            resourceStatusText.stringValue = "Resource Access"
+            self.popover3.hidePopup()
+        } else {
+            resourceStatusImage.image = NSImage(named: "NSStatusUnavailable")
+            resourceStatusText.stringValue = "No Resource"
+            self.popover3.showPopup(14)
         }
     }
 
@@ -47,12 +119,24 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         UserDefaults.openPrefsOnStart = false
         return true
     }
+    
+    @IBAction func gotoWebsite(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://codenuts.de")!)
+    }
 
-    @IBAction func bookmark(sender: NSButton) {
+    @IBAction func installScript(sender: AnyObject?) {
+        ScriptInstaller.installScript(self.window!) {
+            self.updateView()
+        }
+    }
+    
+    @IBAction func bookmark(sender: AnyObject?) {
         let panel = NSOpenPanel()
+        panel.directoryURL = NSURL(fileURLWithPath: "/")
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
-        panel.beginWithCompletionHandler { result in
+        panel.prompt = "Choose"
+        panel.beginSheetModalForWindow(self.window!) { result in
             if result == NSFileHandlingPanelOKButton {
                 UserDefaults.bookmarkedURL = panel.URL!
             }
@@ -63,16 +147,16 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         var err : NSError?
         let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
             inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true, error: &err)
-        var openPanel = NSOpenPanel()
-        openPanel.directoryURL = appsDirectoryURL
-        openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = false
-        openPanel.canCreateDirectories = false
-        openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = ["app"]
-        openPanel.beginWithCompletionHandler { (result) -> Void in
+        var panel = NSOpenPanel()
+        panel.directoryURL = appsDirectoryURL
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = false
+        panel.canChooseFiles = true
+        panel.prompt = "Choose"
+        panel.beginSheetModalForWindow(self.window!) { result in
             if result == NSFileHandlingPanelOKButton {
-                if let url = openPanel.URL {
+                if let url = panel.URL {
                     self.myArrayController.addItem(url)
                 }
             }
