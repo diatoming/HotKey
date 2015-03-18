@@ -31,7 +31,7 @@ class PopoverView: NSView {
         self.layer?.anchorPoint = CGPointMake(0.5, 0.5)
     }
     
-    func showPopup() {
+    func showPopup(hide:Int?) {
         self.hidden = false
         self.setAnchorPoint()
         self.layer?.pop_removeAllAnimations()
@@ -45,11 +45,19 @@ class PopoverView: NSView {
         scaleAnim.velocity = NSValue(CGSize: CGSize(width: 4.0, height: 4.0))
         scaleAnim.springBounciness = 20.0
         self.layer?.pop_addAnimation(scaleAnim, forKey:"scaleAnim")
-        
+
+        if hide != nil {
+            let hideAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+            hideAnim.beginTime = CACurrentMediaTime() + CFTimeInterval(hide!)
+            hideAnim.toValue = 0.0
+            self.layer?.pop_addAnimation(hideAnim, forKey:"hideAnim")
+        }
+    }
+    
+    func hidePopup() {
         let hideAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
-        hideAnim.beginTime = CACurrentMediaTime() + 10.0
         hideAnim.toValue = 0.0
-        self.layer?.pop_addAnimation(hideAnim, forKey:"hideAnim")
+        self.layer?.pop_addAnimation(hideAnim, forKey:"hideAnim") 
     }
     
 }

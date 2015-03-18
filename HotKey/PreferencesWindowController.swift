@@ -70,19 +70,16 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     }
 
     override func showWindow(sender: AnyObject?) {
-//        if !ScriptInstaller.checkScript() {
-//            self.installScript(sender)
-//        }
         super.showWindow(sender)
         self.updateView()
     }
     
     func windowDidBecomeKey(notification: NSNotification) {
         UserDefaults.openPrefsOnStart = true
-        //if UserDefaults.showPopupOnPrefs {
-            self.popover1.showPopup()
+        if UserDefaults.showPopupOnPrefs {
+            self.popover1.showPopup(10)
             UserDefaults.showPopupOnPrefs = false
-        //}
+        }
         self.updateView()
     }
     
@@ -92,27 +89,29 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
             scriptStatusText.stringValue = "Script installed"
             scriptStatusButton.title = "Install"
             scriptStatusButton.enabled = false
+            self.popover2.hidePopup()
         } else if ScriptInstaller.scriptExists() {
             scriptStatusImage.image = NSImage(named: "NSStatusPartiallyAvailable")
             scriptStatusText.stringValue = "Script needs update"
             scriptStatusButton.title = "Update"
             scriptStatusButton.enabled = true
-            self.popover2.showPopup()
+            self.popover2.hidePopup()
         } else {
             scriptStatusImage.image = NSImage(named: "NSStatusUnavailable")
             scriptStatusText.stringValue = "Script not installed"
             scriptStatusButton.title = "Install"
             scriptStatusButton.enabled = true
-            self.popover2.showPopup()
+            self.popover2.showPopup(12)
         }
 
         if UserDefaults.bookmarkedURL != nil {
             resourceStatusImage.image = NSImage(named: "NSStatusAvailable")
             resourceStatusText.stringValue = "Resource Access"
+            self.popover3.hidePopup()
         } else {
             resourceStatusImage.image = NSImage(named: "NSStatusUnavailable")
             resourceStatusText.stringValue = "No Resource"
-            self.popover3.showPopup()
+            self.popover3.showPopup(14)
         }
     }
 
