@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
@@ -10,9 +10,6 @@
                 <outlet property="leftView" destination="774-Z3-VQk" id="7BL-Nk-PPX"/>
                 <outlet property="mainView" destination="se5-gp-TjO" id="pOb-75-1mU"/>
                 <outlet property="myArrayController" destination="U3m-tk-joT" id="Vdv-ID-753"/>
-                <outlet property="popover1" destination="rah-pQ-nj8" id="k8t-LK-hcO"/>
-                <outlet property="popover2" destination="Rf2-NC-qeA" id="oaJ-BS-vIG"/>
-                <outlet property="popover3" destination="Lcs-xi-piG" id="j1X-5e-V7S"/>
                 <outlet property="resourceStatusControl" destination="pwB-vy-Azq" id="d06-9S-iOO"/>
                 <outlet property="resourceStatusImage" destination="ENv-hR-Egl" id="UJv-9d-nrM"/>
                 <outlet property="resourceStatusText" destination="qjA-4h-fYp" id="gLn-kS-irR"/>
@@ -365,116 +362,14 @@
                             <constraint firstAttribute="trailing" secondItem="rz3-o0-gn3" secondAttribute="trailing" constant="22" id="ybQ-XA-ynq"/>
                         </constraints>
                     </customView>
-                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rah-pQ-nj8" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
-                        <rect key="frame" x="248" y="290" width="366" height="96"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyw-8i-qyc">
-                                <rect key="frame" x="20" y="28" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="4Vr-sq-Qkm"/>
-                                    <constraint firstAttribute="height" constant="48" id="5gG-PZ-yop"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="arrow" id="WYf-Tg-jPr"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PNA-BU-yoO">
-                                <rect key="frame" x="73" y="20" width="275" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="271" id="cVf-2x-vlV"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This App was added for You " id="GP4-K0-8tn">
-                                    <font key="font" size="24" name="MarkerFelt-Thin"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="PNA-BU-yoO" firstAttribute="leading" secondItem="xyw-8i-qyc" secondAttribute="trailing" constant="7" id="3nH-Eh-G3X"/>
-                            <constraint firstAttribute="bottom" secondItem="PNA-BU-yoO" secondAttribute="bottom" constant="20" symbolic="YES" id="CB6-GP-OaU"/>
-                            <constraint firstItem="xyw-8i-qyc" firstAttribute="top" secondItem="rah-pQ-nj8" secondAttribute="top" constant="20" symbolic="YES" id="NVX-WP-ZLi"/>
-                            <constraint firstAttribute="height" constant="96" id="dlo-Hh-vao"/>
-                            <constraint firstAttribute="trailing" secondItem="PNA-BU-yoO" secondAttribute="trailing" constant="20" symbolic="YES" id="hSZ-Zu-wnC"/>
-                            <constraint firstAttribute="width" constant="366" id="lfn-Yy-w3M"/>
-                        </constraints>
-                    </customView>
-                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rf2-NC-qeA" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
-                        <rect key="frame" x="150" y="162" width="400" height="96"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Czc-sL-Nsv">
-                                <rect key="frame" x="20" y="28" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Znp-Hb-sBp"/>
-                                    <constraint firstAttribute="width" constant="48" id="gy0-pT-qKC"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottom" imageScaling="proportionallyDown" image="arrow_left" id="ITA-Iw-O30"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xIk-xg-Rhw">
-                                <rect key="frame" x="73" y="20" width="315" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="311" id="C2e-Ly-0mI"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Install Script for full experience" id="w10-bM-tXk">
-                                    <font key="font" size="24" name="MarkerFelt-Thin"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="xIk-xg-Rhw" firstAttribute="leading" secondItem="Czc-sL-Nsv" secondAttribute="trailing" constant="7" id="9t1-oB-zcg"/>
-                            <constraint firstAttribute="height" constant="96" id="ImL-28-Eny"/>
-                            <constraint firstAttribute="bottom" secondItem="xIk-xg-Rhw" secondAttribute="bottom" constant="20" symbolic="YES" id="Lfl-pb-ESG"/>
-                            <constraint firstItem="Czc-sL-Nsv" firstAttribute="top" secondItem="Rf2-NC-qeA" secondAttribute="top" constant="20" symbolic="YES" id="M0s-cc-cF9"/>
-                            <constraint firstItem="Czc-sL-Nsv" firstAttribute="leading" secondItem="Rf2-NC-qeA" secondAttribute="leading" constant="20" symbolic="YES" id="eI7-cw-Rrr"/>
-                            <constraint firstAttribute="width" constant="400" id="vpL-Y6-Isu"/>
-                        </constraints>
-                    </customView>
-                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcs-xi-piG" customClass="PopoverView" customModule="HotKey" customModuleProvider="target">
-                        <rect key="frame" x="145" y="110" width="450" height="96"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-jz-3nb">
-                                <rect key="frame" x="20" y="28" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="3Sj-ZD-PkA"/>
-                                    <constraint firstAttribute="height" constant="48" id="tJg-sg-MIF"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottom" imageScaling="proportionallyDown" image="arrow_left_down" id="tDW-9c-TNK"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="plu-aL-oyx">
-                                <rect key="frame" x="70" y="31" width="361" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="357" id="gtj-Im-gTU"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Add Resource Access for opening files" id="825-CZ-Ahb">
-                                    <font key="font" size="24" name="MarkerFelt-Thin"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="96" id="753-i7-1mh"/>
-                            <constraint firstAttribute="trailing" secondItem="plu-aL-oyx" secondAttribute="trailing" constant="21" id="Dhs-jZ-bWE"/>
-                            <constraint firstItem="Nc4-jz-3nb" firstAttribute="top" secondItem="Lcs-xi-piG" secondAttribute="top" constant="20" symbolic="YES" id="KLs-NZ-yXi"/>
-                            <constraint firstItem="plu-aL-oyx" firstAttribute="leading" secondItem="Nc4-jz-3nb" secondAttribute="trailing" constant="4" id="eCx-I4-gjr"/>
-                            <constraint firstAttribute="bottom" secondItem="plu-aL-oyx" secondAttribute="bottom" constant="31" id="hBV-14-NMm"/>
-                            <constraint firstAttribute="width" constant="450" id="qZw-yC-2JI"/>
-                        </constraints>
-                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="rAI-aF-Lvm" secondAttribute="trailing" id="73q-Eb-Olu"/>
-                    <constraint firstItem="rah-pQ-nj8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="248" id="BN0-dM-c8D"/>
                     <constraint firstItem="774-Z3-VQk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="DRD-zN-9uZ"/>
                     <constraint firstItem="rAI-aF-Lvm" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="179" id="KPE-Ka-Dux"/>
                     <constraint firstAttribute="bottom" secondItem="774-Z3-VQk" secondAttribute="bottom" id="XQf-WV-2Nb"/>
                     <constraint firstItem="774-Z3-VQk" firstAttribute="bottom" secondItem="rAI-aF-Lvm" secondAttribute="bottom" id="Y2L-Ix-hO4"/>
-                    <constraint firstItem="Rf2-NC-qeA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="150" id="eXY-1T-aZV"/>
                     <constraint firstItem="rAI-aF-Lvm" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="iwF-ai-g1D"/>
-                    <constraint firstItem="Lcs-xi-piG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="145" id="mSt-pS-vRr"/>
-                    <constraint firstItem="rah-pQ-nj8" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="57" id="mzd-ka-fxW"/>
-                    <constraint firstItem="Lcs-xi-piG" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="237" id="o6n-2w-aHc"/>
-                    <constraint firstItem="Rf2-NC-qeA" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="185" id="xun-iY-q93"/>
                     <constraint firstItem="774-Z3-VQk" firstAttribute="top" secondItem="rAI-aF-Lvm" secondAttribute="top" id="zxJ-2T-66G"/>
                 </constraints>
             </view>
@@ -497,8 +392,5 @@
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusNone" width="16" height="16"/>
-        <image name="arrow" width="85" height="84"/>
-        <image name="arrow_left" width="82" height="21"/>
-        <image name="arrow_left_down" width="82" height="36"/>
     </resources>
 </document>

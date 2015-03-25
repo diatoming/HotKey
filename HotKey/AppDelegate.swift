@@ -41,7 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.createExampleOnStart {
             self.createExampleAppItem()
             UserDefaults.createExampleOnStart = false
-            UserDefaults.showPopupOnPrefs = true
         }
         if UserDefaults.openPrefsOnStart {
             self.openPreferences(self)
