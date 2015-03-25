@@ -14,24 +14,27 @@ class Starter {
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
-        if !item.isApplication() {
-            url?.startAccessingSecurityScopedResource()
-            workspace.openFile(item.url)
-            url?.stopAccessingSecurityScopedResource()
-        } else {
-            callScript { path in
-                if path != nil {
-                    url?.startAccessingSecurityScopedResource()
-                    if !workspace.openFile(path!, withApplication: item.url) {
-                        if !workspace.openFile(path!.stringByDeletingLastPathComponent, withApplication: item.url) {
-                            workspace.launchApplication(item.url)
+        switch item.type {
+            case .APP:
+                callScript { path in
+                    if path != nil {
+                        url?.startAccessingSecurityScopedResource()
+                        if !workspace.openFile(path!, withApplication: item.url) {
+                            if !workspace.openFile(path!.stringByDeletingLastPathComponent, withApplication: item.url) {
+                                workspace.launchApplication(item.url)
+                            }
                         }
+                        url?.stopAccessingSecurityScopedResource()
+                    } else {
+                        workspace.launchApplication(item.url)
                     }
-                    url?.stopAccessingSecurityScopedResource()
-                } else {
-                    workspace.launchApplication(item.url)
                 }
-            }
+                break;
+            case .OTHER:
+                url?.startAccessingSecurityScopedResource()
+                workspace.openFile(item.url)
+                url?.stopAccessingSecurityScopedResource()
+                break;
         }
     }
     

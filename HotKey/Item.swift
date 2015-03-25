@@ -9,6 +9,10 @@
 import CoreData
 
 class Item: NSManagedObject {
+    
+    enum Type {
+        case APP, OTHER
+    }
 
     @NSManaged var enabled: Bool
     @NSManaged var name: String
@@ -33,8 +37,13 @@ class Item: NSManagedObject {
         }
     }
 
-    func isApplication() -> Bool {
-        return self.url.pathExtension == "app"
+    var type:Type {
+        get {
+            switch url.pathExtension {
+                case "app": return Type.APP
+                default: return Type.OTHER
+            }
+        }
     }
     
     var kind:String {
