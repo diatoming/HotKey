@@ -14,52 +14,62 @@ class Starter {
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
+        
         switch item.type {
-            case .APP:
-                callScript { path in
-                    if path != nil {
-                        url?.startAccessingSecurityScopedResource()
-                        if !workspace.openFile(path!, withApplication: item.url) {
-                            if !workspace.openFile(path!.stringByDeletingLastPathComponent, withApplication: item.url) {
-                                workspace.launchApplication(item.url)
-                            }
-                        }
-                        url?.stopAccessingSecurityScopedResource()
-                    } else {
+        case .APP:
+            let sf = item.function
+            callScript(item.scriptFunction) { strings in
+                if let urls = strings?.map({NSURL(fileURLWithPath:$0)!}) {
+                    url?.startAccessingSecurityScopedResource()
+                    let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
+                    if !workspace.openURLs(urls, withAppBundleIdentifier: bundleIdentifier, options: .Default, additionalEventParamDescriptor: nil, launchIdentifiers: nil) {
                         workspace.launchApplication(item.url)
                     }
+                    url?.stopAccessingSecurityScopedResource()
+                } else {
+                    workspace.launchApplication(item.url)
                 }
-                break;
-            case .OTHER:
-                url?.startAccessingSecurityScopedResource()
-                workspace.openFile(item.url)
-                url?.stopAccessingSecurityScopedResource()
-                break;
+            }
+        case .OTHER:
+            url?.startAccessingSecurityScopedResource()
+            workspace.openFile(item.url)
+            url?.stopAccessingSecurityScopedResource()
         }
     }
     
-    func callScript(completionHandler:(path:String?) -> Void) {
-        var err : NSError?
-        if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
-            if (err == nil) {
-                script.executeWithAppleEvent(eventDescriptor()!) { result, err in
-                    
-                    completionHandler(path: result.stringValue)
+    func callScript(function:Item.ScriptFunction, completionHandler:(strings:[String]?) -> Void) {
+        if function == Item.ScriptFunction.NOTHING {
+            completionHandler(strings: nil)
+        } else {
+            var err : NSError?
+            if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
+                if (err == nil) {
+                    script.executeWithAppleEvent(eventDescriptor(function.rawValue)!) { result, err in
+                        var strings:[String] = []
+                        for index in 0..<result.numberOfItems {
+                            if let value = result.descriptorAtIndex(index+1)?.stringValue {
+                                strings.append(value)
+                            }
+                        }
+                        completionHandler(strings: strings)
+                    }
+                } else {
+                    NSLog("script compile error: %@", err!)
                 }
-            } else {
-                NSLog("script compile error: %@", err!)
             }
         }
     }
     
-    func eventDescriptor() -> NSAppleEventDescriptor? {
+    func eventDescriptor(functionName:String) -> NSAppleEventDescriptor? {
         var psn = ProcessSerialNumber(highLongOfPSN: UInt32(0), lowLongOfPSN: UInt32(kCurrentProcess))
         let target = NSAppleEventDescriptor(descriptorType: DescType(typeProcessSerialNumber),
             bytes:&psn, length:sizeof(ProcessSerialNumber))
-        let eventDescriptor = NSAppleEventDescriptor(eventClass:AEEventClass(kCoreEventClass),
-            eventID:AEEventID(kAEOpenApplication), targetDescriptor:target,
+        let function = NSAppleEventDescriptor(string: functionName)
+        let event = NSAppleEventDescriptor(eventClass:AEEventClass(kASAppleScriptSuite),
+            eventID:AEEventID(kASSubroutineEvent), targetDescriptor:target,
             returnID:AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
-        return eventDescriptor
+        event?.setParamDescriptor(function!, forKeyword: AEKeyword(keyASSubroutineName))
+        return event
     }
 
 }

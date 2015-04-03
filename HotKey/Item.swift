@@ -14,12 +14,17 @@ class Item: NSManagedObject {
         case APP, OTHER
     }
 
+    enum ScriptFunction: String {
+        case NOTHING = "", FILES = "selectedFiles", FILES_FOLDER = "selectedFilesOrFolders"
+    }
+
     @NSManaged var enabled: Bool
     @NSManaged var name: String
     @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
+    @NSManaged var function: String?
     
     var _enabled:Bool {
         set {
@@ -43,6 +48,15 @@ class Item: NSManagedObject {
                 case "app": return Type.APP
                 default: return Type.OTHER
             }
+        }
+    }
+
+    var scriptFunction: ScriptFunction {
+        get {
+            return function != nil ? ScriptFunction(rawValue: function!)! : ScriptFunction.FILES
+        }
+        set {
+            function = String(newValue.rawValue)
         }
     }
     
