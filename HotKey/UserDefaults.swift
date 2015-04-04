@@ -30,11 +30,6 @@ class UserDefaults {
         set {defaults.setBool(newValue, forKey:"openPrefsOnStart")}
     }
     
-    class var showPopupOnPrefs:Bool {
-        get {return defaults.boolForKey("showPopupOnPrefs")}
-        set {defaults.setBool(newValue, forKey:"showPopupOnPrefs")}
-    }
-    
     class var bookmarkedURL:NSURL? {
         get {
             if let data = defaults.objectForKey("bookmark") as? NSData {

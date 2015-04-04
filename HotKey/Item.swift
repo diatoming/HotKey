@@ -9,6 +9,14 @@
 import CoreData
 
 class Item: NSManagedObject {
+    
+    enum Type {
+        case APP, OTHER
+    }
+
+    enum ScriptFunction: String {
+        case NOTHING = "", FILES = "selectedFiles", FILES_FOLDER = "selectedFilesOrFolders"
+    }
 
     @NSManaged var enabled: Bool
     @NSManaged var name: String
@@ -16,6 +24,7 @@ class Item: NSManagedObject {
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
+    @NSManaged var function: String?
     
     var _enabled:Bool {
         set {
@@ -33,8 +42,22 @@ class Item: NSManagedObject {
         }
     }
 
-    func isApplication() -> Bool {
-        return self.url.pathExtension == "app"
+    var type:Type {
+        get {
+            switch url.pathExtension {
+                case "app": return Type.APP
+                default: return Type.OTHER
+            }
+        }
+    }
+
+    var scriptFunction: ScriptFunction {
+        get {
+            return function != nil ? ScriptFunction(rawValue: function!)! : ScriptFunction.FILES
+        }
+        set {
+            function = String(newValue.rawValue)
+        }
     }
     
     var kind:String {

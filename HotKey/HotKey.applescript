@@ -4,20 +4,18 @@
 -- Copyright (C) 2015 Peter Vorwieger
 -------------------------------------
 
-tell application "System Events"
-	set activeApp to name of first application process whose frontmost is true
-end tell
+on selectedFiles()
+	tell application "System Events" to set activeApp to name of first application process whose frontmost is true
+	if activeApp is "Finder" then
+		set selectedFiles to selection of application "Finder"
+		set myFiles to {}
+		repeat with aFile in selectedFiles
+			set end of myFiles to POSIX path of (aFile as alias)
+		end repeat
+		return myFiles
+	end if
+end selectedFiles
 
-if activeApp is "Finder" then
-	tell application "Finder"
-		try
-			if selection is not {} then
-				return POSIX path of (selection as alias)
-			else
-				return POSIX path of (target of window 1 as alias)
-			end if
-		on error
-			return null
-		end try
-	end tell
-end if
+on run
+	display alert "HotKey App" message "This script is used by HotKey App to automate tasks"
+end run
