@@ -1,4 +1,5 @@
 #import <Carbon/Carbon.h>
+#import <Cocoa/Cocoa.h>
 
 // These glyphs are missed in Carbon.h
 enum {
