@@ -1,3 +1,6 @@
+#import <Carbon/Carbon.h>
+#import <Cocoa/Cocoa.h>
+
 @class MASShortcut, MASShortcutValidator;
 
 extern NSString *const MASShortcutBinding;

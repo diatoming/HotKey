@@ -1,2 +1,0 @@
-pod 'MASShortcut'
-pod 'pop'
