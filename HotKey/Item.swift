@@ -82,7 +82,7 @@ class Item: NSManagedObject {
     class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
         let fetchRequest = NSFetchRequest(entityName: "Item")
         fetchRequest.predicate = NSPredicate(format:"url == %@", url.path!)
-        let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as [Item]
+        let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as! [Item]
         return !items.isEmpty
     }
 
@@ -92,7 +92,7 @@ class Item: NSManagedObject {
         } else {
             let name = url.lastPathComponent?.stringByDeletingPathExtension
             let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
-                inManagedObjectContext:managedObjectContext) as Item
+                inManagedObjectContext:managedObjectContext) as! Item
             item.enabled = true
             item.name = name!
             item.url = url.path!

@@ -52,7 +52,7 @@ class ScriptInstaller {
                     self.copyScript()
                 } else {
                     // try again because the user changed the file anme or folder path
-                    self.installScript(window, completionHandler)
+                    self.installScript(window, completionHandler: completionHandler)
                 }
             }
             completionHandler()

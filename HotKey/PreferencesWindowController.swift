@@ -61,7 +61,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         
     func doubleClick(sender: AnyObject?) {
         let rowNumber = tableView.clickedRow
-        let item = myArrayController.arrangedObjects[rowNumber] as Item
+        let item = myArrayController.arrangedObjects[rowNumber] as! Item
         Starter().startApp(item)
     }
 
@@ -162,8 +162,8 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         for (var i = 0; i < count; i++) {
             let value = CFArrayGetValueAtIndex(jobDicts, i)
             let job = Unmanaged<NSDictionary>.fromOpaque(COpaquePointer(value)).takeUnretainedValue()
-            let label = job["Label"] as String
-            let onDemand = job["OnDemand"] as Bool
+            let label = job["Label"] as! String
+            let onDemand = job["OnDemand"] as! Bool
             if (label == launchDaemon && onDemand) {
                 return true;
             }

@@ -39,7 +39,7 @@ class Configuration: NSObject {
         fetchRequest.predicate = NSPredicate(value: true)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
         var err:NSError?
-        return managedObjectContext.executeFetchRequest(fetchRequest, error: &err) as [Item]
+        return managedObjectContext.executeFetchRequest(fetchRequest, error: &err) as! [Item]
     }
 
 }

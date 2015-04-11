@@ -51,10 +51,10 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
     }
     
     func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
-        if info.draggingSource() as NSTableView == tableView {
+        if info.draggingSource() as! NSTableView == tableView {
             let data = info.draggingPasteboard().dataForType(movedRowType)
-            let indexSet = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as NSIndexSet
-            var items = self.arrangedObjects as [Item]
+            let indexSet = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as! NSIndexSet
+            var items = self.arrangedObjects as! [Item]
             let item = items.removeAtIndex(indexSet.firstIndex)
             items.insert(item, atIndex:indexSet.firstIndex < row ? row-1 : row)
             for (index, item) in enumerate(items) {
@@ -67,7 +67,7 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
     }
     
     func rearrangeOrder() {
-        for (index, item) in enumerate(arrangedObjects as [Item]) {
+        for (index, item) in enumerate(arrangedObjects as! [Item]) {
             item.order = Int32(index)
         }
         self.managedObjectContext?.save(nil)
