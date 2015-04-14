@@ -25,16 +25,14 @@
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* HotKey.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* HotKey.applescript */; };
 		D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */; };
+		D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */; };
 		D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
-		D0D07D4C1AD291A400C3CC26 /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D3B1AD291A400C3CC26 /* MASDictionaryTransformer.m */; };
 		D0D07D4D1AD291A400C3CC26 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D3D1AD291A400C3CC26 /* MASHotKey.m */; };
 		D0D07D4E1AD291A400C3CC26 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D401AD291A400C3CC26 /* MASShortcut.m */; };
-		D0D07D4F1AD291A400C3CC26 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D421AD291A400C3CC26 /* MASShortcutBinder.m */; };
 		D0D07D501AD291A400C3CC26 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */; };
 		D0D07D511AD291A400C3CC26 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */; };
-		D0D07D521AD291A400C3CC26 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D481AD291A400C3CC26 /* MASShortcutView+Bindings.m */; };
 		D0D07D531AD291A400C3CC26 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */; };
 		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
 		D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */; };
@@ -98,26 +96,21 @@
 		D06A21291A3C7AFE00073595 /* HotKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotKey.entitlements; sourceTree = "<group>"; };
 		D070EAAE1A500E0200C3074A /* HotKey.applescript */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = HotKey.applescript; sourceTree = "<group>"; };
 		D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuItem.swift; sourceTree = "<group>"; };
+		D07515891ADDA8FE00FEC8D2 /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASKeyCodes.h; sourceTree = "<group>"; };
+		D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextField.swift; path = HotKey/HotKeyTextField.swift; sourceTree = SOURCE_ROOT; };
 		D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptInstaller.swift; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
 		D0D001691A8A760C008DB64B /* ItemArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemArrayController.swift; sourceTree = "<group>"; };
-		D0D07D3A1AD291A400C3CC26 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASDictionaryTransformer.h; sourceTree = "<group>"; };
-		D0D07D3B1AD291A400C3CC26 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASDictionaryTransformer.m; sourceTree = "<group>"; };
 		D0D07D3C1AD291A400C3CC26 /* MASHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASHotKey.h; sourceTree = "<group>"; };
 		D0D07D3D1AD291A400C3CC26 /* MASHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASHotKey.m; sourceTree = "<group>"; };
-		D0D07D3E1AD291A400C3CC26 /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASKeyCodes.h; sourceTree = "<group>"; };
 		D0D07D3F1AD291A400C3CC26 /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
 		D0D07D401AD291A400C3CC26 /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcut.m; sourceTree = "<group>"; };
-		D0D07D411AD291A400C3CC26 /* MASShortcutBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutBinder.h; sourceTree = "<group>"; };
-		D0D07D421AD291A400C3CC26 /* MASShortcutBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutBinder.m; sourceTree = "<group>"; };
 		D0D07D431AD291A400C3CC26 /* MASShortcutMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutMonitor.h; sourceTree = "<group>"; };
 		D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutMonitor.m; sourceTree = "<group>"; };
 		D0D07D451AD291A400C3CC26 /* MASShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutValidator.h; sourceTree = "<group>"; };
 		D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutValidator.m; sourceTree = "<group>"; };
-		D0D07D471AD291A400C3CC26 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
-		D0D07D481AD291A400C3CC26 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
 		D0D07D491AD291A400C3CC26 /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
 		D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
 		D0D07D4B1AD291A400C3CC26 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
@@ -247,24 +240,19 @@
 		D0D07D391AD291A400C3CC26 /* MASShortcut */ = {
 			isa = PBXGroup;
 			children = (
-				D0D07D3A1AD291A400C3CC26 /* MASDictionaryTransformer.h */,
-				D0D07D3B1AD291A400C3CC26 /* MASDictionaryTransformer.m */,
 				D0D07D3C1AD291A400C3CC26 /* MASHotKey.h */,
 				D0D07D3D1AD291A400C3CC26 /* MASHotKey.m */,
-				D0D07D3E1AD291A400C3CC26 /* MASKeyCodes.h */,
+				D07515891ADDA8FE00FEC8D2 /* MASKeyCodes.h */,
 				D0D07D3F1AD291A400C3CC26 /* MASShortcut.h */,
 				D0D07D401AD291A400C3CC26 /* MASShortcut.m */,
-				D0D07D411AD291A400C3CC26 /* MASShortcutBinder.h */,
-				D0D07D421AD291A400C3CC26 /* MASShortcutBinder.m */,
 				D0D07D431AD291A400C3CC26 /* MASShortcutMonitor.h */,
 				D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */,
 				D0D07D451AD291A400C3CC26 /* MASShortcutValidator.h */,
 				D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */,
-				D0D07D471AD291A400C3CC26 /* MASShortcutView+Bindings.h */,
-				D0D07D481AD291A400C3CC26 /* MASShortcutView+Bindings.m */,
 				D0D07D491AD291A400C3CC26 /* MASShortcutView.h */,
 				D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */,
 				D0D07D4B1AD291A400C3CC26 /* Shortcut.h */,
+				D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */,
 			);
 			name = MASShortcut;
 			path = HotKey/MASShortcut;
@@ -394,13 +382,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */,
 				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
 				D0D07D4E1AD291A400C3CC26 /* MASShortcut.m in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
-				D0D07D4C1AD291A400C3CC26 /* MASDictionaryTransformer.m in Sources */,
 				D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */,
-				D0D07D4F1AD291A400C3CC26 /* MASShortcutBinder.m in Sources */,
 				D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */,
 				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
 				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,
@@ -417,7 +404,6 @@
 				D0D07D531AD291A400C3CC26 /* MASShortcutView.m in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
 				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
-				D0D07D521AD291A400C3CC26 /* MASShortcutView+Bindings.m in Sources */,
 				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

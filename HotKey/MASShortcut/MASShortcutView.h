@@ -3,8 +3,6 @@
 
 @class MASShortcut, MASShortcutValidator;
 
-extern NSString *const MASShortcutBinding;
-
 typedef enum {
     MASShortcutViewStyleDefault = 0,  // Height = 19 px
     MASShortcutViewStyleTexturedRect, // Height = 25 px
