@@ -26,7 +26,6 @@
 		D070EAAF1A500E0200C3074A /* HotKey.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* HotKey.applescript */; };
 		D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */; };
 		D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */; };
-		D075158D1ADDB56C00FEC8D2 /* HotKeyTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075158C1ADDB56C00FEC8D2 /* HotKeyTransformer.swift */; };
 		D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
@@ -99,7 +98,6 @@
 		D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuItem.swift; sourceTree = "<group>"; };
 		D07515891ADDA8FE00FEC8D2 /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASKeyCodes.h; sourceTree = "<group>"; };
 		D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextField.swift; path = HotKey/HotKeyTextField.swift; sourceTree = SOURCE_ROOT; };
-		D075158C1ADDB56C00FEC8D2 /* HotKeyTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyTransformer.swift; sourceTree = "<group>"; };
 		D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptInstaller.swift; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
 				D0E7BF711A7838D400807AE9 /* Item.swift */,
 				D0296A821A87D98700BBF677 /* IconTransformer.swift */,
-				D075158C1ADDB56C00FEC8D2 /* HotKeyTransformer.swift */,
 				D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */,
 				D04F9D0F1AB5EA85002076C9 /* PointingHandButton.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
@@ -386,7 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */,
-				D075158D1ADDB56C00FEC8D2 /* HotKeyTransformer.swift in Sources */,
 				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
 				D0D07D4E1AD291A400C3CC26 /* MASShortcut.m in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
