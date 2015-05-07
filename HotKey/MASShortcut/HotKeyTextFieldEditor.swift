@@ -1,57 +1,58 @@
 //
-//  HotKeyFieldCell.swift
+//  HotKeyTextFieldEditor.swift
 //  HotKey
 //
-//  Created by Peter Vorwieger on 14.04.15.
+//  Created by Peter Vorwieger on 04.05.15.
 //  Copyright (c) 2015 Peter Vorwieger. All rights reserved.
 //
 
 import Cocoa
 
-class HotKeyTextField: NSTextField {
-
+class HotKeyTextFieldEditor: NSTextView {
+    
+    var hotKeyField:NSTextField?
     var globalMonitor:AnyObject?
     
+    override init(frame frameRect: NSRect, textContainer container: NSTextContainer?) {
+        super.init(frame:frameRect, textContainer:container)
+        fieldEditor = true
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func becomeFirstResponder() -> Bool {
         let ok = super.becomeFirstResponder()
-        println("becomeFirstResponder \(ok)")
         if ok {
-            let mon: AnyObject? = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: {
+            self.globalMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: {
                 event in
                 return self.processHotkeyEvent(event)
             })
-            self.globalMonitor = mon
         }
         return ok
     }
     
     override func resignFirstResponder() -> Bool {
         let ok = super.resignFirstResponder()
-        println("resignFirstResponder \(ok)")
         if ok && globalMonitor != nil {
             NSEvent.removeMonitor(globalMonitor!)
+            self.globalMonitor = nil
         }
         return ok
-    }
-    
-    override func valueClassForBinding(binding: String) -> AnyClass? {
-        return MASShortcut.self
     }
     
     func processHotkeyEvent(event:NSEvent) -> NSEvent! {
         let hotKey = MASShortcut(keyCode: UInt(event.keyCode), modifierFlags:UInt(event.modifierFlags.rawValue))
         println("processHotkeyEvent hotKey:\(hotKey)")
-        let bindingInfo = infoForBinding("value") as! [String: AnyObject]
+        self.window!.makeFirstResponder(nil)
+        let bindingInfo = hotKeyField?.infoForBinding("value") as! [String: AnyObject]
         if let key = bindingInfo[NSObservedKeyPathKey] as? String {
             if let object = bindingInfo[NSObservedObjectKey] as? NSTableCellView {
                 object.setValue(hotKey, forKeyPath: key)
             }
         }
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            self.window!.makeFirstResponder(nil)
-        }
-        return nil
+        return event
     }
     
 }

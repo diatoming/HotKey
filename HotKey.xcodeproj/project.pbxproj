@@ -25,8 +25,9 @@
 		D06409251A40AEBE00583962 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06409241A40AEBE00583962 /* ServiceManagement.framework */; };
 		D070EAAF1A500E0200C3074A /* HotKey.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* HotKey.applescript */; };
 		D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */; };
-		D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */; };
 		D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */; };
+		D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */; };
+		D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
 		D0D07D4D1AD291A400C3CC26 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D3D1AD291A400C3CC26 /* MASHotKey.m */; };
@@ -97,8 +98,9 @@
 		D070EAAE1A500E0200C3074A /* HotKey.applescript */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = HotKey.applescript; sourceTree = "<group>"; };
 		D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuItem.swift; sourceTree = "<group>"; };
 		D07515891ADDA8FE00FEC8D2 /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASKeyCodes.h; sourceTree = "<group>"; };
-		D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextField.swift; path = HotKey/HotKeyTextField.swift; sourceTree = SOURCE_ROOT; };
 		D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptInstaller.swift; sourceTree = "<group>"; };
+		D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldEditor.swift; path = MASShortcut/HotKeyTextFieldEditor.swift; sourceTree = "<group>"; };
+		D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldCell.swift; path = MASShortcut/HotKeyTextFieldCell.swift; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
@@ -179,6 +181,8 @@
 				D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */,
 				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
+				D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */,
+				D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */,
 				D0D001691A8A760C008DB64B /* ItemArrayController.swift */,
 				D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
@@ -252,7 +256,6 @@
 				D0D07D491AD291A400C3CC26 /* MASShortcutView.h */,
 				D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */,
 				D0D07D4B1AD291A400C3CC26 /* Shortcut.h */,
-				D075158A1ADDAE7500FEC8D2 /* HotKeyTextField.swift */,
 			);
 			name = MASShortcut;
 			path = HotKey/MASShortcut;
@@ -382,8 +385,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D075158B1ADDAE7500FEC8D2 /* HotKeyTextField.swift in Sources */,
 				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
+				D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */,
 				D0D07D4E1AD291A400C3CC26 /* MASShortcut.m in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
@@ -396,6 +399,7 @@
 				D0E7BF721A7838D400807AE9 /* Item.swift in Sources */,
 				D0D07D4D1AD291A400C3CC26 /* MASHotKey.m in Sources */,
 				D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */,
+				D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */,
 				D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */,
 				D0D07D511AD291A400C3CC26 /* MASShortcutValidator.m in Sources */,
 				D0D07D501AD291A400C3CC26 /* MASShortcutMonitor.m in Sources */,
