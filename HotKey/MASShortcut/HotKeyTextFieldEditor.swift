@@ -43,16 +43,23 @@ class HotKeyTextFieldEditor: NSTextView {
     }
     
     func processHotkeyEvent(event:NSEvent) -> NSEvent! {
-        let hotKey = MASShortcut(keyCode: UInt(event.keyCode), modifierFlags:UInt(event.modifierFlags.rawValue))
-        println("processHotkeyEvent hotKey:\(hotKey)")
+        let hotKey = MASShortcut(event: event)
         self.window!.makeFirstResponder(nil)
+        if MASShortcutValidator.sharedValidator().isShortcutValid(hotKey) {
+           setHotKeyValue(hotKey)
+        } else if hotKey.keyCode == 53 && hotKey.modifierFlags == 0 {
+           setHotKeyValue(nil)
+        }
+        return nil
+    }
+    
+    func setHotKeyValue(hotKey:MASShortcut?) {
         let bindingInfo = hotKeyField?.infoForBinding("value") as! [String: AnyObject]
         if let key = bindingInfo[NSObservedKeyPathKey] as? String {
             if let object = bindingInfo[NSObservedObjectKey] as? NSTableCellView {
                 object.setValue(hotKey, forKeyPath: key)
             }
         }
-        return event
     }
     
 }
