@@ -47,10 +47,18 @@ class HotKeyTextFieldEditor: NSTextView {
         self.window!.makeFirstResponder(nil)
         if MASShortcutValidator.sharedValidator().isShortcutValid(hotKey) {
            setHotKeyValue(hotKey)
-        } else if hotKey.keyCode == 53 && hotKey.modifierFlags == 0 {
+        } else if isClearKey(hotKey) {
            setHotKeyValue(nil)
         }
         return nil
+    }
+    
+    func isClearKey(hotKey:MASShortcut) -> Bool {
+        return hotKey.modifierFlags == 0 && (
+            hotKey.keyCode == UInt(kVK_Delete) ||
+            hotKey.keyCode == UInt(kVK_ForwardDelete) ||
+            hotKey.keyCode == UInt(kVK_ANSI_KeypadClear)
+        )
     }
     
     func setHotKeyValue(hotKey:MASShortcut?) {
