@@ -34,11 +34,9 @@
 		D0D07D4E1AD291A400C3CC26 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D401AD291A400C3CC26 /* MASShortcut.m */; };
 		D0D07D501AD291A400C3CC26 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */; };
 		D0D07D511AD291A400C3CC26 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */; };
-		D0D07D531AD291A400C3CC26 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */; };
 		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
 		D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */; };
 		D0E7BF721A7838D400807AE9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF711A7838D400807AE9 /* Item.swift */; };
-		D0E8C00E1A84065E00F0C12C /* HotKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */; };
 		D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,12 +111,9 @@
 		D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutMonitor.m; sourceTree = "<group>"; };
 		D0D07D451AD291A400C3CC26 /* MASShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutValidator.h; sourceTree = "<group>"; };
 		D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutValidator.m; sourceTree = "<group>"; };
-		D0D07D491AD291A400C3CC26 /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
-		D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
 		D0D07D4B1AD291A400C3CC26 /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
 		D0E7BF6D1A78209000807AE9 /* HotKey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotKey.xcdatamodel; sourceTree = "<group>"; };
 		D0E7BF711A7838D400807AE9 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyCell.swift; sourceTree = "<group>"; };
 		D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +184,6 @@
 				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
 				D0E7BF711A7838D400807AE9 /* Item.swift */,
 				D0296A821A87D98700BBF677 /* IconTransformer.swift */,
-				D0E8C00D1A84065E00F0C12C /* HotKeyCell.swift */,
 				D04F9D0F1AB5EA85002076C9 /* PointingHandButton.swift */,
 				D05C02A91A361B20004413E2 /* Images.xcassets */,
 				D05C029F1A361B20004413E2 /* Supporting Files */,
@@ -253,8 +247,6 @@
 				D0D07D441AD291A400C3CC26 /* MASShortcutMonitor.m */,
 				D0D07D451AD291A400C3CC26 /* MASShortcutValidator.h */,
 				D0D07D461AD291A400C3CC26 /* MASShortcutValidator.m */,
-				D0D07D491AD291A400C3CC26 /* MASShortcutView.h */,
-				D0D07D4A1AD291A400C3CC26 /* MASShortcutView.m */,
 				D0D07D4B1AD291A400C3CC26 /* Shortcut.h */,
 			);
 			name = MASShortcut;
@@ -394,7 +386,6 @@
 				D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */,
 				D0E7BF701A78220400807AE9 /* PersistenceStack.swift in Sources */,
 				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,
-				D0E8C00E1A84065E00F0C12C /* HotKeyCell.swift in Sources */,
 				D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */,
 				D0E7BF721A7838D400807AE9 /* Item.swift in Sources */,
 				D0D07D4D1AD291A400C3CC26 /* MASHotKey.m in Sources */,
@@ -405,7 +396,6 @@
 				D0D07D501AD291A400C3CC26 /* MASShortcutMonitor.m in Sources */,
 				D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */,
 				D007B13C1A9CF685004FDA7D /* UserDefaults.swift in Sources */,
-				D0D07D531AD291A400C3CC26 /* MASShortcutView.m in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
 				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
 				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,
