@@ -10,11 +10,11 @@ import Cocoa
 
 class HotKeyConfiguration: NSObject, ConfigurationDelegate {
 
-    var monitor:MASShortcutMonitor
+    var monitor:HotKeyMonitor
     var starter:Starter
     
     init(_ starter:Starter) {
-        monitor = MASShortcutMonitor.sharedMonitor()
+        monitor = HotKeyMonitor.sharedInstance
         self.starter = starter
     }
     

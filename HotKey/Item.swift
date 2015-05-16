@@ -67,9 +67,9 @@ class Item: NSManagedObject {
         return workspace.localizedDescriptionForType(type!)!
     }
 
-    var hotKey:MASShortcut? {
+    var hotKey:Shortcut? {
         get {
-            let shortcut = MASShortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
+            let shortcut = Shortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
             return modifierFlags != 0 ? shortcut : nil
         }
         set {

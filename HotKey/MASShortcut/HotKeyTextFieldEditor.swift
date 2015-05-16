@@ -43,9 +43,9 @@ class HotKeyTextFieldEditor: NSTextView {
     }
     
     func processHotkeyEvent(event:NSEvent) -> NSEvent! {
-        let hotKey = MASShortcut(event: event)
+        let hotKey = Shortcut(keyCode: UInt(event.keyCode), modifierFlags: event.modifierFlags.rawValue)
         self.window!.makeFirstResponder(nil)
-        if MASShortcutValidator.sharedValidator().isShortcutValid(hotKey) {
+        if ShortcutValidator.sharedInstance.isShortcutValid(hotKey) {
            setHotKeyValue(hotKey)
         } else if isClearKey(hotKey) {
            setHotKeyValue(nil)
@@ -53,7 +53,7 @@ class HotKeyTextFieldEditor: NSTextView {
         return nil
     }
     
-    func isClearKey(hotKey:MASShortcut) -> Bool {
+    func isClearKey(hotKey:Shortcut) -> Bool {
         return hotKey.modifierFlags == 0 && (
             hotKey.keyCode == UInt(kVK_Delete) ||
             hotKey.keyCode == UInt(kVK_ForwardDelete) ||
@@ -61,7 +61,7 @@ class HotKeyTextFieldEditor: NSTextView {
         )
     }
     
-    func setHotKeyValue(hotKey:MASShortcut?) {
+    func setHotKeyValue(hotKey:Shortcut?) {
         let bindingInfo = hotKeyField?.infoForBinding("value") as! [String: AnyObject]
         if let key = bindingInfo[NSObservedKeyPathKey] as? String {
             if let object = bindingInfo[NSObservedObjectKey] as? NSTableCellView {

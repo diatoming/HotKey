@@ -4,5 +4,5 @@
 #import <Carbon/Carbon.h>
 
 #import <Cocoa/Cocoa.h>
-#import "Shortcut.h"
 
+#import "HotKeyCarbonEvent.h"
