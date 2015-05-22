@@ -6,4 +6,4 @@
 
 static OSStatus HotKeyCarbonEventCallback(EventHandlerCallRef _, EventRef event, void *context);
 
-EventHandlerUPP HotKeyCarbonEventCallback_ptr;
+EventHandlerUPP HotKeyCarbonEventCallbackPointer;

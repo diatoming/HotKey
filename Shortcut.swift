@@ -37,46 +37,46 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 
 		switch Int( self.keyCode ){
 			case kVK_F1:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF704 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF704 ) )
 			case kVK_F2:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF705 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF705 ) )
 			case kVK_F3:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF706 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF706 ) )
 			case kVK_F4:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF707 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF707 ) )
 			case kVK_F5:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF708 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF708 ) )
 			case kVK_F6:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF709 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF709 ) )
 			case kVK_F7:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70a ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70a ) )
 			case kVK_F8:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70b ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70b ) )
 			case kVK_F9:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70c ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70c ) )
 			case kVK_F10:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70d ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70d ) )
 			case kVK_F11:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70e ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70e ) )
 			case kVK_F12:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF70f ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF70f ) )
 			// From here I am guessing F13 etc come sequentially
 			case kVK_F13:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF710 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF710 ) )
 			case kVK_F14:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF711 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF711 ) )
 			case kVK_F15:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF712 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF712 ) )
 			case kVK_F16:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF713 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF713 ) )
 			case kVK_F17:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF714 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF714 ) )
 			case kVK_F18:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF715 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF715 ) )
 			case kVK_F19:
-				return NSStringFromKeyCode( CUnsignedShort( 0xF716 ) )
+				return StringFromKeyCode( CUnsignedShort( 0xF716 ) )
 			case kVK_Space:
-				return NSStringFromKeyCode( CUnsignedShort( 0x20 ) )
+				return StringFromKeyCode( CUnsignedShort( 0x20 ) )
 			default:
 				break
 		}
@@ -115,18 +115,18 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 				"Space",
 				comment: "Shortcut glyph name for SPACE key"
 			)
-			case kVK_Escape: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.Escape.rawValue ) )
-			case kVK_Delete: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteLeft.rawValue ) )
-			case kVK_ForwardDelete: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteRight.rawValue ) )
-			case kVK_LeftArrow: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.LeftArrow.rawValue ) )
-			case kVK_RightArrow: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.RightArrow.rawValue ) )
-			case kVK_UpArrow: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.UpArrow.rawValue ) )
-			case kVK_DownArrow: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.DownArrow.rawValue ) )
-			case kVK_Help: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.Help.rawValue ) )
-			case kVK_PageUp: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageUp.rawValue ) )
-			case kVK_PageDown: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageDown.rawValue ) )
-			case kVK_Tab: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.TabRight.rawValue ) )
-			case kVK_Return: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.ReturnR2L.rawValue ) )
+			case kVK_Escape: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Escape.rawValue ) )
+			case kVK_Delete: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteLeft.rawValue ) )
+			case kVK_ForwardDelete: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteRight.rawValue ) )
+			case kVK_LeftArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.LeftArrow.rawValue ) )
+			case kVK_RightArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.RightArrow.rawValue ) )
+			case kVK_UpArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.UpArrow.rawValue ) )
+			case kVK_DownArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DownArrow.rawValue ) )
+			case kVK_Help: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Help.rawValue ) )
+			case kVK_PageUp: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageUp.rawValue ) )
+			case kVK_PageDown: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageDown.rawValue ) )
+			case kVK_Tab: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.TabRight.rawValue ) )
+			case kVK_Return: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.ReturnR2L.rawValue ) )
 				
 				// Keypad
 			case kVK_ANSI_Keypad0: return "0"
@@ -142,15 +142,15 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 			case kVK_ANSI_KeypadDecimal: return "."
 			case kVK_ANSI_KeypadMultiply: return "*"
 			case kVK_ANSI_KeypadPlus: return "+"
-			case kVK_ANSI_KeypadClear: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.PadClear.rawValue ) )
+			case kVK_ANSI_KeypadClear: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PadClear.rawValue ) )
 			case kVK_ANSI_KeypadDivide: return "/"
-			case kVK_ANSI_KeypadEnter: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.Return.rawValue ) )
+			case kVK_ANSI_KeypadEnter: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Return.rawValue ) )
 			case kVK_ANSI_KeypadMinus: return "–"
 			case kVK_ANSI_KeypadEquals: return "="
 				
 				// Hardcode
-			case 119: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.SoutheastArrow.rawValue ) )
-			case 115: return NSStringFromKeyCode( CUnsignedShort( kShortcutGlyph.NorthwestArrow.rawValue ) )
+			case 119: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.SoutheastArrow.rawValue ) )
+			case 115: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.NorthwestArrow.rawValue ) )
 			default: break
 			
 		}
