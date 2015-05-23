@@ -13,9 +13,10 @@ class HotKey {
     
     var carbonID:UInt32 = 0
     
-    var action:dispatch_block_t!
+    var action:() -> ()
     
-    init(shortcut:Shortcut) {
+    init(shortcut:Shortcut, action:() -> ()) {
+        self.action = action
         struct CarbonHotKeyID { static var memory:UInt32 = 0 }
         self.carbonID = ++CarbonHotKeyID.memory
         let hotKeyID = EventHotKeyID(signature:HotKey.signature, id:self.carbonID)
@@ -27,13 +28,9 @@ class HotKey {
     deinit {
         let hotKeyRef = hotKeyRefPointer.memory
         if hotKeyRef != nil {
-            RemoveEventHandler(hotKeyRef)
+            UnregisterEventHotKey(hotKeyRef)
             self.hotKeyRefPointer.dealloc(1)
         }
-    }
-    
-    class func registeredHotKeyWithShortcut(shortcut: Shortcut! ) -> HotKey {
-        return HotKey(shortcut:shortcut)
     }
     
 }

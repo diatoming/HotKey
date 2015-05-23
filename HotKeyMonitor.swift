@@ -19,7 +19,7 @@ class HotKeyMonitor:NSObject {
         hotKeyPressedSpecPointer.initialize(EventTypeSpec(
             eventClass: OSType(kEventClassKeyboard),
             eventKind:  UInt32(kEventHotKeyPressed)
-            ))
+        ))
         let status = InstallEventHandler(GetEventDispatcherTarget(), HotKeyCarbonEventCallbackPointer,
             1, hotKeyPressedSpecPointer, nil, self.eventHandlerRefPointer)
         assert( status == noErr, "Could not create HotKeyMonitor" )
@@ -33,14 +33,9 @@ class HotKeyMonitor:NSObject {
         }
     }
     
-    func registerShortcut( shortcut: Shortcut!, withAction action: dispatch_block_t! ) -> Bool {
-        let hotKey:HotKey! = HotKey.registeredHotKeyWithShortcut(shortcut)
-        if hotKey == nil {
-            return false
-        }
-        hotKey.action = action
+    func registerShortcut(shortcut:Shortcut, withAction action:() -> ()) {
+        let hotKey = HotKey(shortcut:shortcut, action:action)
         self.hotKeys[shortcut] = hotKey
-        return true
     }
     
     func unregisterShortcut(shortcut: Shortcut!){
@@ -68,10 +63,10 @@ class HotKeyMonitor:NSObject {
             return
         }
         for (shortCut, hotKey) in self.hotKeys {
-            if hotKeyID.id == hotKey.carbonID && hotKey.action != nil {
-                dispatch_async( dispatch_get_main_queue(), {
+            if hotKeyID.id == hotKey.carbonID {
+                dispatch_async(dispatch_get_main_queue()) {
                     hotKey.action()
-                })
+                }
             break
             }
         }

@@ -25,7 +25,7 @@ class HotKeyConfiguration: NSObject, ConfigurationDelegate {
     func doInsert(item:Item) {
         if item.enabled {
             if let key = item.hotKey {
-                monitor.registerShortcut(item.hotKey) {
+                monitor.registerShortcut(key) {
                     self.starter.startApp(item)
                 }
             }
