@@ -1,17 +1,19 @@
 //
 //  Shortcut.swift
+//  HotKey
+//
+//  Created by Peter Vorwieger on 23.05.15.
+//  Copyright (c) 2015 Peter Vorwieger. All rights reserved.
 //
 
 let ShortcutKeyCode = "KeyCode"
 let ShortcutModifierFlags = "ModifierFlags"
 
-func contains_flag(container:UInt, flag:NSEventModifierFlags) -> Bool {
-	let cont = Int(container)
-	let f = Int(flag.rawValue)
-	return cont & f == f
+func ==(lhs: Shortcut, rhs: Shortcut) -> Bool {
+    return lhs.keyCode == rhs.keyCode && lhs.modifierFlags == rhs.modifierFlags
 }
 
-class Shortcut: NSObject, NSSecureCoding, NSCopying {
+class Shortcut: NSObject, Hashable, Printable {
 
     var keyCode:UInt!
 
@@ -25,72 +27,38 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 		return CarbonModifiersFromCocoaModifiers(self.modifierFlags)
 	}
 
-	override var description:String {
+    override var description:String {
 		return "\(self.modifierFlagsString)\(self.keyCodeString)"
 	}
 	
 	var keyCodeStringForKeyEquivalent:String {
-		let keyCodeString = self.keyCodeString
-		if ( keyCodeString.length <= 1 ) {
-			return keyCodeString.lowercaseString
+		switch Int(self.keyCode) {
+			case kVK_F1: return StringFromKeyCode(0xF704)
+			case kVK_F2: return StringFromKeyCode(0xF705)
+			case kVK_F3: return StringFromKeyCode(0xF706)
+			case kVK_F4: return StringFromKeyCode(0xF707)
+			case kVK_F5: return StringFromKeyCode(0xF708)
+			case kVK_F6: return StringFromKeyCode(0xF709)
+			case kVK_F7: return StringFromKeyCode(0xF70a)
+			case kVK_F8: return StringFromKeyCode(0xF70b)
+			case kVK_F9: return StringFromKeyCode(0xF70c)
+			case kVK_F10: return StringFromKeyCode(0xF70d)
+			case kVK_F11: return StringFromKeyCode(0xF70e)
+			case kVK_F12: return StringFromKeyCode(0xF70f)
+			case kVK_F13: return StringFromKeyCode(0xF710)
+			case kVK_F14: return StringFromKeyCode(0xF711)
+			case kVK_F15: return StringFromKeyCode(0xF712)
+			case kVK_F16: return StringFromKeyCode(0xF713)
+			case kVK_F17: return StringFromKeyCode(0xF714)
+			case kVK_F18: return StringFromKeyCode(0xF715)
+			case kVK_F19: return StringFromKeyCode(0xF716)
+			case kVK_Space: return StringFromKeyCode(0x20)
+			default: return self.keyCodeString.lowercaseString
 		}
-
-		switch Int( self.keyCode ){
-			case kVK_F1:
-				return StringFromKeyCode( CUnsignedShort( 0xF704 ) )
-			case kVK_F2:
-				return StringFromKeyCode( CUnsignedShort( 0xF705 ) )
-			case kVK_F3:
-				return StringFromKeyCode( CUnsignedShort( 0xF706 ) )
-			case kVK_F4:
-				return StringFromKeyCode( CUnsignedShort( 0xF707 ) )
-			case kVK_F5:
-				return StringFromKeyCode( CUnsignedShort( 0xF708 ) )
-			case kVK_F6:
-				return StringFromKeyCode( CUnsignedShort( 0xF709 ) )
-			case kVK_F7:
-				return StringFromKeyCode( CUnsignedShort( 0xF70a ) )
-			case kVK_F8:
-				return StringFromKeyCode( CUnsignedShort( 0xF70b ) )
-			case kVK_F9:
-				return StringFromKeyCode( CUnsignedShort( 0xF70c ) )
-			case kVK_F10:
-				return StringFromKeyCode( CUnsignedShort( 0xF70d ) )
-			case kVK_F11:
-				return StringFromKeyCode( CUnsignedShort( 0xF70e ) )
-			case kVK_F12:
-				return StringFromKeyCode( CUnsignedShort( 0xF70f ) )
-			// From here I am guessing F13 etc come sequentially
-			case kVK_F13:
-				return StringFromKeyCode( CUnsignedShort( 0xF710 ) )
-			case kVK_F14:
-				return StringFromKeyCode( CUnsignedShort( 0xF711 ) )
-			case kVK_F15:
-				return StringFromKeyCode( CUnsignedShort( 0xF712 ) )
-			case kVK_F16:
-				return StringFromKeyCode( CUnsignedShort( 0xF713 ) )
-			case kVK_F17:
-				return StringFromKeyCode( CUnsignedShort( 0xF714 ) )
-			case kVK_F18:
-				return StringFromKeyCode( CUnsignedShort( 0xF715 ) )
-			case kVK_F19:
-				return StringFromKeyCode( CUnsignedShort( 0xF716 ) )
-			case kVK_Space:
-				return StringFromKeyCode( CUnsignedShort( 0x20 ) )
-			default:
-				break
-		}
-		return ""
 	}
-	
-	typealias UniCharCount = CUnsignedLong
-	
-    var keyCodeString:NSString {
 
-		// Some key codes don't have an equivalent
-		
-		switch Int( self.keyCode ) {
-			
+    var keyCodeString:String {
+		switch Int(self.keyCode) {
 			case NSNotFound: return ""
 			case kVK_F1: return "F1"
 			case kVK_F2: return "F2"
@@ -111,24 +79,19 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 			case kVK_F17: return "F17"
 			case kVK_F18: return "F18"
 			case kVK_F19: return "F19"
-			case kVK_Space: return NSLocalizedString(
-				"Space",
-				comment: "Shortcut glyph name for SPACE key"
-			)
-			case kVK_Escape: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Escape.rawValue ) )
-			case kVK_Delete: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteLeft.rawValue ) )
-			case kVK_ForwardDelete: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DeleteRight.rawValue ) )
-			case kVK_LeftArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.LeftArrow.rawValue ) )
-			case kVK_RightArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.RightArrow.rawValue ) )
-			case kVK_UpArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.UpArrow.rawValue ) )
-			case kVK_DownArrow: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.DownArrow.rawValue ) )
-			case kVK_Help: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Help.rawValue ) )
-			case kVK_PageUp: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageUp.rawValue ) )
-			case kVK_PageDown: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PageDown.rawValue ) )
-			case kVK_Tab: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.TabRight.rawValue ) )
-			case kVK_Return: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.ReturnR2L.rawValue ) )
-				
-				// Keypad
+			case kVK_Space: return NSLocalizedString("Space", comment: "Shortcut name for SPACE key")
+			case kVK_Escape: return StringFromKeyCode(0x238B)
+			case kVK_Delete: return StringFromKeyCode(0x232B)
+			case kVK_ForwardDelete: return StringFromKeyCode(0x2326)
+			case kVK_LeftArrow: return StringFromKeyCode(0x2190)
+			case kVK_RightArrow: return StringFromKeyCode(0x2192)
+			case kVK_UpArrow: return StringFromKeyCode(0x2191)
+			case kVK_DownArrow: return StringFromKeyCode(0x2193)
+			case kVK_Help: return StringFromKeyCode(0x003F)
+			case kVK_PageUp: return StringFromKeyCode(0x21DE)
+			case kVK_PageDown: return StringFromKeyCode(0x21DF)
+			case kVK_Tab: return StringFromKeyCode(0x21E5)
+			case kVK_Return: return StringFromKeyCode(0x21A9)
 			case kVK_ANSI_Keypad0: return "0"
 			case kVK_ANSI_Keypad1: return "1"
 			case kVK_ANSI_Keypad2: return "2"
@@ -142,21 +105,17 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 			case kVK_ANSI_KeypadDecimal: return "."
 			case kVK_ANSI_KeypadMultiply: return "*"
 			case kVK_ANSI_KeypadPlus: return "+"
-			case kVK_ANSI_KeypadClear: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.PadClear.rawValue ) )
+			case kVK_ANSI_KeypadClear: return StringFromKeyCode(0x2327)
 			case kVK_ANSI_KeypadDivide: return "/"
-			case kVK_ANSI_KeypadEnter: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.Return.rawValue ) )
+			case kVK_ANSI_KeypadEnter: return StringFromKeyCode(0x2305)
 			case kVK_ANSI_KeypadMinus: return "–"
 			case kVK_ANSI_KeypadEquals: return "="
-				
-				// Hardcode
-			case 119: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.SoutheastArrow.rawValue ) )
-			case 115: return StringFromKeyCode( CUnsignedShort( kShortcutGlyph.NorthwestArrow.rawValue ) )
+            case 119: return StringFromKeyCode(0x2198) // SoutheastArrow
+			case 115: return StringFromKeyCode(0x2196) // NorthwestArrow
 			default: break
-			
 		}
 		
 		// Everything else should be printable so look it up in the current ASCII capable keyboard layout
-
 		var maybe_keystroke:NSString? = keycode_to_str( UInt16( self.keyCode ) )
 		
 		if !( maybe_keystroke?.length > 0 ) {
@@ -164,35 +123,24 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 		}
 		
 		// Validate keystroke
-		
 		var keystroke = maybe_keystroke!
-		
 		for i in 0 ..< keystroke.length {
-			
 			let char = keystroke.characterAtIndex(i)
 			let char_is_valid = Shortcut.valid_chars.characterIsMember( char )
 			if !char_is_valid {
 				return ""
 			}
-			
 		}
 
-		// Finally, we've got a shortcut!
-		
 		return keystroke.uppercaseString;
-		
 	}
 	
 	class var valid_chars:NSCharacterSet {
-		
 		var chars = NSMutableCharacterSet()
-
 		chars.formUnionWithCharacterSet( NSCharacterSet.alphanumericCharacterSet() )
 		chars.formUnionWithCharacterSet( NSCharacterSet.punctuationCharacterSet() )
 		chars.formUnionWithCharacterSet( NSCharacterSet.symbolCharacterSet() )
-
 		return chars
-		
 	}
 
 	func keycode_to_str( keyCode:UInt16 ) -> NSString? {
@@ -248,86 +196,36 @@ class Shortcut: NSObject, NSSecureCoding, NSCopying {
 	
 	var modifierFlagsString:String {
 		var chars = ""
-		if contains_flag( self.modifierFlags, NSEventModifierFlags.ControlKeyMask ){
-			chars += String(UnicodeScalar( kControlUnicode ))
+        if self.modifierFlags & NSEventModifierFlags.ControlKeyMask.rawValue != 0 {
+			chars += String(UnicodeScalar(kControlUnicode))
 		}
-		if contains_flag( self.modifierFlags, NSEventModifierFlags.AlternateKeyMask ){
-			chars += String(UnicodeScalar( kOptionUnicode ))
+        if self.modifierFlags & NSEventModifierFlags.AlternateKeyMask.rawValue != 0 {
+			chars += String(UnicodeScalar(kOptionUnicode))
 		}
-		if contains_flag( self.modifierFlags, NSEventModifierFlags.ShiftKeyMask ){
-			chars += String(UnicodeScalar( kShiftUnicode ))
+        if self.modifierFlags & NSEventModifierFlags.ShiftKeyMask.rawValue != 0 {
+			chars += String(UnicodeScalar(kShiftUnicode))
 		}
-		if contains_flag( self.modifierFlags, NSEventModifierFlags.CommandKeyMask ){
-			chars += String(UnicodeScalar( kCommandUnicode ))
+        if self.modifierFlags & NSEventModifierFlags.CommandKeyMask.rawValue != 0 {
+			chars += String(UnicodeScalar(kCommandUnicode))
 		}
 		return chars
 	}
 	
+    func StringFromKeyCode(ch: UInt16) -> String {
+        return NSString( format:"%C", ch ) as String
+    }
+    
 	init(keyCode code:UInt, modifierFlags flags:UInt) {
 		self.keyCode = code
 		self.modifierFlags = PickCocoaModifiers( flags )
 	}
-	
-	class func shortcutWithKeyCode(code:UInt, modifierFlags flags:UInt) -> Shortcut {
-		return Shortcut(keyCode:code, modifierFlags:flags)
-	}
+    
+    override var hashValue:Int {
+        return Int( self.keyCode + self.modifierFlags )
+    }
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        return Shortcut(keyCode:self.keyCode, modifierFlags:self.modifierFlags)
+    }
 
-	class func shortcutWithEvent(event:NSEvent) -> Shortcut {
-		return Shortcut(
-			keyCode: UInt( event.keyCode ),
-			modifierFlags:event.modifierFlags.rawValue as UInt
-		)
-	}
-
-	func encodeWithCoder(coder: NSCoder) {
-		
-		coder.encodeInteger(
-			self.keyCode != UInt( NSNotFound )
-			? Int( self.keyCode )
-			: -1,
-			forKey: ShortcutKeyCode
-		)
-		coder.encodeInteger(
-			Int( self.modifierFlags ),
-			forKey: ShortcutModifierFlags
-		)
-		
-	}
-
-	override func isEqual( object: AnyObject? ) -> Bool {
-		if let shortcut = object as? Shortcut {
-			return shortcut.keyCode == self.keyCode
-			&& shortcut.modifierFlags == self.modifierFlags
-		}
-		return false
-	}
-	
-	override var hash:Int {
-		return Int( self.keyCode + self.modifierFlags )
-	}
-	
-	required init(coder decoder: NSCoder) {
-		
-		let code = decoder.decodeIntegerForKey(ShortcutKeyCode )
-		self.keyCode
-			= code < 0
-			? UInt( NSNotFound )
-			: UInt( code )
-		self.modifierFlags = UInt( decoder.decodeIntegerForKey( ShortcutModifierFlags ) )
-		
-	}
-	
-	static func supportsSecureCoding() -> Bool {
-		return true
-	}
-	
-	func copyWithZone( zone: NSZone ) -> AnyObject {
-		
-		return Shortcut.shortcutWithKeyCode(
-			self.keyCode,
-			modifierFlags: self.modifierFlags
-		)
-
-	}
-	
 }

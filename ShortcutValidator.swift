@@ -1,10 +1,10 @@
 //
 //  ShortcutValidator.swift
+//  HotKey
 //
-
-import Foundation
-import Carbon
-
+//  Created by Peter Vorwieger on 23.05.15.
+//  Copyright (c) 2015 Peter Vorwieger. All rights reserved.
+//
 
 // The following API enable hotkeys with the Option key as the only modifier
 // For example, Option-G will not generate © and Option-R will not paste ®
@@ -80,7 +80,7 @@ class ShortcutValidator: NSObject {
 
 	}
 		
-	@objc func isShortcut(
+	func isShortcut(
 		shortcut: Shortcut!,
 		alreadyTakenInMenu menu: NSMenu!,
 		explanation: AutoreleasingUnsafeMutablePointer<NSString?>
@@ -124,7 +124,7 @@ class ShortcutValidator: NSObject {
 	
 	}
 
-	@objc func isShortcutAlreadyTakenBySystem(
+	func isShortcutAlreadyTakenBySystem(
 		shortcut: Shortcut!,
 		explanation: AutoreleasingUnsafeMutablePointer<NSString?>
 	) -> Bool {

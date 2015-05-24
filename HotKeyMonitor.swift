@@ -1,9 +1,10 @@
 //
 //  HotKeyMonitor.swift
+//  HotKey
 //
-
-import Foundation
-import Carbon
+//  Created by Peter Vorwieger on 23.05.15.
+//  Copyright (c) 2015 Peter Vorwieger. All rights reserved.
+//
 
 class HotKeyMonitor:NSObject {
     
@@ -38,17 +39,15 @@ class HotKeyMonitor:NSObject {
         self.hotKeys[shortcut] = hotKey
     }
     
-    func unregisterShortcut(shortcut: Shortcut!){
-        if shortcut != nil {
-            self.hotKeys.removeValueForKey(shortcut)
-        }
+    func unregisterShortcut(shortcut: Shortcut){
+        self.hotKeys.removeValueForKey(shortcut)
     }
     
     func unregisterAllShortcuts() {
         self.hotKeys.removeAll(keepCapacity: false)
     }
     
-    func isShortcutRegistered(shortcut: Shortcut!) -> Bool {
+    func isShortcutRegistered(shortcut: Shortcut) -> Bool {
         return self.hotKeys[shortcut] != nil
     }
     
