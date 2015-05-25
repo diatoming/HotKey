@@ -80,50 +80,6 @@ class ShortcutValidator: NSObject {
 
 	}
 		
-	func isShortcut(
-		shortcut: Shortcut!,
-		alreadyTakenInMenu menu: NSMenu!,
-		explanation: AutoreleasingUnsafeMutablePointer<NSString?>
-	) -> Bool {
-	
-		let keyEquivalent = shortcut.keyCodeStringForKeyEquivalent
-		let flags = shortcut.modifierFlags
-		
-		for menuItem in menu.itemArray as! [NSMenuItem] {
-			
-			if menuItem.hasSubmenu && self.isShortcut(
-				shortcut,
-				alreadyTakenInMenu:menuItem.submenu,
-				explanation: explanation
-			) {
-				return true
-			}
-
-			var equalFlags = PickCocoaModifiers( UInt(menuItem.keyEquivalentModifierMask) ) == flags
-			var equalHotkeyLowercase = menuItem.keyEquivalent.lowercaseString == keyEquivalent
-
-			// Check if the cases are different, we know ours is lower and that shift is included in our modifiers
-			// If theirs is capitol, we need to add shift to their modifiers
-			if equalHotkeyLowercase && menuItem.keyEquivalent != keyEquivalent {
-				equalFlags = PickCocoaModifiers(
-					UInt( menuItem.keyEquivalentModifierMask ) | NSEventModifierFlags.ShiftKeyMask.rawValue
-				) == flags
-			}
-			if equalFlags && equalHotkeyLowercase {
-				if let explanation_str = explanation.memory {
-					explanation.memory = NSLocalizedString(
-						"This shortcut cannot be used because it is already used by the menu item ‘\(menuItem.title)’.",
-						comment: "Message for alert when shortcut is already used"
-					)
-					
-				}
-				return true
-			}
-		}
-		return false
-	
-	}
-
 	func isShortcutAlreadyTakenBySystem(
 		shortcut: Shortcut!,
 		explanation: AutoreleasingUnsafeMutablePointer<NSString?>
@@ -187,11 +143,7 @@ class ShortcutValidator: NSObject {
 		
 		globalHotKeys_ptr.dealloc(1)
 		
-		return self.isShortcut(
-			shortcut,
-			alreadyTakenInMenu: NSApp.mainMenu,
-			explanation: explanation
-		)
+		return false
 		
 	}
 		

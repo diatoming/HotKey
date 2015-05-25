@@ -12,7 +12,6 @@
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
 		D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */; };
-		D04D2B7A1B027F4400BDCE81 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B771B027F4400BDCE81 /* KeyCodes.swift */; };
 		D04D2B7B1B027F4400BDCE81 /* ShortcutValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */; };
 		D04D2B7C1B027F4400BDCE81 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B791B027F4400BDCE81 /* Shortcut.swift */; };
 		D04D2B811B027F6100BDCE81 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B7D1B027F6100BDCE81 /* HotKey.swift */; };
@@ -79,7 +78,6 @@
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDelegate.swift; sourceTree = "<group>"; };
 		D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConfiguration.swift; sourceTree = "<group>"; };
-		D04D2B771B027F4400BDCE81 /* KeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
 		D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutValidator.swift; sourceTree = "<group>"; };
 		D04D2B791B027F4400BDCE81 /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		D04D2B7D1B027F6100BDCE81 /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		D04D2B731B027E3A00BDCE81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D04D2B771B027F4400BDCE81 /* KeyCodes.swift */,
 				D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */,
 				D04D2B791B027F4400BDCE81 /* Shortcut.swift */,
 			);
@@ -388,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D04D2B7A1B027F4400BDCE81 /* KeyCodes.swift in Sources */,
 				D04D2B7C1B027F4400BDCE81 /* Shortcut.swift in Sources */,
 				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
 				D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */,
