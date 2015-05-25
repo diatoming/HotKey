@@ -43,11 +43,11 @@ class HotKeyTextFieldEditor: NSTextView {
     }
     
     func processHotkeyEvent(event:NSEvent) -> NSEvent! {
-        let hotKey = Shortcut(keyCode: UInt(event.keyCode), modifierFlags: event.modifierFlags.rawValue)
+        let shortcut = Shortcut(keyCode: UInt(event.keyCode), modifierFlags: event.modifierFlags.rawValue)
         self.window!.makeFirstResponder(nil)
-        if ShortcutValidator.sharedInstance.isShortcutValid(hotKey) {
-           setHotKeyValue(hotKey)
-        } else if isClearKey(hotKey) {
+        if shortcut.isValid() {
+           setHotKeyValue(shortcut)
+        } else if isClearKey(shortcut) {
            setHotKeyValue(nil)
         }
         return nil

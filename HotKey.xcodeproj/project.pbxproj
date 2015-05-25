@@ -12,7 +12,6 @@
 		D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */; };
 		D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */; };
 		D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */; };
-		D04D2B7B1B027F4400BDCE81 /* ShortcutValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */; };
 		D04D2B7C1B027F4400BDCE81 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B791B027F4400BDCE81 /* Shortcut.swift */; };
 		D04D2B811B027F6100BDCE81 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B7D1B027F6100BDCE81 /* HotKey.swift */; };
 		D04D2B821B027F6100BDCE81 /* HotKeyCarbonEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D2B7F1B027F6100BDCE81 /* HotKeyCarbonEvent.m */; };
@@ -78,7 +77,6 @@
 		D0318DCD1A46DF9C00BAEE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HotKey/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D044D6471A7AACE5007CE8FE /* ConfigurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDelegate.swift; sourceTree = "<group>"; };
 		D044D6491A7AAD63007CE8FE /* MenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConfiguration.swift; sourceTree = "<group>"; };
-		D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutValidator.swift; sourceTree = "<group>"; };
 		D04D2B791B027F4400BDCE81 /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		D04D2B7D1B027F6100BDCE81 /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		D04D2B7E1B027F6100BDCE81 /* HotKeyCarbonEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotKeyCarbonEvent.h; sourceTree = "<group>"; };
@@ -135,18 +133,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D04D2B731B027E3A00BDCE81 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D04D2B781B027F4400BDCE81 /* ShortcutValidator.swift */,
-				D04D2B791B027F4400BDCE81 /* Shortcut.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		D04D2B751B027E4D00BDCE81 /* Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				D04D2B791B027F4400BDCE81 /* Shortcut.swift */,
 				D04D2B7D1B027F6100BDCE81 /* HotKey.swift */,
 				D04D2B7E1B027F6100BDCE81 /* HotKeyCarbonEvent.h */,
 				D04D2B7F1B027F6100BDCE81 /* HotKeyCarbonEvent.m */,
@@ -169,7 +159,6 @@
 			children = (
 				D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */,
 				D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */,
-				D04D2B731B027E3A00BDCE81 /* Model */,
 				D04D2B751B027E4D00BDCE81 /* Monitor */,
 				D04D2B761B027E7100BDCE81 /* UI */,
 				D05C029E1A361B20004413E2 /* HotKey */,
@@ -402,7 +391,6 @@
 				D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */,
 				D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */,
 				D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */,
-				D04D2B7B1B027F4400BDCE81 /* ShortcutValidator.swift in Sources */,
 				D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */,
 				D007B13C1A9CF685004FDA7D /* UserDefaults.swift in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,

@@ -165,5 +165,47 @@ class Shortcut: NSObject, Hashable, Printable {
 		}
 		return chars
 	}
+    
+    func isValid() -> Bool {
+        let keyCode = Int(self.keyCode)
+        if keyCode == kVK_F1 || keyCode == kVK_F2 || keyCode == kVK_F3 || keyCode == kVK_F4
+            || keyCode == kVK_F5 || keyCode == kVK_F6 || keyCode == kVK_F7 || keyCode == kVK_F8
+            || keyCode == kVK_F9 || keyCode == kVK_F10 || keyCode == kVK_F11 || keyCode == kVK_F12
+            || keyCode == kVK_F13 || keyCode == kVK_F14 || keyCode == kVK_F15 || keyCode == kVK_F16
+            || keyCode == kVK_F17 || keyCode == kVK_F18 || keyCode == kVK_F19 || keyCode == kVK_F20 {
+                return true
+        }
+        if self.modifierFlags & NSEventModifierFlags.CommandKeyMask.rawValue > 0 {
+            return true
+        } else if self.modifierFlags & NSEventModifierFlags.ControlKeyMask.rawValue > 0 {
+            return true
+        } else if self.modifierFlags & NSEventModifierFlags.AlternateKeyMask.rawValue > 0 {
+            return keyCode == kVK_Space || keyCode == kVK_Escape
+        }
+        return false
+    }
+    
+    func isSystemShortut() -> Bool {
+        var globalHotKeysPointer = UnsafeMutablePointer<Unmanaged<CFArray>?>.alloc(1)
+        if CopySymbolicHotKeys(globalHotKeysPointer) == noErr {
+            let globalHotKeys = unsafeBitCast(globalHotKeysPointer.memory!, CFArray.self)
+            for var i = CFIndex(0), count=CFArrayGetCount(globalHotKeys); i < count; i++ {
+                let hotKeyInfo = unsafeBitCast(CFArrayGetValueAtIndex(globalHotKeys, i), NSDictionary.self)
+                let cf_code = hotKeyInfo.objectForKey(kHISymbolicHotKeyCode)! as! NSNumber
+                let cf_flags = hotKeyInfo.objectForKey(kHISymbolicHotKeyModifiers)! as! NSNumber
+                let cf_enabled = hotKeyInfo.objectForKey(kHISymbolicHotKeyEnabled)! as! NSNumber
+                
+                let code = (cf_code as NSNumber).unsignedIntegerValue
+                let flags = (cf_flags as NSNumber).unsignedIntegerValue
+                let enabled = (cf_enabled as NSNumber).boolValue
+                
+                if code == Int(self.keyCode) && flags == Int(self.carbonFlags) && enabled {
+                    return true
+                }
+            }
+        }
+        globalHotKeysPointer.dealloc(1)
+        return false
+    }
 
 }
