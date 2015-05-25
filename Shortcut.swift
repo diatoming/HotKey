@@ -33,26 +33,26 @@ class Shortcut: NSObject, Hashable, Printable {
 	
 	var keyCodeStringForKeyEquivalent:String {
 		switch Int(self.keyCode) {
-			case kVK_F1: return StringFromKeyCode(0xF704)
-			case kVK_F2: return StringFromKeyCode(0xF705)
-			case kVK_F3: return StringFromKeyCode(0xF706)
-			case kVK_F4: return StringFromKeyCode(0xF707)
-			case kVK_F5: return StringFromKeyCode(0xF708)
-			case kVK_F6: return StringFromKeyCode(0xF709)
-			case kVK_F7: return StringFromKeyCode(0xF70a)
-			case kVK_F8: return StringFromKeyCode(0xF70b)
-			case kVK_F9: return StringFromKeyCode(0xF70c)
-			case kVK_F10: return StringFromKeyCode(0xF70d)
-			case kVK_F11: return StringFromKeyCode(0xF70e)
-			case kVK_F12: return StringFromKeyCode(0xF70f)
-			case kVK_F13: return StringFromKeyCode(0xF710)
-			case kVK_F14: return StringFromKeyCode(0xF711)
-			case kVK_F15: return StringFromKeyCode(0xF712)
-			case kVK_F16: return StringFromKeyCode(0xF713)
-			case kVK_F17: return StringFromKeyCode(0xF714)
-			case kVK_F18: return StringFromKeyCode(0xF715)
-			case kVK_F19: return StringFromKeyCode(0xF716)
-			case kVK_Space: return StringFromKeyCode(0x20)
+			case kVK_F1: return  String(UnicodeScalar(0xF704))
+			case kVK_F2: return  String(UnicodeScalar(0xF705))
+			case kVK_F3: return  String(UnicodeScalar(0xF706))
+			case kVK_F4: return  String(UnicodeScalar(0xF707))
+			case kVK_F5: return  String(UnicodeScalar(0xF708))
+			case kVK_F6: return  String(UnicodeScalar(0xF709))
+			case kVK_F7: return  String(UnicodeScalar(0xF70a))
+			case kVK_F8: return  String(UnicodeScalar(0xF70b))
+			case kVK_F9: return  String(UnicodeScalar(0xF70c))
+			case kVK_F10: return  String(UnicodeScalar(0xF70d))
+			case kVK_F11: return  String(UnicodeScalar(0xF70e))
+			case kVK_F12: return  String(UnicodeScalar(0xF70f))
+			case kVK_F13: return  String(UnicodeScalar(0xF710))
+			case kVK_F14: return  String(UnicodeScalar(0xF711))
+			case kVK_F15: return  String(UnicodeScalar(0xF712))
+			case kVK_F16: return  String(UnicodeScalar(0xF713))
+			case kVK_F17: return  String(UnicodeScalar(0xF714))
+			case kVK_F18: return  String(UnicodeScalar(0xF715))
+			case kVK_F19: return  String(UnicodeScalar(0xF716))
+			case kVK_Space: return  String(UnicodeScalar(0x20))
 			default: return self.keyCodeString.lowercaseString
 		}
 	}
@@ -80,18 +80,18 @@ class Shortcut: NSObject, Hashable, Printable {
 			case kVK_F18: return "F18"
 			case kVK_F19: return "F19"
 			case kVK_Space: return NSLocalizedString("Space", comment: "Shortcut name for SPACE key")
-			case kVK_Escape: return StringFromKeyCode(0x238B)
-			case kVK_Delete: return StringFromKeyCode(0x232B)
-			case kVK_ForwardDelete: return StringFromKeyCode(0x2326)
-			case kVK_LeftArrow: return StringFromKeyCode(0x2190)
-			case kVK_RightArrow: return StringFromKeyCode(0x2192)
-			case kVK_UpArrow: return StringFromKeyCode(0x2191)
-			case kVK_DownArrow: return StringFromKeyCode(0x2193)
-			case kVK_Help: return StringFromKeyCode(0x003F)
-			case kVK_PageUp: return StringFromKeyCode(0x21DE)
-			case kVK_PageDown: return StringFromKeyCode(0x21DF)
-			case kVK_Tab: return StringFromKeyCode(0x21E5)
-			case kVK_Return: return StringFromKeyCode(0x21A9)
+			case kVK_Escape: return  String(UnicodeScalar(0x238B))
+			case kVK_Delete: return  String(UnicodeScalar(0x232B))
+			case kVK_ForwardDelete: return  String(UnicodeScalar(0x2326))
+			case kVK_LeftArrow: return  String(UnicodeScalar(0x2190))
+			case kVK_RightArrow: return  String(UnicodeScalar(0x2192))
+			case kVK_UpArrow: return  String(UnicodeScalar(0x2191))
+			case kVK_DownArrow: return  String(UnicodeScalar(0x2193))
+			case kVK_Help: return  String(UnicodeScalar(0x003F))
+			case kVK_PageUp: return  String(UnicodeScalar(0x21DE))
+			case kVK_PageDown: return  String(UnicodeScalar(0x21DF))
+			case kVK_Tab: return  String(UnicodeScalar(0x21E5))
+			case kVK_Return: return  String(UnicodeScalar(0x21A9))
 			case kVK_ANSI_Keypad0: return "0"
 			case kVK_ANSI_Keypad1: return "1"
 			case kVK_ANSI_Keypad2: return "2"
@@ -105,13 +105,13 @@ class Shortcut: NSObject, Hashable, Printable {
 			case kVK_ANSI_KeypadDecimal: return "."
 			case kVK_ANSI_KeypadMultiply: return "*"
 			case kVK_ANSI_KeypadPlus: return "+"
-			case kVK_ANSI_KeypadClear: return StringFromKeyCode(0x2327)
+			case kVK_ANSI_KeypadClear: return  String(UnicodeScalar(0x2327))
 			case kVK_ANSI_KeypadDivide: return "/"
-			case kVK_ANSI_KeypadEnter: return StringFromKeyCode(0x2305)
+			case kVK_ANSI_KeypadEnter: return  String(UnicodeScalar(0x2305))
 			case kVK_ANSI_KeypadMinus: return "–"
 			case kVK_ANSI_KeypadEquals: return "="
-            case 119: return StringFromKeyCode(0x2198) // SoutheastArrow
-			case 115: return StringFromKeyCode(0x2196) // NorthwestArrow
+            case 119: return  String(UnicodeScalar(0x2198)) // SoutheastArrow
+			case 115: return  String(UnicodeScalar(0x2196)) // NorthwestArrow
 			default: break
 		}
 		
@@ -210,10 +210,6 @@ class Shortcut: NSObject, Hashable, Printable {
 		}
 		return chars
 	}
-	
-    func StringFromKeyCode(ch: UInt16) -> String {
-        return NSString( format:"%C", ch ) as String
-    }
     
 	init(keyCode code:UInt, modifierFlags flags:UInt) {
 		self.keyCode = code
