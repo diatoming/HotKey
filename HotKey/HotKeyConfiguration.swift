@@ -10,11 +10,11 @@ import Cocoa
 
 class HotKeyConfiguration: NSObject, ConfigurationDelegate {
 
-    var monitor:MASShortcutMonitor
+    var monitor:HotKeyMonitor
     var starter:Starter
     
     init(_ starter:Starter) {
-        monitor = MASShortcutMonitor.sharedMonitor()
+        monitor = HotKeyMonitor.sharedInstance
         self.starter = starter
     }
     
@@ -25,7 +25,7 @@ class HotKeyConfiguration: NSObject, ConfigurationDelegate {
     func doInsert(item:Item) {
         if item.enabled {
             if let key = item.hotKey {
-                monitor.registerShortcut(item.hotKey) {
+                monitor.registerShortcut(key) {
                     self.starter.startApp(item)
                 }
             }
