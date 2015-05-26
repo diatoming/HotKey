@@ -21,6 +21,15 @@ class Shortcut: NSObject, Hashable, Printable {
         self.modifierFlags = flags
     }
     
+    init(carbonKeyCode code:UInt, carbonFlags flags:UInt) {
+        self.keyCode = code
+        modifierFlags =
+              (flags & UInt(cmdKey) != 0 ? NSEventModifierFlags.CommandKeyMask.rawValue : 0)
+            | (flags & UInt(optionKey) != 0 ? NSEventModifierFlags.AlternateKeyMask.rawValue : 0)
+            | (flags & UInt(controlKey) != 0 ? NSEventModifierFlags.ControlKeyMask.rawValue : 0)
+            | (flags & UInt(shiftKey) != 0 ? NSEventModifierFlags.ShiftKeyMask.rawValue : 0)
+    }
+    
     override var hashValue:Int {
         return Int(self.keyCode + self.modifierFlags )
     }
@@ -191,15 +200,11 @@ class Shortcut: NSObject, Hashable, Printable {
             let globalHotKeys = unsafeBitCast(globalHotKeysPointer.memory!, CFArray.self)
             for var i = CFIndex(0), count=CFArrayGetCount(globalHotKeys); i < count; i++ {
                 let hotKeyInfo = unsafeBitCast(CFArrayGetValueAtIndex(globalHotKeys, i), NSDictionary.self)
-                let cf_code = hotKeyInfo.objectForKey(kHISymbolicHotKeyCode)! as! NSNumber
-                let cf_flags = hotKeyInfo.objectForKey(kHISymbolicHotKeyModifiers)! as! NSNumber
-                let cf_enabled = hotKeyInfo.objectForKey(kHISymbolicHotKeyEnabled)! as! NSNumber
-                
-                let code = (cf_code as NSNumber).unsignedIntegerValue
-                let flags = (cf_flags as NSNumber).unsignedIntegerValue
-                let enabled = (cf_enabled as NSNumber).boolValue
-                
-                if code == Int(self.keyCode) && flags == Int(self.carbonFlags) && enabled {
+                let code = hotKeyInfo.objectForKey(kHISymbolicHotKeyCode)! as! NSNumber
+                let flags = hotKeyInfo.objectForKey(kHISymbolicHotKeyModifiers)! as! NSNumber
+                let enabled = hotKeyInfo.objectForKey(kHISymbolicHotKeyEnabled)! as! Bool
+                //println("\(Shortcut(carbonKeyCode: UInt(code), carbonFlags: UInt(flags)))")
+                if code == self.keyCode && flags == Int(self.carbonFlags) && enabled {
                     return true
                 }
             }

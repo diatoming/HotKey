@@ -45,10 +45,16 @@ class HotKeyTextFieldEditor: NSTextView {
     func processHotkeyEvent(event:NSEvent) -> NSEvent! {
         let shortcut = Shortcut(keyCode: UInt(event.keyCode), modifierFlags: event.modifierFlags.rawValue)
         self.window!.makeFirstResponder(nil)
-        if shortcut.isValid() {
-           setHotKeyValue(shortcut)
+        if shortcut.isSystemShortut() {
+            let alert = NSAlert()
+            alert.alertStyle = .CriticalAlertStyle
+            alert.messageText = "Shortcut could not be saved"
+            alert.informativeText = "The entered shortcut \(shortcut) is already taken by the system! Please choose another one."
+            alert.beginSheetModalForWindow(self.hotKeyField!.window!, completionHandler:nil)
+        } else if shortcut.isValid() {
+            setHotKeyValue(shortcut)
         } else if isClearKey(shortcut) {
-           setHotKeyValue(nil)
+            setHotKeyValue(nil)
         }
         return nil
     }
