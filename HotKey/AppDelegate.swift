@@ -38,6 +38,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification:NSNotification) {
         configuration.changed()
+        if !UserDefaults.hideAppIcon {
+            var psn = ProcessSerialNumber(highLongOfPSN: UInt32(0), lowLongOfPSN: UInt32(kCurrentProcess))
+            TransformProcessType(&psn, ProcessApplicationTransformState(kProcessTransformToForegroundApplication))
+        }
         if UserDefaults.createExampleOnStart {
             self.createExampleAppItem()
             UserDefaults.createExampleOnStart = false

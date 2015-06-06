@@ -14,12 +14,18 @@ class UserDefaults {
 
     class func initialize() {
         var defaultValues:[NSObject:AnyObject] = [:]
+        defaultValues["hideAppIcon"] = false
         defaultValues["createExampleOnStart"] = true
         defaultValues["openPrefsOnStart"] = true
         defaultValues["showPopupOnPrefs"] = true
         defaults.registerDefaults(defaultValues)
     }
-    
+
+    class var hideAppIcon:Bool {
+        get {return defaults.boolForKey("hideAppIcon")}
+        set {defaults.setBool(newValue, forKey:"hideAppIcon")}
+    }
+
     class var createExampleOnStart:Bool {
         get {return defaults.boolForKey("createExampleOnStart")}
         set {defaults.setBool(newValue, forKey:"createExampleOnStart")}
