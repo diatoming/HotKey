@@ -30,8 +30,12 @@
 		D070EAAF1A500E0200C3074A /* HotKey.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D070EAAE1A500E0200C3074A /* HotKey.applescript */; };
 		D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */; };
 		D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */; };
+		D080A4211B39F7AF00AF2BFD /* ScriptArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080A4201B39F7AF00AF2BFD /* ScriptArrayController.swift */; };
 		D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */; };
 		D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */; };
+		D0AD0D2D1B3C9C11006DB55D /* EonilFileSystemEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AD0D281B3C9C11006DB55D /* EonilFileSystemEventStream.m */; };
+		D0AD0D2E1B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AD0D2A1B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.m */; };
+		D0AD0D2F1B3C9C11006DB55D /* FileSystemEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD0D2C1B3C9C11006DB55D /* FileSystemEventMonitor.swift */; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
 		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
@@ -101,8 +105,16 @@
 		D070EAAE1A500E0200C3074A /* HotKey.applescript */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = HotKey.applescript; sourceTree = "<group>"; };
 		D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuItem.swift; sourceTree = "<group>"; };
 		D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptInstaller.swift; sourceTree = "<group>"; };
+		D080A4201B39F7AF00AF2BFD /* ScriptArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptArrayController.swift; sourceTree = "<group>"; };
 		D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldEditor.swift; path = MASShortcut/HotKeyTextFieldEditor.swift; sourceTree = "<group>"; };
 		D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldCell.swift; path = MASShortcut/HotKeyTextFieldCell.swift; sourceTree = "<group>"; };
+		D0AD0D261B3C9C11006DB55D /* EonilFileSystemEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EonilFileSystemEvents.h; sourceTree = "<group>"; };
+		D0AD0D271B3C9C11006DB55D /* EonilFileSystemEventStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EonilFileSystemEventStream.h; sourceTree = "<group>"; };
+		D0AD0D281B3C9C11006DB55D /* EonilFileSystemEventStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EonilFileSystemEventStream.m; sourceTree = "<group>"; };
+		D0AD0D291B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EonilJustFSEventStreamWrapper.h; sourceTree = "<group>"; };
+		D0AD0D2A1B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EonilJustFSEventStreamWrapper.m; sourceTree = "<group>"; };
+		D0AD0D2B1B3C9C11006DB55D /* InternalTester-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InternalTester-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0AD0D2C1B3C9C11006DB55D /* FileSystemEventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemEventMonitor.swift; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
@@ -138,6 +150,7 @@
 			children = (
 				D06409191A40ACFC00583962 /* HotKeyHelper.xcodeproj */,
 				D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */,
+				D0AD0D211B3C980D006DB55D /* FSEventWrapper */,
 				D05C029E1A361B20004413E2 /* HotKey */,
 				D05C02B51A361B20004413E2 /* HotKeyTests */,
 				D05C02D01A361DF3004413E2 /* Frameworks */,
@@ -171,6 +184,7 @@
 				D0F546861A754E0F00495D39 /* PreferencesWindowController.swift */,
 				D05677B51A6BD77C004A386C /* PreferencesWindowController.xib */,
 				D0D001691A8A760C008DB64B /* ItemArrayController.swift */,
+				D080A4201B39F7AF00AF2BFD /* ScriptArrayController.swift */,
 				D0719C081A99F50C00BA6C25 /* MyMenuItem.swift */,
 				D0318DCC1A46DF9C00BAEE57 /* Main.storyboard */,
 				D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */,
@@ -232,6 +246,21 @@
 				D064091F1A40ACFC00583962 /* HotKeyHelper.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D0AD0D211B3C980D006DB55D /* FSEventWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				D0AD0D261B3C9C11006DB55D /* EonilFileSystemEvents.h */,
+				D0AD0D271B3C9C11006DB55D /* EonilFileSystemEventStream.h */,
+				D0AD0D281B3C9C11006DB55D /* EonilFileSystemEventStream.m */,
+				D0AD0D291B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.h */,
+				D0AD0D2A1B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.m */,
+				D0AD0D2B1B3C9C11006DB55D /* InternalTester-Bridging-Header.h */,
+				D0AD0D2C1B3C9C11006DB55D /* FileSystemEventMonitor.swift */,
+			);
+			name = FSEventWrapper;
+			path = HotKey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +391,7 @@
 				D04F9D101AB5EA85002076C9 /* PointingHandButton.swift in Sources */,
 				D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
+				D0AD0D2F1B3C9C11006DB55D /* FileSystemEventMonitor.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
 				D04D2B811B027F6100BDCE81 /* HotKey.swift in Sources */,
 				D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */,
@@ -371,7 +401,9 @@
 				D04D2B831B027F6100BDCE81 /* HotKeyMonitor.swift in Sources */,
 				D0588F0D1A7BFEBA00D90002 /* Starter.swift in Sources */,
 				D044D6481A7AACE5007CE8FE /* ConfigurationDelegate.swift in Sources */,
+				D0AD0D2E1B3C9C11006DB55D /* EonilJustFSEventStreamWrapper.m in Sources */,
 				D0E7BF721A7838D400807AE9 /* Item.swift in Sources */,
+				D0AD0D2D1B3C9C11006DB55D /* EonilFileSystemEventStream.m in Sources */,
 				D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */,
 				D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */,
 				D044D64A1A7AAD63007CE8FE /* MenuConfiguration.swift in Sources */,
@@ -380,6 +412,7 @@
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
 				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
 				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,
+				D080A4211B39F7AF00AF2BFD /* ScriptArrayController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

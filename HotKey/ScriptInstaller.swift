@@ -9,14 +9,19 @@
 import Foundation
 
 class ScriptInstaller {
-    
-    class var scriptURL:NSURL {
+   
+    class var baseURL:NSURL {
         get {
             var err : NSError?
             let fileManager = NSFileManager.defaultManager()
-            let scriptDir = fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
+            return fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
                 inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: &err)!
-            return scriptDir.URLByAppendingPathComponent("HotKey.applescript")
+        }
+    }
+    
+    class var scriptURL:NSURL {
+        get {
+            return baseURL.URLByAppendingPathComponent("HotKey.applescript")
         }
     }
     

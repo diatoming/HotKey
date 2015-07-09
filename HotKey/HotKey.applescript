@@ -4,7 +4,7 @@
 -- Copyright (C) 2015 Peter Vorwieger
 -------------------------------------
 
-on selectedFiles()
+on execute()
 	tell application "System Events" to set activeApp to name of first application process whose frontmost is true
 	if activeApp is "Finder" then
 		set selectedFiles to selection of application "Finder"
@@ -14,7 +14,7 @@ on selectedFiles()
 		end repeat
 		return myFiles
 	end if
-end selectedFiles
+end execute
 
 on run
 	display alert "HotKey App" message "This script is used by HotKey App to automate tasks"

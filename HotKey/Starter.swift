@@ -10,25 +10,34 @@ import Cocoa
 import Carbon
 
 class Starter {
-
+    
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
         
         switch item.type {
         case .APP:
-            let sf = item.function
-            callScript(item.scriptFunction) { strings in
-                if let urls = strings?.map({NSURL(fileURLWithPath:$0)!}) {
-                    url?.startAccessingSecurityScopedResource()
-                    let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
-                    if !workspace.openURLs(urls, withAppBundleIdentifier: bundleIdentifier, options: .Default, additionalEventParamDescriptor: nil, launchIdentifiers: nil) {
+            if let script = item.function {
+                callScript(script, function: "execute") { strings in
+                    if let urls = strings?.map({NSURL(fileURLWithPath:$0)!}) {
+                        url?.startAccessingSecurityScopedResource()
+                        let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
+                        println("\(bundleIdentifier) -> \(urls)")
+                        if !workspace.openURLs(urls, withAppBundleIdentifier: bundleIdentifier, options: .Default, additionalEventParamDescriptor: nil, launchIdentifiers: nil) {
+                            let path = urls[0].path!.stringByDeletingLastPathComponent
+                            println("     \(path)")
+                            if !workspace.openFile(path, withApplication: item.url) {
+                                println("     launch...")
+                                workspace.launchApplication(item.url)
+                            }
+                        }
+                        url?.stopAccessingSecurityScopedResource()
+                    } else {
                         workspace.launchApplication(item.url)
                     }
-                    url?.stopAccessingSecurityScopedResource()
-                } else {
-                    workspace.launchApplication(item.url)
                 }
+            } else {
+                workspace.launchApplication(item.url)
             }
         case .OTHER:
             url?.startAccessingSecurityScopedResource()
@@ -37,26 +46,27 @@ class Starter {
         }
     }
     
-    func callScript(function:Item.ScriptFunction, completionHandler:(strings:[String]?) -> Void) {
-        if function == Item.ScriptFunction.NOTHING {
-            completionHandler(strings: nil)
-        } else {
-            var err : NSError?
-            if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
-                if (err == nil) {
-                    script.executeWithAppleEvent(eventDescriptor(function.rawValue)!) { result, err in
-                        var strings:[String] = []
+    func callScript(script:String, function:String, completionHandler:(strings:[String]?) -> Void) {
+        var err : NSError?
+        let url = ScriptInstaller.baseURL.URLByAppendingPathComponent(script)
+        if let script = NSUserAppleScriptTask(URL: url, error:&err) {
+            if (err == nil) {
+                script.executeWithAppleEvent(eventDescriptor(function)!) { result, err in
+                    var strings:[String] = []
+                    if result != nil {
                         for index in 0..<result.numberOfItems {
                             if let value = result.descriptorAtIndex(index+1)?.stringValue {
                                 strings.append(value)
                             }
                         }
-                        completionHandler(strings: strings)
                     }
-                } else {
-                    NSLog("script compile error: %@", err!)
+                    completionHandler(strings: strings)
                 }
+            } else {
+                NSLog("script compile error: %@", err!)
             }
+        } else {
+            NSLog("script error: %@", err!)
         }
     }
     
@@ -71,5 +81,5 @@ class Starter {
         event?.setParamDescriptor(function!, forKeyword: AEKeyword(keyASSubroutineName))
         return event
     }
-
+    
 }

@@ -12,6 +12,8 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
 
     let movedRowType = "de.codenuts.ItemArrayController"
     
+    @IBOutlet var myScriptController: ScriptArrayController!
+    
     @IBOutlet weak var tableView:NSTableView! {
         didSet {
             tableView.registerForDraggedTypes([movedRowType])

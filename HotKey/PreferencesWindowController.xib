@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="HotKey">
@@ -147,7 +147,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveName="table_autosave" rowHeight="36" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="707" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="10" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -184,7 +184,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="200" minWidth="170" maxWidth="500" id="xVO-ST-q66">
+                                                <tableColumn width="347" minWidth="170" maxWidth="500" id="xVO-ST-q66">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -228,6 +228,49 @@
                                                                 <outlet property="imageView" destination="jRJ-TY-xY9" id="KlF-Ld-AmF"/>
                                                                 <outlet property="textField" destination="LOJ-Ci-BmF" id="aB4-nI-3jS"/>
                                                             </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                                <tableColumn width="200" minWidth="200" maxWidth="200" id="lYA-20-6V7">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="M2h-ng-yHQ">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="7e3-Hb-yUq">
+                                                            <rect key="frame" x="412" y="1" width="200" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-tB-cjj">
+                                                                    <rect key="frame" x="0.0" y="5" width="200" height="26"/>
+                                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="OkB-Jr-N8r">
+                                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="menu"/>
+                                                                        <menu key="menu" id="exK-fl-Gbb"/>
+                                                                    </popUpButtonCell>
+                                                                    <connections>
+                                                                        <binding destination="U3m-tk-joT" name="content" keyPath="myScriptController.arrangedObjects" id="WU1-67-sBb">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSInsertsNullPlaceholder" value="YES"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="U3m-tk-joT" name="contentValues" keyPath="myScriptController.arrangedObjects.name" previousBinding="WU1-67-sBb" id="3c4-L8-sSF">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSInsertsNullPlaceholder" value="YES"/>
+                                                                                <string key="NSNullPlaceholder">&lt;No Script selected&gt;</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="7e3-Hb-yUq" name="selectedValue" keyPath="objectValue._function" previousBinding="3c4-L8-sSF" id="0oe-BM-rg1"/>
+                                                                    </connections>
+                                                                </popUpButton>
+                                                            </subviews>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
@@ -282,7 +325,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="IfG-6J-Os5">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="IfG-6J-Os5">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -361,9 +404,11 @@
             </connections>
             <point key="canvasLocation" x="96" y="-766.5"/>
         </window>
+        <arrayController objectClassName="HotKey.ScriptItem" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="dt2-vE-BEw" customClass="ScriptArrayController" customModule="HotKey" customModuleProvider="target"/>
         <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="U3m-tk-joT" customClass="ItemArrayController" customModule="HotKey" customModuleProvider="target">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="4rX-lH-gxW"/>
+                <outlet property="myScriptController" destination="dt2-vE-BEw" id="SB5-NY-a5L"/>
                 <outlet property="tableView" destination="Lv6-PI-t0Y" id="qwl-ZP-1Gs"/>
             </connections>
         </arrayController>

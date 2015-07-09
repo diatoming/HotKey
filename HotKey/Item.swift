@@ -13,11 +13,7 @@ class Item: NSManagedObject {
     enum Type {
         case APP, OTHER
     }
-
-    enum ScriptFunction: String {
-        case NOTHING = "", FILES = "selectedFiles", FILES_FOLDER = "selectedFilesOrFolders"
-    }
-
+    
     @NSManaged var enabled: Bool
     @NSManaged var name: String
     @NSManaged var url: String
@@ -35,28 +31,29 @@ class Item: NSManagedObject {
             return enabled
         }
     }
-
+    
+    var _function:String? {
+        set {
+            function = newValue
+            self.managedObjectContext?.save(nil)
+        }
+        get {
+            return function
+        }
+    }
+    
     var icon:NSImage? {
         get {
             return IconTransformer().transformedValue(self.url) as? NSImage
         }
     }
-
+    
     var type:Type {
         get {
             switch url.pathExtension {
-                case "app": return Type.APP
-                default: return Type.OTHER
+            case "app": return Type.APP
+            default: return Type.OTHER
             }
-        }
-    }
-
-    var scriptFunction: ScriptFunction {
-        get {
-            return function != nil ? ScriptFunction(rawValue: function!)! : ScriptFunction.FILES
-        }
-        set {
-            function = String(newValue.rawValue)
         }
     }
     
@@ -66,7 +63,7 @@ class Item: NSManagedObject {
         let type = workspace.typeOfFile(self.url, error: &err)
         return workspace.localizedDescriptionForType(type!)!
     }
-
+    
     var hotKey:Shortcut? {
         get {
             let shortcut = Shortcut(keyCode: UInt(keyCode), modifierFlags:UInt(modifierFlags))
@@ -78,14 +75,14 @@ class Item: NSManagedObject {
             self.managedObjectContext?.save(nil)
         }
     }
-
+    
     class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
         let fetchRequest = NSFetchRequest(entityName: "Item")
         fetchRequest.predicate = NSPredicate(format:"url == %@", url.path!)
         let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as! [Item]
         return !items.isEmpty
     }
-
+    
     class func insertNew(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Item? {
         if itemExists(url, managedObjectContext:managedObjectContext) {
             return nil
