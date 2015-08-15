@@ -13,7 +13,7 @@ class PersistenceStack: NSObject {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "de.codenuts.HotKey" in the user's Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-        let appSupportURL = urls[urls.count - 1] as! NSURL
+        let appSupportURL = urls[urls.count - 1] 
         return appSupportURL.URLByAppendingPathComponent("de.codenuts.HotKey")
     }()
     
@@ -31,7 +31,15 @@ class PersistenceStack: NSObject {
         var failureReason = "There was an error creating or loading the application's saved data."
         
         // Make sure the application files directory is there
-        let propertiesOpt = self.applicationDocumentsDirectory.resourceValuesForKeys([NSURLIsDirectoryKey], error: &error)
+        let propertiesOpt: [NSObject: AnyObject]?
+        do {
+            propertiesOpt = try self.applicationDocumentsDirectory.resourceValuesForKeys([NSURLIsDirectoryKey])
+        } catch var error1 as NSError {
+            error = error1
+            propertiesOpt = nil
+        } catch {
+            fatalError()
+        }
         if let properties = propertiesOpt {
             if !properties[NSURLIsDirectoryKey]!.boolValue {
                 failureReason = "Expected a folder to store application data, found a file \(self.applicationDocumentsDirectory.path)."
@@ -39,7 +47,13 @@ class PersistenceStack: NSObject {
             }
         } else if error!.code == NSFileReadNoSuchFileError {
             error = nil
-            fileManager.createDirectoryAtPath(self.applicationDocumentsDirectory.path!, withIntermediateDirectories: true, attributes: nil, error: &error)
+            do {
+                try fileManager.createDirectoryAtPath(self.applicationDocumentsDirectory.path!, withIntermediateDirectories: true, attributes: nil)
+            } catch var error1 as NSError {
+                error = error1
+            } catch {
+                fatalError()
+            }
         }
         
         // Create the coordinator and store
@@ -47,20 +61,25 @@ class PersistenceStack: NSObject {
         if !shouldFail && (error == nil) {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
             let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("HotKey.storedata")
-            if coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+            do {
+                try coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: nil)
+            } catch var error1 as NSError {
+                error = error1
                 coordinator = nil
+            } catch {
+                fatalError()
             }
         }
         
         if shouldFail || (error != nil) {
             // Report any error we got.
-            let dict = NSMutableDictionary()
+            var dict = [NSObject : AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             if error != nil {
                 dict[NSUnderlyingErrorKey] = error
             }
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             NSApplication.sharedApplication().presentError(error!)
             return nil
         } else {

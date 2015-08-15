@@ -17,11 +17,11 @@ class HotKeyTextFieldEditor: NSTextView {
         super.init(frame:frameRect, textContainer:container)
         fieldEditor = true
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func becomeFirstResponder() -> Bool {
         let ok = super.becomeFirstResponder()
         if ok {
@@ -62,18 +62,19 @@ class HotKeyTextFieldEditor: NSTextView {
     func isClearKey(hotKey:Shortcut) -> Bool {
         return hotKey.modifierFlags == 0 && (
             hotKey.keyCode == UInt(kVK_Delete) ||
-            hotKey.keyCode == UInt(kVK_ForwardDelete) ||
-            hotKey.keyCode == UInt(kVK_ANSI_KeypadClear)
+                hotKey.keyCode == UInt(kVK_ForwardDelete) ||
+                hotKey.keyCode == UInt(kVK_ANSI_KeypadClear)
         )
     }
     
     func setHotKeyValue(hotKey:Shortcut?) {
-        let bindingInfo = hotKeyField?.infoForBinding("value") as! [String: AnyObject]
-        if let key = bindingInfo[NSObservedKeyPathKey] as? String {
-            if let object = bindingInfo[NSObservedObjectKey] as? NSTableCellView {
+        if let bindingInfo = hotKeyField?.infoForBinding("value"),
+            let key = bindingInfo[NSObservedKeyPathKey] as? String,
+            let object = bindingInfo[NSObservedObjectKey] as? NSTableCellView {
                 object.setValue(hotKey, forKeyPath: key)
-            }
         }
     }
     
 }
+
+

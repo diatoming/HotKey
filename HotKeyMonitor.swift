@@ -16,7 +16,7 @@ class HotKeyMonitor:NSObject {
     
     override init() {
         super.init()
-        var hotKeyPressedSpecPointer = UnsafeMutablePointer<EventTypeSpec>.alloc(1)
+        let hotKeyPressedSpecPointer = UnsafeMutablePointer<EventTypeSpec>.alloc(1)
         hotKeyPressedSpecPointer.initialize(EventTypeSpec(
             eventClass: OSType(kEventClassKeyboard),
             eventKind:  UInt32(kEventHotKeyPressed)

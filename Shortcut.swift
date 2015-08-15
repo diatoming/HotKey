@@ -10,7 +10,7 @@ func ==(lhs: Shortcut, rhs: Shortcut) -> Bool {
     return lhs.keyCode == rhs.keyCode && lhs.modifierFlags == rhs.modifierFlags
 }
 
-class Shortcut: NSObject, Hashable, Printable {
+class Shortcut: NSObject {
 
     var keyCode:UInt!
 
@@ -115,8 +115,8 @@ class Shortcut: NSObject, Hashable, Printable {
         
         let inputSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource().takeUnretainedValue()
         let layoutDataRefPtr = TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData)
-        var layoutDataRef = unsafeBitCast(layoutDataRefPtr, CFDataRef.self)
-        var layoutData = unsafeBitCast(CFDataGetBytePtr(layoutDataRef), UnsafePointer<CoreServices.UCKeyboardLayout>.self)
+        let layoutDataRef = unsafeBitCast(layoutDataRefPtr, CFDataRef.self)
+        let layoutData = unsafeBitCast(CFDataGetBytePtr(layoutDataRef), UnsafePointer<CoreServices.UCKeyboardLayout>.self)
         
         var deadKeyState:UInt32 = 0
         let maxLength = 255
@@ -195,7 +195,7 @@ class Shortcut: NSObject, Hashable, Printable {
     }
     
     func isSystemShortut() -> Bool {
-        var globalHotKeysPointer = UnsafeMutablePointer<Unmanaged<CFArray>?>.alloc(1)
+        let globalHotKeysPointer = UnsafeMutablePointer<Unmanaged<CFArray>?>.alloc(1)
         if CopySymbolicHotKeys(globalHotKeysPointer) == noErr {
             let globalHotKeys = unsafeBitCast(globalHotKeysPointer.memory!, CFArray.self)
             for var i = CFIndex(0), count=CFArrayGetCount(globalHotKeys); i < count; i++ {

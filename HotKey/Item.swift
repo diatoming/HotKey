@@ -29,7 +29,10 @@ class Item: NSManagedObject {
     var _enabled:Bool {
         set {
             enabled = newValue
-            self.managedObjectContext?.save(nil)
+            do {
+                try self.managedObjectContext?.save()
+            } catch _ {
+            }
         }
         get {
             return enabled
@@ -63,7 +66,13 @@ class Item: NSManagedObject {
     var kind:String {
         let workspace = NSWorkspace.sharedWorkspace()
         var err:NSError?
-        let type = workspace.typeOfFile(self.url, error: &err)
+        let type: String?
+        do {
+            type = try workspace.typeOfFile(self.url)
+        } catch let error as NSError {
+            err = error
+            type = nil
+        }
         return workspace.localizedDescriptionForType(type!)!
     }
 
@@ -75,14 +84,17 @@ class Item: NSManagedObject {
         set {
             keyCode = Int32(newValue != nil ? newValue!.keyCode : 0)
             modifierFlags = Int32(newValue != nil ? newValue!.modifierFlags : 0)
-            self.managedObjectContext?.save(nil)
+            do {
+                try self.managedObjectContext?.save()
+            } catch _ {
+            }
         }
     }
 
     class func itemExists(url:NSURL, managedObjectContext:NSManagedObjectContext) -> Bool {
         let fetchRequest = NSFetchRequest(entityName: "Item")
         fetchRequest.predicate = NSPredicate(format:"url == %@", url.path!)
-        let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as! [Item]
+        let items = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Item]
         return !items.isEmpty
     }
 

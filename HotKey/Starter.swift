@@ -10,16 +10,15 @@ import Cocoa
 import Carbon
 
 class Starter {
-
+    
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
         
         switch item.type {
         case .APP:
-            let sf = item.function
             callScript(item.scriptFunction) { strings in
-                if let urls = strings?.map({NSURL(fileURLWithPath:$0)!}) {
+                if let urls = strings?.map({NSURL(fileURLWithPath:$0)}) {
                     url?.startAccessingSecurityScopedResource()
                     let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
                     if !workspace.openURLs(urls, withAppBundleIdentifier: bundleIdentifier, options: .Default, additionalEventParamDescriptor: nil, launchIdentifiers: nil) {
@@ -42,12 +41,13 @@ class Starter {
             completionHandler(strings: nil)
         } else {
             var err : NSError?
-            if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
+            do {
+                let script = try NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL)
                 if (err == nil) {
                     script.executeWithAppleEvent(eventDescriptor(function.rawValue)!) { result, err in
                         var strings:[String] = []
-                        for index in 0..<result.numberOfItems {
-                            if let value = result.descriptorAtIndex(index+1)?.stringValue {
+                        for index in 0..<result!.numberOfItems {
+                            if let value = result!.descriptorAtIndex(index+1)?.stringValue {
                                 strings.append(value)
                             }
                         }
@@ -56,6 +56,8 @@ class Starter {
                 } else {
                     NSLog("script compile error: %@", err!)
                 }
+            } catch let error as NSError {
+                err = error
             }
         }
     }
@@ -68,8 +70,8 @@ class Starter {
         let event = NSAppleEventDescriptor(eventClass:AEEventClass(kASAppleScriptSuite),
             eventID:AEEventID(kASSubroutineEvent), targetDescriptor:target,
             returnID:AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
-        event?.setParamDescriptor(function!, forKeyword: AEKeyword(keyASSubroutineName))
+        event.setParamDescriptor(function, forKeyword: AEKeyword(keyASSubroutineName))
         return event
     }
-
+    
 }

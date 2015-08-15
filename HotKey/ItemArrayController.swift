@@ -57,20 +57,26 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
             var items = self.arrangedObjects as! [Item]
             let item = items.removeAtIndex(indexSet.firstIndex)
             items.insert(item, atIndex:indexSet.firstIndex < row ? row-1 : row)
-            for (index, item) in enumerate(items) {
+            for (index, item) in items.enumerate() {
                 item.order = Int32(index)
             }
-            self.managedObjectContext?.save(nil)
+            do {
+                try self.managedObjectContext?.save()
+            } catch _ {
+            }
             return true;
         }
         return false;
     }
     
     func rearrangeOrder() {
-        for (index, item) in enumerate(arrangedObjects as! [Item]) {
+        for (index, item) in (arrangedObjects as! [Item]).enumerate() {
             item.order = Int32(index)
         }
-        self.managedObjectContext?.save(nil)
+        do {
+            try self.managedObjectContext?.save()
+        } catch _ {
+        }
     }
 
 }

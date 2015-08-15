@@ -13,7 +13,7 @@ class UserDefaults {
     }
 
     class func initialize() {
-        var defaultValues:[NSObject:AnyObject] = [:]
+        var defaultValues = [String:AnyObject]()
         defaultValues["hideAppIcon"] = false
         defaultValues["createExampleOnStart"] = true
         defaultValues["openPrefsOnStart"] = true
@@ -40,16 +40,25 @@ class UserDefaults {
         get {
             if let data = defaults.objectForKey("bookmark") as? NSData {
                 var isStale: ObjCBool = false
-                return NSURL(byResolvingBookmarkData: data, options: .WithSecurityScope,
-                    relativeToURL: nil, bookmarkDataIsStale: &isStale, error: nil)
+                do {
+                    return try NSURL(byResolvingBookmarkData: data, options: .WithSecurityScope,
+                        relativeToURL: nil, bookmarkDataIsStale: &isStale)
+                } catch _ {
+                    return nil
+                }
             } else {
                 return nil
             }
         }
         set {
             if newValue != nil {
-                let data = newValue!.bookmarkDataWithOptions(.WithSecurityScope,
-                    includingResourceValuesForKeys: nil, relativeToURL: nil, error: nil)
+                let data: NSData?
+                do {
+                    data = try newValue!.bookmarkDataWithOptions(.WithSecurityScope,
+                                        includingResourceValuesForKeys: nil, relativeToURL: nil)
+                } catch _ {
+                    data = nil
+                }
                 defaults.setObject(data, forKey: "bookmark")
             } else {
                 defaults.removeObjectForKey("bookmark")

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import ServiceManagement
 
 class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathControlDelegate {
 
@@ -131,10 +130,14 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     }
     
     @IBAction func openSelectDialog(sender: AnyObject) {
-        var err : NSError?
-        let appsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
-            inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true, error: &err)
-        var panel = NSOpenPanel()
+        let appsDirectoryURL: NSURL?
+        do {
+            appsDirectoryURL = try NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
+                        inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true)
+        } catch {
+            appsDirectoryURL = nil
+        }
+        let panel = NSOpenPanel()
         panel.directoryURL = appsDirectoryURL
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = true
