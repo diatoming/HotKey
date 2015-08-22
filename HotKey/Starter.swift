@@ -17,7 +17,7 @@ class Starter {
         
         switch item.type {
         case .APP:
-            callScript(item.scriptFunction) { strings in
+            callScript("selectedFiles") { strings in
                 if let urls = strings?.map({NSURL(fileURLWithPath:$0)}) {
                     url?.startAccessingSecurityScopedResource()
                     let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
@@ -36,29 +36,22 @@ class Starter {
         }
     }
     
-    func callScript(function:Item.ScriptFunction, completionHandler:(strings:[String]?) -> Void) {
-        if function == Item.ScriptFunction.NOTHING {
-            completionHandler(strings: nil)
-        } else {
-            var err : NSError?
-            do {
-                let script = try NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL)
+    func callScript(function:String, completionHandler:(strings:[String]?) -> Void) {
+        do {
+            let script = try NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL)
+            script.executeWithAppleEvent(eventDescriptor(function)!) { result, err in
+                var strings:[String] = []
                 if (err == nil) {
-                    script.executeWithAppleEvent(eventDescriptor(function.rawValue)!) { result, err in
-                        var strings:[String] = []
-                        for index in 0..<result!.numberOfItems {
-                            if let value = result!.descriptorAtIndex(index+1)?.stringValue {
-                                strings.append(value)
-                            }
+                    for index in 0..<result!.numberOfItems {
+                        if let value = result!.descriptorAtIndex(index+1)?.stringValue {
+                            strings.append(value)
                         }
-                        completionHandler(strings: strings)
                     }
-                } else {
-                    NSLog("script compile error: %@", err!)
                 }
-            } catch let error as NSError {
-                err = error
+                completionHandler(strings: strings)
             }
+        } catch _ {
+            completionHandler(strings: [])
         }
     }
     

@@ -14,17 +14,12 @@ class Item: NSManagedObject {
         case APP, OTHER
     }
 
-    enum ScriptFunction: String {
-        case NOTHING = "", FILES = "selectedFiles", FILES_FOLDER = "selectedFilesOrFolders"
-    }
-
     @NSManaged var enabled: Bool
     @NSManaged var name: String
     @NSManaged var url: String
     @NSManaged var keyCode: Int32
     @NSManaged var modifierFlags: Int32
     @NSManaged var order: Int32
-    @NSManaged var function: String?
     
     var _enabled:Bool {
         set {
@@ -47,30 +42,19 @@ class Item: NSManagedObject {
 
     var type:Type {
         get {
-            switch url.pathExtension {
+            switch (url as NSString).pathExtension {
                 case "app": return Type.APP
                 default: return Type.OTHER
             }
         }
     }
 
-    var scriptFunction: ScriptFunction {
-        get {
-            return function != nil ? ScriptFunction(rawValue: function!)! : ScriptFunction.FILES
-        }
-        set {
-            function = String(newValue.rawValue)
-        }
-    }
-    
     var kind:String {
         let workspace = NSWorkspace.sharedWorkspace()
-        var err:NSError?
         let type: String?
         do {
             type = try workspace.typeOfFile(self.url)
-        } catch let error as NSError {
-            err = error
+        } catch {
             type = nil
         }
         return workspace.localizedDescriptionForType(type!)!
@@ -102,11 +86,11 @@ class Item: NSManagedObject {
         if itemExists(url, managedObjectContext:managedObjectContext) {
             return nil
         } else {
-            let name = url.lastPathComponent?.stringByDeletingPathExtension
+            let name = (url.lastPathComponent! as NSString).stringByDeletingPathExtension
             let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
                 inManagedObjectContext:managedObjectContext) as! Item
             item.enabled = true
-            item.name = name!
+            item.name = name
             item.url = url.path!
             return item
         }

@@ -9,18 +9,18 @@
 import Cocoa
 
 class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathControlDelegate {
-
+    
     let launchDaemon = "de.codenuts.HotKeyHelper"
     
     var managedObjectContext: NSManagedObjectContext!
-
+    
     @IBOutlet var launchAtLoginButton: NSButton!
     @IBOutlet var myArrayController: ItemArrayController!
     @IBOutlet var mainView: NSView!
     
     @IBOutlet var leftView: NSView!
     @IBOutlet weak var tableView: NSTableView!
-
+    
     
     @IBOutlet weak var scriptStatusImage: NSImageView!
     @IBOutlet weak var scriptStatusText: NSTextField!
@@ -29,7 +29,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     @IBOutlet weak var resourceStatusText: NSTextField!
     @IBOutlet weak var resourceStatusImage: NSImageView!
     @IBOutlet weak var resourceStatusControl: NSPathControl!
-
+    
     var bookmark:NSURL? {
         set {
             UserDefaults.bookmarkedURL = newValue
@@ -57,13 +57,13 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     func pathControl(pathControl: NSPathControl, willDisplayOpenPanel openPanel: NSOpenPanel) {
         openPanel.directoryURL = NSURL(string: "/")
     }
-        
+    
     func doubleClick(sender: AnyObject?) {
         let rowNumber = tableView.clickedRow
         let item = myArrayController.arrangedObjects[rowNumber] as! Item
         Starter().startApp(item)
     }
-
+    
     override func showWindow(sender: AnyObject?) {
         super.showWindow(sender)
         self.updateView()
@@ -91,7 +91,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
             scriptStatusButton.title = "Install"
             scriptStatusButton.enabled = true
         }
-
+        
         if UserDefaults.bookmarkedURL != nil {
             resourceStatusImage.image = NSImage(named: "NSStatusAvailable")
             resourceStatusText.stringValue = "Resource Access"
@@ -100,7 +100,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
             resourceStatusText.stringValue = "No Resource"
         }
     }
-
+    
     func windowShouldClose(sender: AnyObject) -> Bool {
         UserDefaults.openPrefsOnStart = false
         return true
@@ -109,7 +109,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     @IBAction func gotoWebsite(sender: AnyObject) {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://codenuts.de")!)
     }
-
+    
     @IBAction func installScript(sender: AnyObject?) {
         ScriptInstaller.installScript(self.window!) {
             self.updateView()
@@ -133,7 +133,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         let appsDirectoryURL: NSURL?
         do {
             appsDirectoryURL = try NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.ApplicationDirectory,
-                        inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true)
+                inDomain: NSSearchPathDomainMask.SystemDomainMask, appropriateForURL: nil, create: true)
         } catch {
             appsDirectoryURL = nil
         }
@@ -154,11 +154,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
     }
     
     @IBAction func startAtLoginAction(sender: AnyObject) {
-        if (SMLoginItemSetEnabled(launchDaemon, sender.state == NSOnState ? 1 : 0) != 1) {
+        if (SMLoginItemSetEnabled(launchDaemon, sender.state == NSOnState ? false : true)) {
             NSLog("Couldn't add/remove Helper App to launch at login item list.")
         }
     }
-
+    
     func appIsPresentInLoginItems() -> Bool {
         let jobDicts = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeUnretainedValue()
         let count = CFArrayGetCount(jobDicts)
@@ -173,5 +173,5 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         }
         return false;
     }
-
+    
 }
