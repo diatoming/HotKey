@@ -12,10 +12,9 @@ class ScriptInstaller {
     
     class var scriptURL:NSURL {
         get {
-            var err : NSError?
             let fileManager = NSFileManager.defaultManager()
-            let scriptDir = fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
-                inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: &err)!
+            let scriptDir = try! fileManager.URLForDirectory(NSSearchPathDirectory.ApplicationScriptsDirectory,
+                inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true)
             return scriptDir.URLByAppendingPathComponent("HotKey.applescript")
         }
     }
@@ -40,7 +39,7 @@ class ScriptInstaller {
     }
     
     class func installScript(window:NSWindow, completionHandler:() -> Void) {
-        var savePanel = NSSavePanel()
+        let savePanel = NSSavePanel()
         savePanel.directoryURL = self.scriptURL.URLByDeletingLastPathComponent
         savePanel.nameFieldStringValue = self.scriptURL.lastPathComponent!
         savePanel.showsTagField = false
@@ -62,12 +61,17 @@ class ScriptInstaller {
     class func copyScript() {
         var err : NSError?
         let fileManager = NSFileManager.defaultManager()
-        fileManager.removeItemAtURL(self.scriptURL, error: nil)
-        if fileManager.copyItemAtURL(self.sourceScriptURL, toURL:self.scriptURL, error:&err) {
+        do {
+            try fileManager.removeItemAtURL(self.scriptURL)
+        } catch _ {
+        }
+        do {
+            try fileManager.copyItemAtURL(self.sourceScriptURL, toURL:self.scriptURL)
             // self.successAlert("Congratulation!", text:"The HotKey Script was installed succcessfully.")
             // get the Application Scripts path out of the next open or save panel that appears
             NSUserDefaults.standardUserDefaults().removeObjectForKey("NSNavLastRootDirectory")
-        } else {
+        } catch let error as NSError {
+            err = error
             NSLog("%s error = %@", __FUNCTION__, err!);
             // the item couldn't be copied
             self.errorAlert(err!)

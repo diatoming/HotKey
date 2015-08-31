@@ -12,7 +12,7 @@ class HotKeyTextFieldCell: NSTextFieldCell {
 
     var editor:HotKeyTextFieldEditor
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         editor = HotKeyTextFieldEditor()
         super.init(coder: aDecoder)
     }

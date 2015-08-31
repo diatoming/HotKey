@@ -10,16 +10,15 @@ import Cocoa
 import Carbon
 
 class Starter {
-
+    
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
         
         switch item.type {
         case .APP:
-            let sf = item.function
-            callScript(item.scriptFunction) { strings in
-                if let urls = strings?.map({NSURL(fileURLWithPath:$0)!}) {
+            callScript("selectedFiles") { strings in
+                if let urls = strings?.map({NSURL(fileURLWithPath:$0)}) {
                     url?.startAccessingSecurityScopedResource()
                     let bundleIdentifier = NSBundle(path: item.url)?.bundleIdentifier
                     if !workspace.openURLs(urls, withAppBundleIdentifier: bundleIdentifier, options: .Default, additionalEventParamDescriptor: nil, launchIdentifiers: nil) {
@@ -37,26 +36,22 @@ class Starter {
         }
     }
     
-    func callScript(function:Item.ScriptFunction, completionHandler:(strings:[String]?) -> Void) {
-        if function == Item.ScriptFunction.NOTHING {
-            completionHandler(strings: nil)
-        } else {
-            var err : NSError?
-            if let script = NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL, error:&err) {
+    func callScript(function:String, completionHandler:(strings:[String]?) -> Void) {
+        do {
+            let script = try NSUserAppleScriptTask(URL: ScriptInstaller.scriptURL)
+            script.executeWithAppleEvent(eventDescriptor(function)!) { result, err in
+                var strings:[String] = []
                 if (err == nil) {
-                    script.executeWithAppleEvent(eventDescriptor(function.rawValue)!) { result, err in
-                        var strings:[String] = []
-                        for index in 0..<result.numberOfItems {
-                            if let value = result.descriptorAtIndex(index+1)?.stringValue {
-                                strings.append(value)
-                            }
+                    for index in 0..<result!.numberOfItems {
+                        if let value = result!.descriptorAtIndex(index+1)?.stringValue {
+                            strings.append(value)
                         }
-                        completionHandler(strings: strings)
                     }
-                } else {
-                    NSLog("script compile error: %@", err!)
                 }
+                completionHandler(strings: strings)
             }
+        } catch _ {
+            completionHandler(strings: [])
         }
     }
     
@@ -68,8 +63,8 @@ class Starter {
         let event = NSAppleEventDescriptor(eventClass:AEEventClass(kASAppleScriptSuite),
             eventID:AEEventID(kASSubroutineEvent), targetDescriptor:target,
             returnID:AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
-        event?.setParamDescriptor(function!, forKeyword: AEKeyword(keyASSubroutineName))
+        event.setParamDescriptor(function, forKeyword: AEKeyword(keyASSubroutineName))
         return event
     }
-
+    
 }
