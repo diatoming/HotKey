@@ -14,7 +14,7 @@ class UserDefaults {
 
     class func initialize() {
         var defaultValues = [String:AnyObject]()
-        defaultValues["hideAppIcon"] = false
+        defaultValues["hideAppIcon"] = true
         defaultValues["createExampleOnStart"] = true
         defaultValues["openPrefsOnStart"] = true
         defaultValues["showPopupOnPrefs"] = true
