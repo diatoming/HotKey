@@ -11,6 +11,8 @@ import Carbon
 
 class Starter {
     
+    let clipboardController = ClipboardController()
+    
     func startApp(item:Item) {
         let workspace = NSWorkspace.sharedWorkspace()
         let url = UserDefaults.bookmarkedURL
@@ -33,6 +35,8 @@ class Starter {
             url?.startAccessingSecurityScopedResource()
             workspace.openFile(item.url)
             url?.stopAccessingSecurityScopedResource()
+        case .CLIPBOARD:
+            clipboardController.showWindow(self)
         }
     }
     

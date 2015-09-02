@@ -11,7 +11,7 @@ import CoreData
 class Item: NSManagedObject {
     
     enum Type {
-        case APP, OTHER
+        case APP, OTHER, CLIPBOARD
     }
 
     @NSManaged var enabled: Bool
