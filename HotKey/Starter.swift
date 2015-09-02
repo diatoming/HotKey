@@ -36,7 +36,8 @@ class Starter {
             workspace.openFile(item.url)
             url?.stopAccessingSecurityScopedResource()
         case .CLIPBOARD:
-            clipboardController.showWindow(self)
+            clipboardController.toggle()
+
         }
     }
     

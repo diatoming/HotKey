@@ -8,52 +8,48 @@
 
 import Cocoa
 
-class ClipboardController: NSWindowController, NSWindowDelegate {
+class ClipboardController: NSWindowController,NSWindowDelegate {
     
     @IBOutlet weak var labelView: LabelView!
     
+    var isOpen = false
+    
     convenience init() {
         self.init(windowNibName: "ClipboardController")
-        self.window!.delegate = self
     }
     
-    func windowDidExpose(notification: NSNotification) {
-        Swift.print("windowDidExpose")
+    override func mouseDown(theEvent: NSEvent) {
+        self.close()
     }
     
-    override func windowDidLoad() {
-        Swift.print("windowDidLoad")
-        super.windowDidLoad()
+    override func keyDown(theEvent: NSEvent) {
+        self.close()
     }
     
-    func windowDidResignKey(notification: NSNotification) {
-        Swift.print("windowDidResignKey")
-    }
-
-    func windowDidResignMain(notification: NSNotification) {
-        Swift.print("windowDidResignMain")
+    func windowWillClose(notification: NSNotification) {
+        self.isOpen = false
     }
     
-    override func showWindow(sender: AnyObject?) {
-        super.showWindow(sender)
-        
+    func toggle() {
         let myPasteboard = NSPasteboard.generalPasteboard()
-        if let text = myPasteboard.stringForType(NSPasteboardTypeString) {
-            labelView.text = text
+        let cliptext = myPasteboard.stringForType(NSPasteboardTypeString)
+        if cliptext == nil || cliptext == labelView?.text && isOpen {
+            self.close()
+        } else {
+            isOpen = true
+            super.showWindow(nil)
+            labelView.text = cliptext!
+            
+            let screenSize = (NSScreen.mainScreen()?.frame.size)!
+            let maxWidth = screenSize.width - 50
+            let maxHeight = screenSize.height - 100
+            let maxSize = NSSize(width: maxWidth, height: maxHeight)
+            let aspectSize = labelView.aspectFitSize(maxSize)
+            let frame = NSRect(origin:NSPoint.zero, size: aspectSize)
+            window!.setFrame(frame, display: true, animate: false)
+            window!.center()
+            window!.level =  Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
         }
-        let padding:CGFloat = 100
-        let screenSize = (NSScreen.mainScreen()?.frame.size)!
-        let size = labelView.aspectFitSize(NSSize(width: screenSize.width-padding, height: screenSize.height-padding))
-        let frame = NSRect(origin:NSPoint.zero, size: size)
-        
-        window!.setFrame(frame, display: true, animate: false)
-        window!.center()
-        
-        window!.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
-        
-       // window!.level =  Int(CGWindowLevelForKey(.MaximumWindowLevelKey))
-
         
     }
-    
 }
