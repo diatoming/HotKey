@@ -18,14 +18,12 @@ class LabelView: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-//        NSColor.windowBackgroundColor().set()
-//        NSColor.clearColor().set()
+        // NSColor.windowBackgroundColor().set()
+        // NSColor.clearColor().set()
         NSColor(white: 0.9, alpha: 0.9).set()
         NSRectFill(dirtyRect)
         text.drawInRect(frame, withAttributes: attributes)
     }
-  
-    
     
     var attributes:[String:AnyObject] {
         get {
