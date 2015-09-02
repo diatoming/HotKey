@@ -44,6 +44,7 @@ class Item: NSManagedObject {
         get {
             switch (url as NSString).pathExtension {
                 case "app": return Type.APP
+                case "clipboard": return Type.CLIPBOARD
                 default: return Type.OTHER
             }
         }

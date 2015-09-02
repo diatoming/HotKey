@@ -49,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.openPrefsOnStart {
             self.openPreferences(self)
         }
+        createClipboardItem()
     }
     
     func openAbout(sender:AnyObject) {
@@ -74,6 +75,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let moc = persistenceStack.managedObjectContext!
         let item = Item.insertNew(NSURL(string:terminalApp)!, managedObjectContext: moc)
         item?.keyCode = Int32(kVK_Return)
+        item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
+    }
+    
+    func createClipboardItem() {
+        let url = "/Clipboard.clipboard"
+        let moc = persistenceStack.managedObjectContext!
+        let item = Item.insertNew(NSURL(string:url)!, managedObjectContext: moc)
+        item?.keyCode = Int32(kVK_ANSI_0)
         item?.modifierFlags = Int32(NSEventModifierFlags.CommandKeyMask.rawValue + NSEventModifierFlags.ShiftKeyMask.rawValue)
     }
 
