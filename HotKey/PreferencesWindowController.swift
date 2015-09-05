@@ -47,6 +47,12 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate, NSPathC
         
         leftView.wantsLayer = true
         leftView.layer?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor
+
+        let rightBorder = CALayer()
+        rightBorder.borderColor = NSColor.lightGrayColor().CGColor
+        rightBorder.borderWidth = 1
+        rightBorder.frame = CGRect(x: -1, y: -1, width: leftView.frame.width, height: leftView.frame.height+1002)
+        leftView.layer?.addSublayer(rightBorder)
         
         mainView.wantsLayer = true
         //tableView.doubleAction = "doubleClick:"
