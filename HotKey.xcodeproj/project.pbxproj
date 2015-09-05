@@ -32,6 +32,9 @@
 		D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */; };
 		D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */; };
 		D0884FC71AF91CCA00F0F109 /* HotKeyTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */; };
+		D0A283721B97697C00C51BE0 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A283711B97697C00C51BE0 /* LabelView.swift */; settings = {ASSET_TAGS = (); }; };
+		D0A283771B976CA000C51BE0 /* ClipboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A283751B976CA000C51BE0 /* ClipboardController.swift */; settings = {ASSET_TAGS = (); }; };
+		D0A283781B976CA000C51BE0 /* ClipboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A283761B976CA000C51BE0 /* ClipboardController.xib */; settings = {ASSET_TAGS = (); }; };
 		D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */; };
 		D0D0016A1A8A760C008DB64B /* ItemArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D001691A8A760C008DB64B /* ItemArrayController.swift */; };
 		D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E7BF6C1A78209000807AE9 /* HotKey.xcdatamodeld */; };
@@ -103,6 +106,9 @@
 		D08054DD1AB04B4500FC353E /* ScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptInstaller.swift; sourceTree = "<group>"; };
 		D082CA4B1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldEditor.swift; path = MASShortcut/HotKeyTextFieldEditor.swift; sourceTree = "<group>"; };
 		D0884FC61AF91CCA00F0F109 /* HotKeyTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTextFieldCell.swift; path = MASShortcut/HotKeyTextFieldCell.swift; sourceTree = "<group>"; };
+		D0A283711B97697C00C51BE0 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		D0A283751B976CA000C51BE0 /* ClipboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardController.swift; sourceTree = "<group>"; };
+		D0A283761B976CA000C51BE0 /* ClipboardController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClipboardController.xib; sourceTree = "<group>"; };
 		D0BCF6321A6C65F60049AB92 /* HotKey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotKey-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C70CAD1A76C96A0099EF73 /* PersistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 		D05C029E1A361B20004413E2 /* HotKey */ = {
 			isa = PBXGroup;
 			children = (
+				D0A2836F1B97692D00C51BE0 /* Clipboard */,
 				D06A21291A3C7AFE00073595 /* HotKey.entitlements */,
 				D0BCF6331A6C65F60049AB92 /* AppDelegate.swift */,
 				D007B13B1A9CF685004FDA7D /* UserDefaults.swift */,
@@ -232,6 +239,16 @@
 				D064091F1A40ACFC00583962 /* HotKeyHelper.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D0A2836F1B97692D00C51BE0 /* Clipboard */ = {
+			isa = PBXGroup;
+			children = (
+				D0A283711B97697C00C51BE0 /* LabelView.swift */,
+				D0A283751B976CA000C51BE0 /* ClipboardController.swift */,
+				D0A283761B976CA000C51BE0 /* ClipboardController.xib */,
+			);
+			name = Clipboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +358,7 @@
 				D0318DCE1A46DF9C00BAEE57 /* Main.storyboard in Resources */,
 				D070EAAF1A500E0200C3074A /* HotKey.applescript in Resources */,
 				D05C02AA1A361B20004413E2 /* Images.xcassets in Resources */,
+				D0A283781B976CA000C51BE0 /* ClipboardController.xib in Resources */,
 				D05677B71A6BD77C004A386C /* PreferencesWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +382,7 @@
 				D082CA4C1AF807DC00DF80AF /* HotKeyTextFieldEditor.swift in Sources */,
 				D0296A831A87D98700BBF677 /* IconTransformer.swift in Sources */,
 				D0F546871A754E0F00495D39 /* PreferencesWindowController.swift in Sources */,
+				D0A283721B97697C00C51BE0 /* LabelView.swift in Sources */,
 				D04D2B811B027F6100BDCE81 /* HotKey.swift in Sources */,
 				D08054DE1AB04B4500FC353E /* ScriptInstaller.swift in Sources */,
 				D0719C091A99F50C00BA6C25 /* MyMenuItem.swift in Sources */,
@@ -379,6 +398,7 @@
 				D0588F0B1A7BFDAB00D90002 /* HotKeyConfiguration.swift in Sources */,
 				D007B13C1A9CF685004FDA7D /* UserDefaults.swift in Sources */,
 				D0BCF6341A6C65F70049AB92 /* AppDelegate.swift in Sources */,
+				D0A283771B976CA000C51BE0 /* ClipboardController.swift in Sources */,
 				D0E7BF6E1A78209000807AE9 /* HotKey.xcdatamodeld in Sources */,
 				D0588F081A7BFA8600D90002 /* Configuration.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ import CoreData
 class Item: NSManagedObject {
     
     enum Type {
-        case APP, OTHER
+        case APP, OTHER, CLIPBOARD
     }
 
     @NSManaged var enabled: Bool
@@ -44,6 +44,7 @@ class Item: NSManagedObject {
         get {
             switch (url as NSString).pathExtension {
                 case "app": return Type.APP
+                case "clipboard": return Type.CLIPBOARD
                 default: return Type.OTHER
             }
         }
