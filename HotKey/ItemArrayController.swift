@@ -12,9 +12,21 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
 
     let movedRowType = "de.codenuts.ItemArrayController"
     
+    let shortcutRecorder = ShortcutRecorder()
+    
     @IBOutlet weak var tableView:NSTableView! {
         didSet {
             tableView.registerForDraggedTypes([movedRowType])
+        }
+    }
+
+    @IBAction func click(sender: NSButton) {
+        sender.title = "Press key..."
+        let row = tableView.rowForView(sender)
+        let item = arrangedObjects[row] as! Item
+        shortcutRecorder.start() {shortcut in
+            item.hotKey = shortcut
+            self.rearrangeObjects()
         }
     }
 
