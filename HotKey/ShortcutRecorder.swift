@@ -12,7 +12,7 @@ class ShortcutRecorder {
     
     private var monitor:AnyObject?
     
-    func start(completionHandler handler: (Shortcut?) -> Void) {
+    func start(completionHandler handler: (Shortcut?, changed:Bool) -> Void) {
         if monitor == nil {
             monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {
                 event in
@@ -22,14 +22,14 @@ class ShortcutRecorder {
         }
     }
     
-    private func stopMonitoring() {
+    func stopMonitoring() {
         if monitor != nil {
             NSEvent.removeMonitor(monitor!)
             monitor = nil
         }
     }
     
-    func processHotkeyEvent(event:NSEvent, completionHandler handler: (Shortcut?) -> Void) {
+    func processHotkeyEvent(event:NSEvent, completionHandler handler: (Shortcut?, changed:Bool) -> Void) {
         stopMonitoring()
         let shortcut = Shortcut(keyCode: UInt(event.keyCode), modifierFlags: event.modifierFlags.rawValue)
         if shortcut.isSystemShortut() {
@@ -38,10 +38,13 @@ class ShortcutRecorder {
             alert.messageText = "Shortcut could not be saved"
             alert.informativeText = "The entered shortcut \(shortcut) is already taken by the system! Please choose another one."
             //alert.beginSheetModalForWindow(self.hotKeyField!.window!, completionHandler:nil)
-        } else if shortcut.isValid() {
-            handler(shortcut)
+            handler(nil, changed: false)
         } else if isClearKey(shortcut) {
-            handler(nil)
+            handler(nil, changed: true)
+        } else if shortcut.isValid() {
+            handler(shortcut, changed: true)
+        } else {
+            handler(nil, changed: false)
         }
 
     }

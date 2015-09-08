@@ -8,51 +8,65 @@
 
 import Cocoa
 
-class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableViewDelegate {
-
+class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableViewDelegate, NSPopoverDelegate {
+    
     let movedRowType = "de.codenuts.ItemArrayController"
     
     let shortcutRecorder = ShortcutRecorder()
+    
+    @IBOutlet weak var popover:NSPopover! {
+        didSet {
+            popover.delegate = self
+        }
+    }
     
     @IBOutlet weak var tableView:NSTableView! {
         didSet {
             tableView.registerForDraggedTypes([movedRowType])
         }
     }
-
+    
+    func popoverWillClose(notification: NSNotification) {
+        shortcutRecorder.stopMonitoring()
+        // self.tableView.reloadData()
+    }
+    
     @IBAction func click(sender: NSButton) {
-        sender.title = "Press key..."
+        popover.showRelativeToRect(NSRect.zero, ofView: sender, preferredEdge: NSRectEdge.MinX)
+        // sender.title = "..."
         let row = tableView.rowForView(sender)
         let item = arrangedObjects[row] as! Item
-        shortcutRecorder.start() {shortcut in
-            item.hotKey = shortcut
-            self.rearrangeObjects()
+        shortcutRecorder.start() {shortcut,changed in
+            if changed {
+                item.hotKey = shortcut
+            }
+            self.tableView.reloadData()
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
     }
-
+    
     func addItem(url:NSURL) {
         if let item = Item.insertNew(url, managedObjectContext:self.managedObjectContext!) {
             item.order = Int32(self.arrangedObjects.count)
             self.rearrangeOrder()
         }
     }
-
+    
     override func remove(sender: AnyObject?) {
         super.remove(sender)
         self.rearrangeOrder()
     }
-
+    
     func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
         let data = NSKeyedArchiver.archivedDataWithRootObject(rowIndexes)
         pboard.setData(data, forType:movedRowType)
         return true
     }
-
+    
     func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
         if info.draggingSource() as? NSTableView == tableView {
             tableView.setDropRow(row, dropOperation: NSTableViewDropOperation.Above)
@@ -90,5 +104,5 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
         } catch _ {
         }
     }
-
+    
 }

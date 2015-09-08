@@ -161,7 +161,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveName="table_autosave" rowHeight="36" rowSizeStyle="automatic" viewBased="YES" id="Lv6-PI-t0Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="497" height="339"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="497" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                             <size key="intercellSpacing" width="10" height="2"/>
@@ -201,7 +201,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="320" minWidth="160" maxWidth="1000" id="xVO-ST-q66">
+                                                <tableColumn width="327" minWidth="160" maxWidth="1000" id="xVO-ST-q66">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -271,7 +271,7 @@
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-cc-Sn0">
                                                                     <rect key="frame" x="0.0" y="8" width="100" height="19"/>
                                                                     <animations/>
-                                                                    <buttonCell key="cell" type="roundRect" title="..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OtD-Wo-YVf">
+                                                                    <buttonCell key="cell" type="roundRect" title="ABC" alternateTitle="..." bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OtD-Wo-YVf">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="cellTitle"/>
                                                                     </buttonCell>
@@ -388,10 +388,37 @@
         <arrayController mode="entity" entityName="Item" fetchPredicateFormat="" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="U3m-tk-joT" customClass="ItemArrayController" customModule="HotKey" customModuleProvider="target">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="4rX-lH-gxW"/>
+                <outlet property="popover" destination="2M6-3X-YOl" id="22R-g1-gDL"/>
                 <outlet property="tableView" destination="Lv6-PI-t0Y" id="qwl-ZP-1Gs"/>
             </connections>
         </arrayController>
-        <userDefaultsController representsSharedInstance="YES" id="ade-iM-dAW"/>
+        <viewController id="Vir-yu-U0W" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="8N2-wD-Xdt" id="eli-0a-fns"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="2M6-3X-YOl">
+            <connections>
+                <outlet property="contentViewController" destination="Vir-yu-U0W" id="Oq3-nZ-WfT"/>
+            </connections>
+        </popover>
+        <view id="8N2-wD-Xdt">
+            <rect key="frame" x="0.0" y="0.0" width="153" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-eI-iJF">
+                    <rect key="frame" x="18" y="15" width="117" height="17"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Press shortcut key" id="yhU-Ek-qjO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="96.5" y="-419"/>
+        </view>
     </objects>
     <resources>
         <image name="HotKey-128" width="128" height="128"/>
