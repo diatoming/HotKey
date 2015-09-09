@@ -11,26 +11,39 @@ class HotKeyMonitor:NSObject {
     static let sharedInstance = HotKeyMonitor()
     
     var eventHandlerRefPointer = UnsafeMutablePointer<EventHotKeyRef>.alloc(1)
+    let hotKeyPressedSpecPointer = UnsafeMutablePointer<EventTypeSpec>.alloc(1)
     
     var hotKeys = [Shortcut : HotKey]()
     
     override init() {
         super.init()
-        let hotKeyPressedSpecPointer = UnsafeMutablePointer<EventTypeSpec>.alloc(1)
-        hotKeyPressedSpecPointer.initialize(EventTypeSpec(
+        self.hotKeyPressedSpecPointer.initialize(EventTypeSpec(
             eventClass: OSType(kEventClassKeyboard),
             eventKind:  UInt32(kEventHotKeyPressed)
         ))
-        let status = InstallEventHandler(GetEventDispatcherTarget(), HotKeyCarbonEventCallbackPointer,
-            1, hotKeyPressedSpecPointer, nil, self.eventHandlerRefPointer)
-        assert( status == noErr, "Could not create HotKeyMonitor" )
+        self.start()
     }
     
     deinit {
+        self.stop()
+        self.hotKeyPressedSpecPointer.dealloc(1)
+        self.eventHandlerRefPointer.dealloc(1)
+    }
+    
+    func start() {
+        let eventHandlerRef = eventHandlerRefPointer.memory
+        if eventHandlerRef == nil {
+            let status = InstallEventHandler(GetEventDispatcherTarget(),
+                HotKeyCarbonEventCallbackPointer, 1, hotKeyPressedSpecPointer,
+                nil, self.eventHandlerRefPointer)
+            assert(status == noErr, "Could not create HotKeyMonitor")
+        }
+    }
+    
+    func stop() {
         let eventHandlerRef = eventHandlerRefPointer.memory
         if eventHandlerRef != nil {
             RemoveEventHandler(eventHandlerRef)
-            self.eventHandlerRefPointer.dealloc(1)
         }
     }
     
@@ -42,7 +55,7 @@ class HotKeyMonitor:NSObject {
     func unregisterShortcut(shortcut: Shortcut){
         self.hotKeys.removeValueForKey(shortcut)
     }
-    
+
     func unregisterAllShortcuts() {
         self.hotKeys.removeAll(keepCapacity: false)
     }
@@ -61,7 +74,7 @@ class HotKeyMonitor:NSObject {
         if status != noErr || hotKeyID.signature != HotKey.signature {
             return
         }
-        for (shortCut, hotKey) in self.hotKeys {
+        for (_, hotKey) in self.hotKeys {
             if hotKeyID.id == hotKey.carbonID {
                 dispatch_async(dispatch_get_main_queue()) {
                     hotKey.action()

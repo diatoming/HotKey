@@ -18,13 +18,15 @@ class HotKey {
     
     var action:() -> ()
     
-    init(shortcut:Shortcut, action:() -> ()) {
+    init?(shortcut:Shortcut, action:() -> ()) {
         self.action = action
         self.carbonID = ++HotKey.carbonIDCounter
         let hotKeyID = EventHotKeyID(signature:HotKey.signature, id:self.carbonID)
         let status = RegisterEventHotKey(shortcut.carbonKeyCode, shortcut.carbonFlags,
             hotKeyID, GetEventDispatcherTarget(), 0, self.hotKeyRefPointer)
-        assert(status == noErr, "RegisterEventHotKey failed \(status)")
+        if status != noErr {
+            return nil
+        }
     }
     
     deinit {

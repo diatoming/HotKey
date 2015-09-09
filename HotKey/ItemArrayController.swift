@@ -28,11 +28,20 @@ class ItemArrayController: NSArrayController, NSTableViewDataSource, NSTableView
     
     func popoverWillClose(notification: NSNotification) {
         shortcutRecorder.stopMonitoring()
+        // HotKeyMonitor.sharedInstance.start()
         // self.tableView.reloadData()
+        tableView.window?.makeFirstResponder(tableView)
+    }
+    
+    func popoverWillShow(notification: NSNotification) {
+        // HotKeyMonitor.sharedInstance.unregisterAllShortcuts()
+        // HotKeyMonitor.sharedInstance.stop()
+        
     }
     
     @IBAction func click(sender: NSButton) {
         popover.showRelativeToRect(NSRect.zero, ofView: sender, preferredEdge: NSRectEdge.MinX)
+        sender.window?.makeFirstResponder(sender)
         // sender.title = "..."
         let row = tableView.rowForView(sender)
         let item = arrangedObjects[row] as! Item
